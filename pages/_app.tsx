@@ -1,10 +1,10 @@
 import { CacheProvider, EmotionCache } from '@emotion/react';
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import { appTheme } from 'containers/Theme';
+import { AppTheme } from 'containers';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { Provider } from 'react-redux';
+import { wrapper } from 'reducers/store';
 import 'styles/App.scss';
-import 'tailwindcss/tailwind.css';
 import { createEmotionCache } from 'utils/createEmotionCache';
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -15,17 +15,18 @@ export type MyAppProps = AppProps & {
 };
 
 const MyApp = (props: MyAppProps) => {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+  const { Component, emotionCache = clientSideEmotionCache, pageProps, ...rest } = props;
+  const { store } = wrapper.useWrappedStore(rest);
   return (
     <CacheProvider value={emotionCache}>
       <Head>
         <meta name='viewport' content='initial-scale=1, width=device-width' />
       </Head>
-      <ThemeProvider theme={appTheme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <AppTheme>
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      </AppTheme>
     </CacheProvider>
   );
 };

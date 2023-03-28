@@ -1,0 +1,72 @@
+.MuiTableContainer-root {
+  margin: 24px 0px;
+
+  .MuiTableRow-root:hover {
+    background-color: #00000006;
+  }
+  .MuiTableCell-head {
+    padding: 12px 12px;
+  }
+  .MuiTableCell-body {
+    padding: 12px 12px;
+  }
+}
+
+.MuiDialog-root {
+  .MuiDialog-paper {
+    background-color: #eee;
+    border-radius: 24px;
+  }
+  .MuiDialogTitle-root {
+    padding: 24px 16px 12px;
+    font-size: 24px;
+  }
+  .MuiDialogContent-root {
+    min-height: 120px;
+    padding: 16px 16px;
+  }
+  .MuiDialogActions-root {
+    padding: 12px 16px 24px;
+  }
+}
+
+.MuiButton-root {
+  &.MuiButtonBase-root {
+    border-radius: 8px;
+  }
+  &.MuiButton-outlinedInherit {
+    color: #000e;
+    border-color: #0008;
+  }
+}
+.MuiButton-textInherit {
+  background-color: rgba(255, 255, 255, 0.94);
+}
+
+.MuiLoadingButton-root {
+  .MuiLoadingButton-loadingIndicator {
+    position: static;
+    left: 0px;
+    margin-left: 4px;
+    color: #fff9 !important;
+  }
+
+  &.MuiLoadingButton-loading {
+    color: #fff9 !important;
+  }
+}
+
+.SnackbarContainer-top {
+  top: 72px !important;
+
+  .SnackbarContent-root {
+    .SnackbarItem-message {
+      font-size: 16px;
+
+      .MuiSvgIcon-root {
+        width: 22px;
+        height: 22px;
+      }
+    }
+  }
+}

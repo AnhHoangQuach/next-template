@@ -1,6 +1,6 @@
+import { CssBaseline, ThemeProvider } from '@mui/material';
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import { Roboto } from 'next/font/google';
-import { createTheme } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
 
 export const appFont = Roboto({
   weight: ['300', '400', '500', '700'],
@@ -10,18 +10,67 @@ export const appFont = Roboto({
 });
 
 export const appTheme = createTheme({
-  palette: {
-    primary: {
-      main: '#556cd6',
+  components: {
+    MuiContainer: {
+      defaultProps: {
+        maxWidth: 'lg',
+      },
     },
-    secondary: {
-      main: '#19857b',
+    MuiButton: {
+      defaultProps: {
+        variant: 'contained',
+        color: 'primary',
+        disableElevation: true,
+      },
     },
-    error: {
-      main: red.A400,
+    MuiTooltip: {
+      defaultProps: {
+        arrow: true,
+      },
+    },
+    MuiPagination: {
+      defaultProps: {
+        variant: 'outlined',
+        shape: 'rounded',
+        size: 'large',
+      },
+    },
+    MuiTextField: {
+      defaultProps: {
+        variant: 'outlined',
+        size: 'medium',
+        InputLabelProps: { shrink: true },
+      },
+    },
+    MuiDialog: {
+      defaultProps: {
+        maxWidth: 'xs',
+        fullWidth: true,
+      },
     },
   },
   typography: {
     fontFamily: appFont.style.fontFamily,
+    button: { fontWeight: 700, textTransform: 'none' },
+  },
+  palette: {
+    primary: {
+      main: '#17479d',
+    },
+    secondary: {
+      main: '#673ab7',
+    },
+    mode: 'light',
   },
 });
+
+const Theme = ({ children }) => {
+  return (
+    <ThemeProvider theme={responsiveFontSizes(appTheme)}>
+      <CssBaseline />
+      {children}
+    </ThemeProvider>
+  );
+};
+
+export default Theme;
