@@ -1,10 +1,31 @@
 import { DialogActions, DialogContent, DialogTitle, List, ListItemButton } from '@mui/material';
+import { web3 } from 'contracts';
 import { useEffect } from 'react';
+import { isMobile } from 'react-device-detect';
 import { useAccount, useConnect } from 'wagmi';
 
 const PopupNetwork = ({ onClose }: PopupController) => {
   const { isConnected } = useAccount();
   const { connect, connectors } = useConnect();
+
+  const handleClickConnect = (connector: any) => {
+    const isMetaMask = connector.id === 'metaMask';
+    const isProvider = web3.givenProvider;
+    if (!isMetaMask) {
+      connect(connector);
+    } else {
+      // isMetaMask
+      if (!isProvider) {
+        if (isMobile) {
+          window.open('https://metamask.app.link/dapp/' + window.location.href);
+        } else {
+          window.open('https://metamask.io/download/');
+        }
+      } else {
+        connect(connector);
+      }
+    }
+  };
 
   useEffect(() => {
     if (isConnected) {
@@ -21,9 +42,7 @@ const PopupNetwork = ({ onClose }: PopupController) => {
             return (
               <ListItemButton
                 key={connector.id}
-                onClick={() => {
-                  connect({ connector });
-                }}
+                onClick={() => handleClickConnect(connector)}
                 className='flex items-center gap-2 rounded-lg min-h-[48px]'
               >
                 <img src={require(`assets/icons/${connector.id}.svg`).default.src} className='rounded' />
