@@ -1,12 +1,12 @@
 import { PublicLayout } from 'layouts';
-import { Home } from 'views/Home';
+import { Faucet } from 'views/Faucet';
 
-const App = () => {
+const Home = () => {
   return (
     <PublicLayout>
-      <Home />
+      <Faucet />
     </PublicLayout>
   );
 };
 
-export default App;
+export default Home;

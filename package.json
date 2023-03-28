@@ -1,4 +1,6 @@
 {
+  "name": "next-material-tailwind-ethers-ts",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next",
@@ -7,14 +9,32 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "@emotion/cache": "^11.10.5",
+    "@emotion/react": "^11.10.6",
+    "@emotion/server": "^11.10.0",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/lab": "^5.0.0-alpha.124",
+    "@mui/material": "^5.11.14",
+    "luxon": "^3.3.0",
     "next": "latest",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "sass": "^1.60.0",
+    "wagmi": "^0.12.7"
   },
   "devDependencies": {
+    "@types/luxon": "^3.2.0",
     "@types/node": "^12.12.21",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.36.0",
+    "eslint-config-next": "^13.2.4",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7",
     "typescript": "^4.8.3"
   }
 }
