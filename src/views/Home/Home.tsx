@@ -1,11 +1,8 @@
 import { Box, Container, Typography } from '@mui/material';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState } from 'react';
 
 const Home = () => {
-  const router = useRouter();
-
   const [counter, setCounter] = useState(1);
 
   useEffect(() => {
@@ -15,7 +12,6 @@ const Home = () => {
   return (
     <Container maxWidth='lg'>
       <h1 className='text-3xl font-bold underline'>Hello world!</h1>
-
       <Box
         sx={{
           my: 4,

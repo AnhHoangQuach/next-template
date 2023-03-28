@@ -1,9 +1,7 @@
 {
   "extends": [
     "next",
-    "react-app",
-    "eslint:recommended",
-    "plugin:prettier/recommended"
+    "eslint:recommended"
   ],
   "env": {
     "es6": true
@@ -12,9 +10,21 @@
     "prettier"
   ],
   "rules": {
-    // "prettier/prettier": "warn",
+    "prettier/prettier": "warn",
+    "no-unused-vars": "warn"
     // "jsx-a11y/alt-text": "off",
     // "react/jsx-no-target-blank": "off",
     // "import/no-anonymous-default-export": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ]
 }
