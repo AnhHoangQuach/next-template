@@ -2,17 +2,17 @@ import { DialogActions, DialogContent, DialogTitle, List, ListItemButton } from 
 import { web3 } from 'contracts';
 import { useEffect } from 'react';
 import { isMobile } from 'react-device-detect';
-import { useAccount, useConnect } from 'wagmi';
+import { Connector, useAccount, useConnect } from 'wagmi';
 
 const PopupNetwork = ({ onClose }: PopupController) => {
   const { isConnected } = useAccount();
   const { connect, connectors } = useConnect();
 
-  const handleClickConnect = (connector: any) => {
+  const handleClickConnect = (connector: Connector) => {
     const isMetaMask = connector.id === 'metaMask';
-    const isProvider = web3.givenProvider;
+    const isProvider = !!web3.givenProvider;
     if (!isMetaMask) {
-      connect(connector);
+      connect({ connector });
     } else {
       // isMetaMask
       if (!isProvider) {
@@ -22,7 +22,7 @@ const PopupNetwork = ({ onClose }: PopupController) => {
           window.open('https://metamask.io/download/');
         }
       } else {
-        connect(connector);
+        connect({ connector });
       }
     }
   };
