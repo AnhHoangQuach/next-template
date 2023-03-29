@@ -5,7 +5,7 @@ import { fetchBalance } from '@wagmi/core';
 import { useState } from 'react';
 import { shorten } from 'utils/common';
 import { useAccount } from 'wagmi';
-import { PopupAccount, PopupNetwork } from '.';
+import { PopupAccount, PopupConnect } from '.';
 
 const ConnectWallet = () => {
   const { isConnected, address } = useAccount();
@@ -35,7 +35,7 @@ const ConnectWallet = () => {
       )}
 
       <Dialog open={openNetwork} onClose={() => setOpenNetwork(false)}>
-        <PopupNetwork onClose={() => setOpenNetwork(false)} />
+        <PopupConnect onClose={() => setOpenNetwork(false)} />
       </Dialog>
       <Dialog open={openAccount} onClose={() => setOpenAccount(false)}>
         <PopupAccount onClose={() => setOpenAccount(false)} />

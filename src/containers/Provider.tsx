@@ -9,7 +9,7 @@ type ContainerType = {
 
 const Provider = ({ children }: ContainerType) => {
   return (
-    <SnackbarProvider variant='success' anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+    <SnackbarProvider variant='success' anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}>
       <QueryClientProvider client={queryClient}>
         <WagmiConfig client={wagmiClient}>
           <>{children}</>

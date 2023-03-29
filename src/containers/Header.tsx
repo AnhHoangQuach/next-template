@@ -1,10 +1,10 @@
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 import { ConnectWallet } from 'components';
-import Link from 'next/link';
+import { NextImage, NextLink } from 'components/next';
 
 const Header = () => {
   return (
-    <AppBar color='transparent' position='sticky' className='top-0'>
+    <AppBar color='transparent' position='sticky' className='bg-[#f5f9fe] top-0'>
       <Toolbar className='flex-col'>
         <h1 className='text-[42px] font-bold underline'>Hello world!</h1>
         <ConnectWallet />
@@ -18,20 +18,20 @@ const Header = () => {
             alignItems: 'center',
           }}
         >
-          <img src={'/favicon.ico'} width='120px' className='my-6' />
+          <NextImage src={'/favicon.ico'} alt='favicon' width={120} height={120} className='my-6' />
           <Typography variant='h4' component='h1' gutterBottom>
             Material UI - Next.js example in TypeScript
           </Typography>
           <div className='flex gap-3'>
-            <Link href={'/'} className='hover:underline'>
+            <NextLink href={'/'} className='hover:underline'>
               Home
-            </Link>
-            <Link href={'/airdrop'} className='hover:underline'>
+            </NextLink>
+            <NextLink href={'/airdrop'} className='hover:underline'>
               Airdrop
-            </Link>
-            <Link href={'/faucet'} className='hover:underline'>
+            </NextLink>
+            <NextLink href={'/faucet'} className='hover:underline'>
               Faucet
-            </Link>
+            </NextLink>
           </div>
         </Box>
       </Toolbar>

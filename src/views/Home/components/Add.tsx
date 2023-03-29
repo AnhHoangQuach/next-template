@@ -1,10 +1,9 @@
 import { Button } from '@mui/material';
-import { useSnackbar } from 'notistack';
+import { enqueueSnackbar } from 'notistack';
 import { useDispatch } from 'react-redux';
 import { addComment } from 'reducers/commentSlice';
 
 const Add = () => {
-  const { enqueueSnackbar } = useSnackbar();
   const dispatch = useDispatch();
 
   return (

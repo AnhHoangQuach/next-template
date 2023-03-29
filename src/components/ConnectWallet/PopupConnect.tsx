@@ -1,10 +1,11 @@
 import { DialogActions, DialogContent, DialogTitle, List, ListItemButton } from '@mui/material';
+import { NextImage } from 'components/next';
 import { web3 } from 'contracts';
 import { useEffect } from 'react';
 import { isMobile } from 'react-device-detect';
 import { Connector, useAccount, useConnect } from 'wagmi';
 
-const PopupNetwork = ({ onClose }: PopupController) => {
+const PopupConnect = ({ onClose }: PopupController) => {
   const { isConnected } = useAccount();
   const { connect, connectors } = useConnect();
 
@@ -45,7 +46,13 @@ const PopupNetwork = ({ onClose }: PopupController) => {
                 onClick={() => handleClickConnect(connector)}
                 className='flex items-center gap-2 rounded-lg min-h-[48px]'
               >
-                <img src={require(`assets/icons/${connector.id}.svg`).default.src} className='rounded' />
+                <NextImage
+                  src={require(`assets/icons/${connector.id}.svg`).default.src}
+                  alt={connector.name}
+                  width={28}
+                  height={28}
+                  className='rounded'
+                />
                 <div className='font-bold'>{connector.name}</div>
               </ListItemButton>
             );
@@ -66,4 +73,4 @@ const PopupNetwork = ({ onClose }: PopupController) => {
   );
 };
 
-export default PopupNetwork;
+export default PopupConnect;

@@ -1,3 +1,26 @@
 @import 'tailwindcss/utilities';
 @import 'styles/mui';
 @import 'styles/custom';
+
+main {
+  min-height: 100vh;
+  background-color: var(--color-neutral-main);
+}
+
+:root {
+  --color-primary-light: #456bb0;
+  --color-primary-main: #17479d;
+  --color-primary-dark: #10316d;
+
+  --color-secondary-light: #b39ddb;
+  --color-secondary-main: #673ab7;
+  --color-secondary-dark: #5e35b1;
+
+  --color-neutral-main: #f5f9fe;
+  --color-neutral-dialog: #f0f0f0;
+}
+
+w3m-modal {
+  z-index: 2000;
+  position: relative;
+}

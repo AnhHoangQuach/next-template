@@ -14,7 +14,7 @@
 
 .MuiDialog-root {
   .MuiDialog-paper {
-    background-color: #eee;
+    background-color: var(--color-neutral-dialog);
     border-radius: 24px;
   }
   .MuiDialogTitle-root {
@@ -53,20 +53,5 @@
 
   &.MuiLoadingButton-loading {
     color: #fff9 !important;
-  }
-}
-
-.SnackbarContainer-top {
-  top: 72px !important;
-
-  .SnackbarContent-root {
-    .SnackbarItem-message {
-      font-size: 16px;
-
-      .MuiSvgIcon-root {
-        width: 22px;
-        height: 22px;
-      }
-    }
   }
 }

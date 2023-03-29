@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from '@mui/material';
+import { NextLink } from 'components/next';
 import { PublicLayout } from 'layouts';
-import Link from 'next/link';
 import { publicRoute } from 'routes';
 
 export const getInitialProps = ({ res, err }) => {
@@ -24,11 +24,11 @@ const Home = () => {
         </Typography>
 
         <Box sx={{ textAlign: 'center', marginTop: 2 }}>
-          <Link href={publicRoute.home.path}>
+          <NextLink href={publicRoute.home.path}>
             <Button size='large' variant='outlined'>
               BACK TO HOME
             </Button>
-          </Link>
+          </NextLink>
         </Box>
       </Box>
     </PublicLayout>
