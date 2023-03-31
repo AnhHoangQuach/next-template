@@ -1,3 +1,6 @@
+@import '~@rainbow-me/rainbowkit/styles.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 @import 'styles/mui';
 @import 'styles/custom';
@@ -18,9 +21,4 @@ main {
 
   --color-neutral-main: #f5f9fe;
   --color-neutral-dialog: #f0f0f0;
-}
-
-w3m-modal {
-  z-index: 2000;
-  position: relative;
 }

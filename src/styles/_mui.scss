@@ -55,3 +55,10 @@
     color: #fff9 !important;
   }
 }
+
+.MuiButton-containedPrimary {
+  background-color: var(--color-primary-main);
+}
+.MuiButton-containedSecondary {
+  background-color: var(--color-secondary-main);
+}

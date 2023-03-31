@@ -1,43 +1,57 @@
-import { AppBar, Box, Toolbar, Typography } from '@mui/material';
-import { Web3Button } from '@web3modal/react';
+import { Menu as MenuIcon } from '@mui/icons-material';
+import { AppBar, Container, Divider, Drawer, IconButton, List, Paper, Toolbar } from '@mui/material';
+import { AuragiLogo } from 'assets/icons';
 import { ConnectWallet } from 'components';
 import { NextImage, NextLink } from 'components/next';
+import { AppMenu } from 'containers';
+import { useState } from 'react';
+import { publicRoute } from 'routes';
 
 const AppHeader = () => {
-  return (
-    <AppBar color='transparent' position='sticky' className='bg-[#f5f9fe] top-0'>
-      <Toolbar className='flex-col'>
-        <h1 className='text-[42px] font-bold underline'>Hello world!</h1>
-        <ConnectWallet />
-        <Web3Button />
+  const [openDrawer, setOpenDrawer] = useState(false);
 
-        <Box
-          sx={{
-            my: 4,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          <NextImage src={'/favicon.ico'} alt='favicon' width={120} height={120} className='my-6' />
-          <Typography variant='h4' component='h1' gutterBottom>
-            Material UI - Next.js example in TypeScript
-          </Typography>
-          <div className='flex gap-3'>
-            <NextLink href={'/'} className='hover:underline'>
-              Home
-            </NextLink>
-            <NextLink href={'/airdrop'} className='hover:underline'>
-              Airdrop
-            </NextLink>
-            <NextLink href={'/faucet'} className='hover:underline'>
-              Faucet
+  return (
+    <>
+      <Drawer
+        variant='temporary'
+        anchor='left'
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        PaperProps={{ sx: { width: 280, padding: '8px 16px' } }}
+      >
+        <div className='flex justify-center items-center lg:h-16 h-12 relative'>
+          <NextLink href={publicRoute.home.path}>
+            <NextImage src={AuragiLogo} alt='Logo' height={40} />
+          </NextLink>
+        </div>
+        <Divider className='my-2' />
+        <List className='flex flex-col gap-1'>
+          <AppMenu />
+        </List>
+      </Drawer>
+
+      <AppBar position='sticky' color='transparent' elevation={0} className='bg-neutral-main'>
+        <Toolbar component={Container} maxWidth='xl' className='flex items-center lg:py-4'>
+          <IconButton className='lg:hidden' onClick={() => setOpenDrawer(true)}>
+            <MenuIcon />
+          </IconButton>
+
+          <div className='lg:block hidden relative'>
+            <NextLink href={publicRoute.home.path}>
+              <NextImage src={AuragiLogo} alt='Logo' height={40} />
             </NextLink>
           </div>
-        </Box>
-      </Toolbar>
-    </AppBar>
+
+          <div className='flex flex-1 justify-center items-center'>
+            <List component={Paper} className='lg:flex hidden xl:gap-2 shadow-base rounded-full px-3'>
+              <AppMenu />
+            </List>
+          </div>
+
+          <ConnectWallet />
+        </Toolbar>
+      </AppBar>
+    </>
   );
 };
 

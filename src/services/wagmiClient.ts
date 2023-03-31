@@ -1,16 +1,26 @@
-import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum';
+import { getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { CHAIN_ID } from 'env';
 import { configureChains, createClient } from 'wagmi';
-import { arbitrum, mainnet, polygon, bscTestnet } from 'wagmi/chains';
+import { arbitrum, arbitrumGoerli } from 'wagmi/chains';
+import { publicProvider } from 'wagmi/providers/public';
 
-const chains = [bscTestnet, arbitrum, mainnet, polygon];
-const projectId = 'b39715e5520acd1ede1fa42d41dea6c9';
+const defaultChain = () => {
+  const chainList = [arbitrumGoerli, arbitrum];
+  return chainList.find((chain) => chain.id === CHAIN_ID) ?? chainList[0];
+};
 
-const { provider } = configureChains(chains, [w3mProvider({ projectId })]);
+const { chains, provider, webSocketProvider } = configureChains([defaultChain()], [publicProvider()]);
 
-export const wagmiClient = createClient({
-  autoConnect: true,
-  connectors: w3mConnectors({ projectId, version: 1, chains }),
-  provider,
+const { connectors } = getDefaultWallets({
+  appName: 'Auragi Finance dApp',
+  chains,
 });
 
-export const ethereumClient = new EthereumClient(wagmiClient, chains);
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors,
+  provider,
+  webSocketProvider,
+});
+
+export { chains, wagmiClient };

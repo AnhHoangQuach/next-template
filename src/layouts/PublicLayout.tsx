@@ -3,8 +3,10 @@ import { AppHeader, AppProvider } from 'containers';
 const PublicLayout = ({ children }) => {
   return (
     <AppProvider>
-      <AppHeader />
-      {children}
+      <main>
+        <AppHeader />
+        {children}
+      </main>
     </AppProvider>
   );
 };
