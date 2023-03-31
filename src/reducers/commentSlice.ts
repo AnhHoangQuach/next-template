@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { HYDRATE } from 'next-redux-wrapper';
 import { RootState } from './store';
 
 const initialState = [
@@ -17,20 +16,8 @@ export const commentSlice = createSlice({
   name: 'comments',
   initialState,
   reducers: {
-    // Action to add comment
     addComment: (state, action) => {
       return [...state, action.payload];
-    },
-
-    // Special reducer for hydrating the state
-    extraReducers: {
-      // @ts-ignore
-      [HYDRATE]: (state, action) => {
-        return {
-          ...state,
-          ...action.payload.comments,
-        };
-      },
     },
   },
 });

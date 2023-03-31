@@ -1,4 +1,4 @@
-import { appFont, appTheme } from 'containers/Theme';
+import { appFont, appTheme } from 'containers/AppTheme';
 import { AppType } from 'next/app';
 import { default as Document, DocumentContext, DocumentProps, Head, Html, Main, NextScript } from 'next/document';
 import { createEmotionCache, createEmotionServer } from 'utils/createEmotionCache';

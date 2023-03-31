@@ -1,29 +1,16 @@
-import { defaultChain } from 'utils/chains';
+import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum';
 import { configureChains, createClient } from 'wagmi';
-import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet';
-import { MetaMaskConnector } from 'wagmi/connectors/metaMask';
-import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { publicProvider } from 'wagmi/providers/public';
+import { arbitrum, mainnet, polygon, bscTestnet } from 'wagmi/chains';
 
-const { chains, provider, webSocketProvider } = configureChains([defaultChain()], [publicProvider()]);
+const chains = [bscTestnet, arbitrum, mainnet, polygon];
+const projectId = 'b39715e5520acd1ede1fa42d41dea6c9';
 
-const wagmiClient = createClient({
+const { provider } = configureChains(chains, [w3mProvider({ projectId })]);
+
+export const wagmiClient = createClient({
   autoConnect: true,
-  connectors: [
-    new MetaMaskConnector({
-      chains,
-    }),
-    new CoinbaseWalletConnector({
-      chains,
-      options: { appName: 'wagmi' },
-    }),
-    new WalletConnectConnector({
-      chains,
-      options: { projectId: 'b39715e5520acd1ede1fa42d41dea6c9' },
-    }),
-  ],
+  connectors: w3mConnectors({ projectId, version: 1, chains }),
   provider,
-  webSocketProvider,
 });
 
-export default wagmiClient;
+export const ethereumClient = new EthereumClient(wagmiClient, chains);

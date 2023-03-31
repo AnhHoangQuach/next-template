@@ -7,7 +7,7 @@ const getAddressProof = ({ address }: { address: string }): Promise<any> => clie
 const getEligibility = ({ address }: { address: string }): Promise<EligibileType> =>
   client.get(`/api/v1/airdrop/${address}`);
 
-export default {
+export const Api = {
   getAllToken,
   getAllContract,
 

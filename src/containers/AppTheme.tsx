@@ -64,7 +64,7 @@ export const appTheme = createTheme({
   },
 });
 
-const Theme = ({ children }) => {
+const AppTheme = ({ children }) => {
   return (
     <ThemeProvider theme={responsiveFontSizes(appTheme)}>
       <CssBaseline />
@@ -73,4 +73,4 @@ const Theme = ({ children }) => {
   );
 };
 
-export default Theme;
+export default AppTheme;

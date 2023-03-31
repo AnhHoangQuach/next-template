@@ -1,13 +1,15 @@
 import { AppBar, Box, Toolbar, Typography } from '@mui/material';
+import { Web3Button } from '@web3modal/react';
 import { ConnectWallet } from 'components';
 import { NextImage, NextLink } from 'components/next';
 
-const Header = () => {
+const AppHeader = () => {
   return (
     <AppBar color='transparent' position='sticky' className='bg-[#f5f9fe] top-0'>
       <Toolbar className='flex-col'>
         <h1 className='text-[42px] font-bold underline'>Hello world!</h1>
         <ConnectWallet />
+        <Web3Button />
 
         <Box
           sx={{
@@ -39,4 +41,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default AppHeader;
