@@ -47,7 +47,7 @@ const MyDocument = ({ emotionStyleTags }: MyDocumentProps) => {
   return (
     <Html lang='en' className={appFont.className}>
       <Head>
-        <link rel='shortcut icon' href='/favicon.ico' />
+        <link rel='shortcut icon' href='/auragi.ico' />
         <meta name='theme-color' content={appTheme.palette.primary.main} />
         <meta name='emotion-insertion-point' content='' />
         <link
@@ -57,6 +57,7 @@ const MyDocument = ({ emotionStyleTags }: MyDocumentProps) => {
           crossOrigin='anonymous'
           referrerPolicy='no-referrer'
         />
+
         {emotionStyleTags}
       </Head>
       <body>

@@ -1,11 +1,30 @@
+import { NextSeo } from 'next-seo';
 import { Swap } from 'views/Swap';
 
-const Home = () => {
+const Page = () => {
+  const { title, description } = {
+    title: `Auragi - Swap tokens at the best rates`,
+    description: `Take advantage of minimal slippage, low swapping fees, and deep liquidity with Auragi.`,
+  };
   return (
     <>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          title,
+          description,
+          siteName: 'Auragi Finance | Swap',
+          url: 'https://auragi.finance/swap',
+          images: [{ url: 'https://auragi.finance/thumbnail.png' }],
+        }}
+        twitter={{
+          cardType: 'summary_large_image',
+        }}
+      />
       <Swap />
     </>
   );
 };
 
-export default Home;
+export default Page;

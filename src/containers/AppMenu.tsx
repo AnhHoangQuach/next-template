@@ -18,7 +18,7 @@ const StyledListItem = styled(ListItemButton)({
 const MenuItem = ({ path, name }: { path: string; name?: string }) => {
   const router = useRouter();
   const isHome = router.pathname === publicRoute.home.path;
-  const isSelected = isHome ? router.pathname.startsWith(path) : router.pathname === path;
+  const isSelected = isHome ? router.pathname === path : router.pathname.startsWith(path);
 
   return (
     <NextLink href={path}>
