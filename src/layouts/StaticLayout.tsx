@@ -1,7 +1,22 @@
 import { Box } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
 import { AppFooter, AppHeader } from 'containers';
+import { Api } from 'services';
 
 const StaticLayout = ({ children }) => {
+  // TODO redux-persist
+  const { isSuccess } = useQuery(['getAllContract'], () =>
+    Api.getAllContract().then((contracts) => {
+      return contracts.reduce(
+        (map, contract) => ({
+          ...map,
+          [contract.name]: contract,
+        }),
+        {},
+      ) as ContractMap;
+    }),
+  );
+
   return (
     <main>
       <AppHeader />

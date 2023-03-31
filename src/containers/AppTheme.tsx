@@ -22,6 +22,11 @@ export const appTheme = createTheme({
         color: 'primary',
         disableElevation: true,
       },
+      styleOverrides: {
+        sizeLarge: { minHeight: 48, minWidth: 48 },
+        sizeMedium: { minHeight: 40, minWidth: 40 },
+        sizeSmall: { minHeight: 32, minWidth: 32 },
+      },
     },
     MuiTooltip: {
       defaultProps: {

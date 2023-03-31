@@ -10,8 +10,8 @@ const beforeRequest = (config: InternalAxiosRequestConfig) => {
   return config;
 };
 
-const onResponse = (response: AxiosResponse) => {
-  return response.data;
+const onResponse = ({ data }: AxiosResponse) => {
+  return data.data;
 };
 
 const onError = async (error: AxiosError) => {

@@ -1,9 +1,8 @@
-type EligibileType = number;
+type EligibileNumber = number;
 
 type TokenType = {
-  price: number;
-  symbol: string;
   name: string;
+  symbol: string;
   logoURI: string;
   address: Address;
   decimals: number;
@@ -16,4 +15,4 @@ type ContractType = {
   address: Address;
 };
 
-type ContractMap = Record<ContractName, Address>;
+type ContractMap = Record<ContractName, ContractType>;
