@@ -18,6 +18,8 @@ module.exports = {
         main: 'var(--color-neutral-main)',
         dialog: 'var(--color-neutral-dialog)',
       },
+      black: '#000000',
+      white: '#ffffff',
     },
     extend: {
       boxShadow: {

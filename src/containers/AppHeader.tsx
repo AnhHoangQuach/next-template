@@ -5,6 +5,7 @@ import { ConnectWallet } from 'components';
 import { NextImage, NextLink } from 'components/next';
 import { AppMenu } from 'containers';
 import { useState } from 'react';
+import { default as Marquee } from 'react-fast-marquee';
 import { publicRoute } from 'routes';
 
 const AppHeader = () => {
@@ -29,6 +30,13 @@ const AppHeader = () => {
           <AppMenu />
         </List>
       </Drawer>
+
+      <Marquee pauseOnHover gradient={false} speed={60} className='bg-primary-main'>
+        <h5 className='font-bold text-white lg:p-2 p-1'>
+          Use faucet and claim airdrop on Testnet to whitelist for retroactive airdrop at token generation event on
+          April 5th!
+        </h5>
+      </Marquee>
 
       <AppBar position='sticky' color='transparent' elevation={0} className='bg-neutral-main'>
         <Toolbar component={Container} maxWidth='xl' className='flex items-center lg:py-4'>
