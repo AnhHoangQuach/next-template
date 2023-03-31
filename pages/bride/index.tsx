@@ -1,11 +1,10 @@
-import { PublicLayout } from 'layouts';
-import { Vest } from 'views/Vest';
+import { Bride } from 'views/Bride';
 
 const Home = () => {
   return (
-    <PublicLayout>
-      <Vest />
-    </PublicLayout>
+    <>
+      <Bride />
+    </>
   );
 };
 

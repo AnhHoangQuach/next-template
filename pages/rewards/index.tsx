@@ -1,11 +1,10 @@
-import { PublicLayout } from 'layouts';
-import { Vest } from 'views/Vest';
+import { Rewards } from 'views/Rewards';
 
 const Home = () => {
   return (
-    <PublicLayout>
-      <Vest />
-    </PublicLayout>
+    <>
+      <Rewards />
+    </>
   );
 };
 

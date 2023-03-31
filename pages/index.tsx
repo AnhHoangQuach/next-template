@@ -1,11 +1,11 @@
-import { PublicLayout } from 'layouts';
+import { StaticLayout } from 'layouts';
 import { Home } from 'views/Home';
 
 const App = () => {
   return (
-    <PublicLayout>
+    <StaticLayout>
       <Home />
-    </PublicLayout>
+    </StaticLayout>
   );
 };
 

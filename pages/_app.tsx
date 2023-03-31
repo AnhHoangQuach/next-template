@@ -1,9 +1,10 @@
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { createEmotionCache } from 'utils/createEmotionCache';
 import { NextHead } from 'components/next';
-import { AppTheme } from 'containers';
 import { AppProps } from 'next/app';
 import 'App.scss';
+import { StaticLayout } from 'layouts';
+import { AppProvider } from 'containers';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -19,9 +20,11 @@ const MyApp = (props: MyAppProps) => {
       <NextHead>
         <meta name='viewport' content='initial-scale=1, width=device-width' />
       </NextHead>
-      <AppTheme>
-        <Component {...pageProps} />
-      </AppTheme>
+      <AppProvider>
+        <StaticLayout>
+          <Component {...pageProps} />
+        </StaticLayout>
+      </AppProvider>
     </CacheProvider>
   );
 };

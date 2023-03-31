@@ -1,6 +1,6 @@
 import { Box, Button, Typography } from '@mui/material';
 import { NextLink } from 'components/next';
-import { PublicLayout } from 'layouts';
+import { StaticLayout } from 'layouts';
 import { publicRoute } from 'routes';
 
 export const getInitialProps = ({ res, err }) => {
@@ -9,7 +9,7 @@ export const getInitialProps = ({ res, err }) => {
 
 const Home = () => {
   return (
-    <PublicLayout>
+    <StaticLayout>
       <Box
         sx={{
           display: 'flex',
@@ -31,7 +31,7 @@ const Home = () => {
           </NextLink>
         </Box>
       </Box>
-    </PublicLayout>
+    </StaticLayout>
   );
 };
 
