@@ -26,6 +26,12 @@ module.exports = {
         base: '0px 4px 12px rgba(0, 0, 0, 0.1)',
       },
     },
+    screens: {
+      sm: '600px',
+      md: '900px',
+      lg: '1200px',
+      xl: '1536px',
+    },
   },
   plugins: [],
 };
