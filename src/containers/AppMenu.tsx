@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { publicRoute } from 'routes';
 
 const StyledListItem = styled(ListItemButton)({
-  borderRadius: 100,
+  borderRadius: 9999,
   padding: '4px 12px',
   '&.Mui-selected': {
     color: 'var(--color-primary-main) !important',
@@ -21,7 +21,7 @@ const MenuItem = ({ path, name }: { path: string; name?: string }) => {
   const isSelected = isHome ? router.pathname === path : router.pathname.startsWith(path);
 
   return (
-    <NextLink href={path}>
+    <NextLink href={path} className='rounded-full'>
       <StyledListItem selected={isSelected}>
         <ListItemText classes={{ primary: 'font-medium' }}>{name}</ListItemText>
       </StyledListItem>
