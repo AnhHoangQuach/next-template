@@ -1,10 +1,9 @@
 import { Container } from '@mui/material';
-import { Comments } from 'views/Home/components';
 
 const Airdrop = () => {
   return (
     <Container>
-      <Comments />
+      <div className='text-xl font-bold underline'>Airdrop</div>
     </Container>
   );
 };
