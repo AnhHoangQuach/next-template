@@ -6,7 +6,6 @@ import { AuragiIcon } from 'assets/icons';
 import { Abi } from 'contracts';
 import { useWalletStatus } from 'hooks';
 import { enqueueSnackbar } from 'notistack';
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { contractSelector } from 'reducers/contractSlice';
 import { queryClient } from 'services';
@@ -16,10 +15,6 @@ import { BASE_TOKEN_SYMBOL } from 'utils/constants';
 const Faucet = () => {
   const { isWrongStatus, address } = useWalletStatus();
   const { AGI } = useSelector(contractSelector);
-
-  useEffect(() => {
-    console.log('RENDER', AGI);
-  }, []);
 
   const { data: balance } = useQuery(
     ['fetchBalance', { address, token: AGI }],
