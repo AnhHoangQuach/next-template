@@ -4,7 +4,7 @@ const AppFooter = () => {
   return (
     <AppBar component='footer' position='static' color='transparent' elevation={0}>
       <Toolbar component={Container} maxWidth='xl'>
-        <div className='flex items-center gap-2 ml-auto'>
+        <div className='ml-auto flex items-center gap-2'>
           {[
             {
               name: 'Discord',

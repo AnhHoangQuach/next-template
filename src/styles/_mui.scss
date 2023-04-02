@@ -2,7 +2,7 @@
   margin: 24px 0px;
 
   .MuiTableRow-root:hover {
-    background-color: #00000006;
+    background-color: rgba(0, 0, 0, 0.02);
   }
   .MuiTableCell-head {
     padding: 12px 12px;
@@ -30,10 +30,13 @@
   }
 }
 
-.MuiButton-root {
-  &.MuiButtonBase-root {
-    border-radius: 8px;
+.MuiPaper-root {
+  &.MuiPaper-elevation1 {
+    @apply shadow-base;
   }
+}
+
+.MuiButton-root {
   &.MuiButton-outlinedInherit {
     color: #000e;
     border-color: #0008;

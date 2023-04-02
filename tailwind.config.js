@@ -19,10 +19,14 @@ module.exports = {
         dialog: 'var(--color-neutral-dialog)',
         text: 'var(--color-neutral-text)',
       },
-      black: '#000000',
-      white: '#ffffff',
+      black: 'rgb(0, 0, 0)',
+      white: 'rgb(255, 255, 255)',
+      transparent: 'rgba(0, 0, 0, 0)',
     },
     extend: {
+      borderRadius: {
+        base: '8px',
+      },
       boxShadow: {
         base: '0px 4px 12px rgba(0, 0, 0, 0.1)',
       },
@@ -30,8 +34,8 @@ module.exports = {
     screens: {
       sm: '600px',
       md: '900px',
-      lg: '1200px',
-      xl: '1536px',
+      lg: '1400px',
+      xl: '1600px',
     },
   },
   plugins: [],
