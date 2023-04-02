@@ -27,22 +27,18 @@ const Rewards = () => {
   const [openClaim, setOpenClaim] = useState(false);
   const [chosenRows, setChosenRows] = useState<RewardType[]>([]);
 
-  const [tokenId, setTokenId] = useState<number>();
+  const [tokenId, setTokenId] = useState<number>(28 /* TODO */);
 
-  const { data: vests } = useQuery(['Api.fetchAddressVest'], () => Api.fetchAddressVest({ address: address! }), {
-    enabled: !!address,
-    onSuccess: () => {
-      setTokenId(28); // TODO
-    },
-  });
+  const { data: vests } = useQuery(
+    ['Api.fetchAddressVest', address],
+    () => Api.fetchAddressVest({ address: address! }),
+    { enabled: !!address },
+  );
 
   const { data: rewards = [], isFetching } = useQuery(
     ['Api.fetchAddressReward', address, tokenId],
     () => Api.fetchAddressReward({ address: address!, tokenId: tokenId! }),
-    {
-      enabled: !!address && !!tokenId,
-      keepPreviousData: true,
-    },
+    { enabled: !!address && !!tokenId },
   );
 
   return (
@@ -116,6 +112,9 @@ const Rewards = () => {
             {
               field: 'name',
               headerName: 'Pool',
+              flex: 1,
+              minWidth: 280,
+              sortable: false,
               renderCell: ({ row }) => (
                 <div className='flex items-center gap-1'>
                   <AvatarGroup>
@@ -128,13 +127,13 @@ const Rewards = () => {
                   </div>
                 </div>
               ),
-              flex: 1,
-              minWidth: 200,
-              sortable: false,
             },
             {
               field: 'position',
               headerName: 'Your Position',
+              flex: 1,
+              minWidth: 200,
+              valueGetter: ({ row }) => row.token0AmountInPool,
               renderCell: ({ row }) => (
                 <div>
                   <div>
@@ -147,13 +146,13 @@ const Rewards = () => {
                   </div>
                 </div>
               ),
-              flex: 1,
-              minWidth: 200,
-              valueGetter: ({ row }) => row.token0AmountInPool,
             },
             {
               field: 'reward',
               headerName: 'You Earned',
+              flex: 1,
+              minWidth: 200,
+              sortable: false,
               renderCell: ({ row }) => (
                 <div>
                   <div className='flex items-center gap-1'>
@@ -170,13 +169,13 @@ const Rewards = () => {
                   )}
                 </div>
               ),
-              flex: 1,
-              minWidth: 200,
-              sortable: false,
             },
             {
               field: 'actions',
               headerName: '',
+              cellClassName: 'Pinned -right',
+              minWidth: 120,
+              sortable: false,
               renderCell: ({ row }) => (
                 <Button
                   fullWidth
@@ -190,8 +189,6 @@ const Rewards = () => {
                   Claim
                 </Button>
               ),
-              minWidth: 120,
-              sortable: false,
             },
           ]}
         />

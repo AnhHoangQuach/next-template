@@ -2,8 +2,9 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-@import 'styles/mui';
+@import 'styles/vars';
 @import 'styles/custom';
+@import 'styles/mui';
 
 main {
   min-height: 100vh;

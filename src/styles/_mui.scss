@@ -10,7 +10,7 @@
   }
 
   .MuiDataGrid-columnHeader {
-    background-color: #e3f2fda0;
+    background-color: #edf7fe;
     &:hover {
       background-color: #e3f2fd;
     }
@@ -25,6 +25,21 @@
 
     &:last-child {
       border-right-width: 0px;
+    }
+  }
+
+  .MuiDataGrid-cell.Pinned {
+    @include tablet {
+      position: sticky;
+      background: rgb(255, 255, 255);
+      z-index: 1;
+      @apply shadow-base;
+    }
+    &.-right {
+      right: 0px;
+    }
+    &.-left {
+      left: 0px;
     }
   }
 }

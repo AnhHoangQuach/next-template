@@ -1,6 +1,7 @@
 import { CssBaseline, LinearProgress, ThemeProvider } from '@mui/material';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import type {} from '@mui/x-data-grid/themeAugmentation';
+import { GridEmpty } from 'components';
 import { Roboto } from 'next/font/google';
 
 export const appFont = Roboto({
@@ -62,7 +63,10 @@ export const appTheme = createTheme({
         hideFooter: true,
         rowSelection: false,
         rowHeight: 88,
-        slots: { loadingOverlay: LinearProgress },
+        slots: {
+          loadingOverlay: LinearProgress,
+          noRowsOverlay: GridEmpty,
+        },
         showCellVerticalBorder: true,
         showColumnVerticalBorder: true,
       },
