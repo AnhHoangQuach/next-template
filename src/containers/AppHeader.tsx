@@ -19,7 +19,7 @@ const AppHeader = () => {
         onClose={() => setOpenDrawer(false)}
         PaperProps={{ sx: { width: 280, padding: '8px 16px' } }}
       >
-        <div className='flex justify-center items-center lg:h-16 h-12 relative'>
+        <div className='relative flex h-12 items-center justify-center lg:h-16'>
           <NextLink href={publicRoute.home.path}>
             <NextImage src={AuragiLogo} alt='Logo' height={40} />
           </NextLink>
@@ -37,14 +37,14 @@ const AppHeader = () => {
             <MenuIcon />
           </IconButton>
 
-          <div className='lg:block hidden relative'>
+          <div className='relative hidden lg:block'>
             <NextLink href={publicRoute.home.path}>
               <NextImage src={AuragiLogo} alt='Logo' height={40} />
             </NextLink>
           </div>
 
-          <div className='flex flex-1 justify-center items-center'>
-            <List component={Paper} className='lg:flex hidden xl:gap-2 shadow-base rounded-full px-3'>
+          <div className='flex flex-1 items-center justify-center'>
+            <List component={Paper} className='hidden rounded-full px-3 lg:flex xl:gap-2'>
               <AppMenu />
             </List>
           </div>

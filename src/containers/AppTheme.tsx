@@ -18,6 +18,7 @@ export const appTheme = createTheme({
     },
     MuiButton: {
       defaultProps: {
+        size: 'large',
         variant: 'contained',
         color: 'primary',
         disableElevation: true,
@@ -57,6 +58,8 @@ export const appTheme = createTheme({
   typography: {
     fontFamily: appFont.style.fontFamily,
     button: { fontWeight: 700, textTransform: 'none' },
+    h3: { fontWeight: 700, fontSize: 30 },
+    h6: { fontWeight: 700, fontSize: 16 },
   },
   palette: {
     primary: {
@@ -66,6 +69,18 @@ export const appTheme = createTheme({
       main: '#673ab7',
     },
     mode: 'light',
+  },
+  shape: {
+    borderRadius: 8,
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 900,
+      lg: 1400,
+      xl: 1600,
+    },
   },
 });
 

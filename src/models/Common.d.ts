@@ -23,3 +23,7 @@ type ContractError = {
   code: number | string;
   message: string;
 };
+
+type ByAddress = {
+  address: Address;
+};

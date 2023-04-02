@@ -17,7 +17,7 @@ const Faucet = () => {
   const { AGI } = useSelector(contractSelector);
 
   const { data: balance } = useQuery(
-    ['fetchBalance', { address, token: AGI }],
+    ['Wagmi.fetchBalance', { address, token: AGI }],
     () => fetchBalance({ address: address!, token: AGI }),
     { enabled: !!address },
   );
@@ -48,13 +48,13 @@ const Faucet = () => {
   return (
     <Container>
       <Container maxWidth='sm' className='py-[120px]'>
-        <Paper className='shadow-base p-6'>
-          <div className='flex justify-end mb-6'>
-            <Button color='inherit' className='shadow-base p-0.5 h-10'>
+        <Paper className='p-6'>
+          <div className='mb-6 flex justify-end'>
+            <Button color='inherit' className='h-10 p-0.5 shadow-base'>
               <div suppressHydrationWarning className='px-3'>
                 {Number(balance?.formatted ?? 0).toFixed(2)} {balance?.symbol}
               </div>
-              <div className='bg-black/5 rounded-lg px-3 py-1.5'>
+              <div className='rounded-base bg-black/5 px-3 py-1.5'>
                 <span suppressHydrationWarning>{shorten(address)}</span>
               </div>
             </Button>
@@ -64,8 +64,8 @@ const Faucet = () => {
             <Avatar src={AuragiIcon.src} />
             <span className='text-2xl font-bold'>Faucet</span>
           </div>
-          <div className='flex flex-col items-stretch mt-3'>
-            <div className='text-right text-lg font-bold mb-1'>1000 {BASE_TOKEN_SYMBOL}</div>
+          <div className='mt-3 flex flex-col items-stretch'>
+            <div className='mb-1 text-right text-lg font-bold'>1000 {BASE_TOKEN_SYMBOL}</div>
             <LoadingButton size='large' variant='contained' loading={isLoading} onClick={handleClickClaim}>
               CLAIM
             </LoadingButton>

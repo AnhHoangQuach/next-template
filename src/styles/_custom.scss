@@ -16,3 +16,10 @@
     }
   }
 }
+
+.colored-link {
+  color: var(--color-primary-main);
+  &:hover {
+    color: var(--color-primary-dark);
+  }
+}

@@ -1,14 +1,9 @@
 {
-  "extends": [
-    "next",
-    "eslint:recommended"
-  ],
+  "extends": ["next", "eslint:recommended"],
   "env": {
     "es6": true
   },
-  "plugins": [
-    "prettier"
-  ],
+  "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "warn",
     "no-unused-vars": "warn",
@@ -20,9 +15,7 @@
   },
   "overrides": [
     {
-      "files": [
-        "*.d.ts"
-      ],
+      "files": ["*.d.ts"],
       "rules": {
         "no-unused-vars": "off"
       }
