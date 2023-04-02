@@ -3,13 +3,17 @@ import { Button, Container, FormControl, MenuItem, Paper, Select, Typography } f
 import { useQuery } from '@tanstack/react-query';
 import { RewardsImage } from 'assets/images';
 import { NextImage } from 'components/next';
+import { useState } from 'react';
 import { Api } from 'services';
 import { formatNumber } from 'utils/common';
 import { BASE_TOKEN_SYMBOL } from 'utils/constants';
 import { useAccount } from 'wagmi';
+import { RewardTable } from './components';
 
 const Rewards = () => {
   const { address } = useAccount();
+
+  const [tokenId, setTokenId] = useState<number>();
 
   const { data: vests } = useQuery(['Api.fetchAddressVest'], () => Api.fetchAddressVest({ address: address! }), {
     enabled: !!address,
@@ -30,12 +34,18 @@ const Rewards = () => {
         <NextImage src={RewardsImage} alt='Rewards' height={240} />
       </Paper>
 
-      <div className='flex items-end justify-between'>
-        <FormControl className='flex max-w-[940px] flex-1 flex-row items-center justify-between rounded-base bg-white pl-6'>
+      <div className='flex items-end justify-between gap-6'>
+        <FormControl className='flex max-w-[940px] flex-1 flex-row items-center justify-between gap-6 rounded-base bg-white pl-6'>
           <label>Please select your ve{BASE_TOKEN_SYMBOL}</label>
-          <Select size='medium' variant='outlined' disableUnderline className='w-[70%]'>
+          <Select
+            size='medium'
+            variant='outlined'
+            className='max-w-[600px] flex-1'
+            value={tokenId ?? ''}
+            onChange={(event) => setTokenId(+event.target.value)}
+          >
             {vests?.map((item) => (
-              <MenuItem key={item.id} value={item.id}>
+              <MenuItem key={item.id} value={item.tokenId}>
                 {`Token #${item.tokenId} - ${formatNumber(item.vestAmount)} ve${BASE_TOKEN_SYMBOL}`}
               </MenuItem>
             ))}
@@ -58,6 +68,8 @@ const Rewards = () => {
           {'.'}
         </div>
       </Paper>
+
+      <RewardTable tokenId={tokenId} />
     </Container>
   );
 };

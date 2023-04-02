@@ -8,6 +8,10 @@ type TokenType = {
   decimals: number;
 };
 
+type TokenRewardType = TokenType & {
+  price: number;
+};
+
 type ContractName = 'AGI' | 'Merkleclaim';
 
 type ContractType = {
