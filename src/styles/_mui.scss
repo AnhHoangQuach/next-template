@@ -1,32 +1,49 @@
-.MuiTableContainer-root {
-  margin: 24px 0px;
+.MuiDataGrid-root {
+  * {
+    outline: none !important;
+  }
+  .MuiDataGrid-columnSeparator {
+    display: none;
+  }
+  .MuiDataGrid-columnHeaderTitle {
+    font-size: 16px;
+  }
 
-  .MuiTableRow-root:hover {
-    background-color: rgba(0, 0, 0, 0.02);
+  .MuiDataGrid-columnHeader {
+    background-color: #e3f2fda0;
+    &:hover {
+      background-color: #e3f2fd;
+    }
   }
-  .MuiTableCell-head {
-    padding: 12px 12px;
-  }
-  .MuiTableCell-body {
-    padding: 12px 12px;
+
+  .MuiDataGrid-columnHeader,
+  .MuiDataGrid-cell {
+    border-color: rgba(0, 0, 0, 0.06);
+    color: rgba(0, 0, 0, 0.94);
+    padding: 0px 16px;
+    font-size: 16px;
+
+    &:last-child {
+      border-right-width: 0px;
+    }
   }
 }
 
 .MuiDialog-root {
   .MuiDialog-paper {
     background-color: var(--color-neutral-dialog);
-    border-radius: 24px;
   }
   .MuiDialogTitle-root {
-    padding: 24px 16px 12px;
-    font-size: 24px;
+    padding: 24px 24px 12px;
+    font-size: 22px;
+    text-align: center;
   }
   .MuiDialogContent-root {
     min-height: 120px;
-    padding: 16px 16px;
+    padding: 12px 24px;
   }
   .MuiDialogActions-root {
-    padding: 12px 16px 24px;
+    padding: 12px 24px 24px;
   }
 }
 

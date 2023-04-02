@@ -1,5 +1,17 @@
 import { AddCircle } from '@mui/icons-material';
-import { Button, Container, FormControl, MenuItem, Paper, Select, Typography } from '@mui/material';
+import {
+  Avatar,
+  AvatarGroup,
+  Button,
+  Container,
+  Dialog,
+  FormControl,
+  MenuItem,
+  Paper,
+  Select,
+  Typography,
+} from '@mui/material';
+import { DataGrid } from '@mui/x-data-grid';
 import { useQuery } from '@tanstack/react-query';
 import { RewardsImage } from 'assets/images';
 import { NextImage } from 'components/next';
@@ -8,16 +20,30 @@ import { Api } from 'services';
 import { formatNumber } from 'utils/common';
 import { BASE_TOKEN_SYMBOL } from 'utils/constants';
 import { useAccount } from 'wagmi';
-import { RewardTable } from './components';
+import { PopupClaimReward } from './components';
 
 const Rewards = () => {
   const { address } = useAccount();
+  const [openClaim, setOpenClaim] = useState(false);
+  const [chosenRows, setChosenRows] = useState<RewardType[]>([]);
 
   const [tokenId, setTokenId] = useState<number>();
 
   const { data: vests } = useQuery(['Api.fetchAddressVest'], () => Api.fetchAddressVest({ address: address! }), {
     enabled: !!address,
+    onSuccess: () => {
+      setTokenId(28); // TODO
+    },
   });
+
+  const { data: rewards = [], isFetching } = useQuery(
+    ['Api.fetchAddressReward', address, tokenId],
+    () => Api.fetchAddressReward({ address: address!, tokenId: tokenId! }),
+    {
+      enabled: !!address && !!tokenId,
+      keepPreviousData: true,
+    },
+  );
 
   return (
     <Container className='space-y-10 py-10'>
@@ -51,7 +77,14 @@ const Rewards = () => {
             ))}
           </Select>
         </FormControl>
-        <Button startIcon={<AddCircle />} className='px-10'>
+        <Button
+          startIcon={<AddCircle />}
+          className='px-10'
+          onClick={() => {
+            setChosenRows(rewards);
+            setOpenClaim(true);
+          }}
+        >
           Claim All
         </Button>
       </div>
@@ -69,7 +102,104 @@ const Rewards = () => {
         </div>
       </Paper>
 
-      <RewardTable tokenId={tokenId} />
+      <Paper className='shadow-none'>
+        <DataGrid
+          loading={isFetching}
+          getRowId={(row) => `${row.type}-${row.name}-${row.token0Reward.symbol}`}
+          rows={rewards}
+          initialState={{
+            sorting: {
+              sortModel: [{ field: 'name', sort: null }],
+            },
+          }}
+          columns={[
+            {
+              field: 'name',
+              headerName: 'Pool',
+              renderCell: ({ row }) => (
+                <div className='flex items-center gap-1'>
+                  <AvatarGroup>
+                    <Avatar src={row.token0InPool.logoURI} />
+                    <Avatar src={row.token1InPool.logoURI} />
+                  </AvatarGroup>
+                  <div>
+                    <div>{row.name}</div>
+                    <div>{row.type}</div>
+                  </div>
+                </div>
+              ),
+              flex: 1,
+              minWidth: 200,
+              sortable: false,
+            },
+            {
+              field: 'position',
+              headerName: 'Your Position',
+              renderCell: ({ row }) => (
+                <div>
+                  <div>
+                    <span className='font-medium'>{formatNumber(row.token0AmountInPool)}</span>{' '}
+                    <span className='text-neutral-secondary'>{row.token0InPool.symbol}</span>
+                  </div>
+                  <div>
+                    <span className='font-medium'>{formatNumber(row.token1AmountInPool)}</span>{' '}
+                    <span className='text-neutral-secondary'>{row.token1InPool.symbol}</span>
+                  </div>
+                </div>
+              ),
+              flex: 1,
+              minWidth: 200,
+              valueGetter: ({ row }) => row.token0AmountInPool,
+            },
+            {
+              field: 'reward',
+              headerName: 'You Earned',
+              renderCell: ({ row }) => (
+                <div>
+                  <div className='flex items-center gap-1'>
+                    <Avatar src={row.token0Reward.logoURI} sx={{ width: 32, height: 32 }} />
+                    <span className='font-medium'>{formatNumber(row.reward0, true)}</span>{' '}
+                    <span className='text-neutral-secondary'>{row.token0Reward.symbol}</span>
+                  </div>
+                  {row.token1Reward && (
+                    <div className='flex items-center gap-1'>
+                      <Avatar src={row.token1Reward.logoURI} sx={{ width: 32, height: 32 }} />
+                      <span className='font-medium'>{formatNumber(row.reward1, true)}</span>{' '}
+                      <span className='text-neutral-secondary'>{row.token1Reward.symbol}</span>
+                    </div>
+                  )}
+                </div>
+              ),
+              flex: 1,
+              minWidth: 200,
+              sortable: false,
+            },
+            {
+              field: 'actions',
+              headerName: '',
+              renderCell: ({ row }) => (
+                <Button
+                  fullWidth
+                  size='medium'
+                  variant='outlined'
+                  onClick={() => {
+                    setOpenClaim(true);
+                    setChosenRows([row]);
+                  }}
+                >
+                  Claim
+                </Button>
+              ),
+              minWidth: 120,
+              sortable: false,
+            },
+          ]}
+        />
+      </Paper>
+
+      <Dialog open={openClaim}>
+        <PopupClaimReward rewards={chosenRows} onClose={() => setOpenClaim(false)} />
+      </Dialog>
     </Container>
   );
 };

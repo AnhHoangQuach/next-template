@@ -1,4 +1,4 @@
+export { default as DialogClose } from './DialogClose';
 export { default as ConnectWallet } from './ConnectWallet';
-export { default as Mapple } from './Mapple';
 export { default as InputNumber } from './InputNumber';
-export { default as Spinner } from './Spinner';
+export { default as Mapple } from './Mapple';

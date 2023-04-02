@@ -1,1 +1,1 @@
-export { default as RewardTable } from './RewardTable';
+export { default as PopupClaimReward } from './PopupClaimReward';

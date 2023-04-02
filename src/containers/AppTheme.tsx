@@ -1,5 +1,6 @@
-import { CssBaseline, ThemeProvider } from '@mui/material';
+import { CssBaseline, LinearProgress, ThemeProvider } from '@mui/material';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+import type {} from '@mui/x-data-grid/themeAugmentation';
 import { Roboto } from 'next/font/google';
 
 export const appFont = Roboto({
@@ -50,8 +51,20 @@ export const appTheme = createTheme({
     },
     MuiDialog: {
       defaultProps: {
-        maxWidth: 'xs',
+        maxWidth: 'sm',
         fullWidth: true,
+      },
+    },
+    MuiDataGrid: {
+      defaultProps: {
+        autoHeight: true,
+        disableColumnMenu: true,
+        hideFooter: true,
+        rowSelection: false,
+        rowHeight: 88,
+        slots: { loadingOverlay: LinearProgress },
+        showCellVerticalBorder: true,
+        showColumnVerticalBorder: true,
       },
     },
   },

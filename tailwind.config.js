@@ -17,7 +17,8 @@ module.exports = {
       neutral: {
         main: 'var(--color-neutral-main)',
         dialog: 'var(--color-neutral-dialog)',
-        text: 'var(--color-neutral-text)',
+        primary: 'var(--color-text-primary)',
+        secondary: 'var(--color-text-secondary)',
       },
       black: 'rgb(0, 0, 0)',
       white: 'rgb(255, 255, 255)',
