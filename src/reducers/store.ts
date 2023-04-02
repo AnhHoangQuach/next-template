@@ -1,10 +1,25 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { commentSlice } from './commentSlice';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { persistReducer, persistStore } from 'redux-persist';
+import { default as storage } from 'redux-persist/lib/storage';
+import { contractSlice } from './contractSlice';
+import { tokenSlice } from './tokenSlice';
+
+const rootReducer = combineReducers({
+  [contractSlice.name]: contractSlice.reducer,
+  [tokenSlice.name]: tokenSlice.reducer,
+});
+
+const persistedReducer = persistReducer({ key: 'auragi', storage }, rootReducer);
 
 export const store = configureStore({
-  reducer: {
-    [commentSlice.name]: commentSlice.reducer,
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) => {
+    return getDefaultMiddleware({
+      serializableCheck: false,
+    });
   },
 });
+
+export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;

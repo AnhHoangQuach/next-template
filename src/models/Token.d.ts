@@ -15,4 +15,4 @@ type ContractType = {
   address: Address;
 };
 
-type ContractMap = Record<ContractName, ContractType>;
+type ContractMap = Record<ContractName, Address>;

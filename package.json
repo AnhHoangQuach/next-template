@@ -33,6 +33,7 @@
     "react-hook-form": "^7.43.8",
     "react-number-format": "^5.1.4",
     "react-redux": "^8.0.5",
+    "redux-persist": "^6.0.0",
     "sass": "^1.60.0",
     "wagmi": "^0.12.7"
   },
