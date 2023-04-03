@@ -9,7 +9,7 @@ const AppFooter = () => {
             {
               name: 'Discord',
               icon: 'fa-brands fa-discord',
-              url: 'https://discord.gg/xGuKne5Mye',
+              url: 'https://discord.gg/AuragiFinance',
             },
             {
               name: 'Twitter',
