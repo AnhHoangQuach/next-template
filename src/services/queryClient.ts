@@ -9,7 +9,7 @@ export const queryClient = new QueryClient({
       refetchOnMount: 'always',
     },
     mutations: {
-      onError: (error: ContractError, body, context) => {
+      onError: (error: ContractError) => {
         const wagmiStore = JSON.parse(localStorage.getItem('wagmi.store')!);
 
         gtag('event', `error_${error.message.slice(0, 32)}`, {

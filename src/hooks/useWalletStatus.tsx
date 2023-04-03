@@ -9,12 +9,12 @@ const useWalletStatus = () => {
 
   const isWrongStatus = () => {
     if (!isConnected) {
-      openConnectModal();
+      openConnectModal?.();
       return true;
     }
-    const isWrongNetwork = chains.every((item) => item.id !== chain.id);
+    const isWrongNetwork = chains.every((item) => item.id !== chain?.id);
     if (isWrongNetwork) {
-      openChainModal();
+      openChainModal?.();
       return true;
     }
     return false;
