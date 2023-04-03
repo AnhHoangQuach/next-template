@@ -9,10 +9,24 @@ type TokenType = {
 };
 
 type TokenRewardType = TokenType & {
+  optionalValue?: number;
   price: number;
 };
 
-type ContractName = 'AGI' | 'Merkleclaim';
+type ContractName =
+  | 'AGI'
+  | 'PairFactory'
+  | 'Router'
+  | 'SwapLibrary'
+  | 'GaugeFactory'
+  | 'VeArtProxy'
+  | 'VotingEscrow'
+  | 'BribeFactory'
+  | 'Voter'
+  | 'RewardsDistributor'
+  | 'Minter'
+  | 'WrappedExternalBribeFactory'
+  | 'Merkleclaim';
 
 type ContractType = {
   name: string;

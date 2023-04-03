@@ -15,31 +15,62 @@ import { DataGrid } from '@mui/x-data-grid';
 import { useQuery } from '@tanstack/react-query';
 import { RewardsImage } from 'assets/images';
 import { NextImage } from 'components/next';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Api } from 'services';
 import { formatNumber } from 'utils/common';
 import { BASE_TOKEN_SYMBOL } from 'utils/constants';
 import { useAccount } from 'wagmi';
 import { PopupClaimReward } from './components';
+import { AuragiIcon } from 'assets/icons';
 
 const Rewards = () => {
   const { address } = useAccount();
   const [openClaim, setOpenClaim] = useState(false);
   const [chosenRows, setChosenRows] = useState<RewardType[]>([]);
 
-  const [tokenId, setTokenId] = useState<number>(28 /* TODO */);
+  const [tokenId, setTokenId] = useState<number>();
 
   const { data: vests } = useQuery(
     ['Api.fetchAddressVest', address],
     () => Api.fetchAddressVest({ address: address! }),
-    { enabled: !!address },
+    {
+      enabled: !!address,
+      onSuccess: () => {
+        setTokenId(28); // TODO
+      },
+    },
   );
 
   const { data: rewards = [], isFetching } = useQuery(
     ['Api.fetchAddressReward', address, tokenId],
-    () => Api.fetchAddressReward({ address: address!, tokenId: tokenId! }),
+    () =>
+      Api.fetchAddressReward({ address: address!, tokenId: tokenId! }).then((rewards) =>
+        rewards.map((reward) => {
+          const key = `${reward.type}-${reward.name}-${reward.token0Reward.symbol}`;
+          if (reward.token0Reward) reward.token0Reward.optionalValue = reward.reward0;
+          if (reward.token1Reward) reward.token1Reward.optionalValue = reward.reward1;
+          if (reward.token0InPool) reward.token0InPool.optionalValue = reward.token0AmountInPool;
+          if (reward.token1InPool) reward.token1InPool.optionalValue = reward.token1AmountInPool;
+          return { ...reward, key };
+        }),
+      ),
     { enabled: !!address && !!tokenId },
   );
+
+  const groupedTableRewards = useMemo(() => {
+    const groupedRewards = rewards.reduce((group, reward) => {
+      const key = `${reward.type}_${reward.pairAddress}`;
+      const rewards = [reward.token0Reward].concat(reward.token1Reward ?? []);
+      if (group[key]) {
+        group[key].optionalTokensReward = group[key].optionalTokensReward?.concat(rewards);
+      } else {
+        group[key] = reward;
+        group[key].optionalTokensReward = rewards;
+      }
+      return group;
+    }, {} as Record<string, RewardType>);
+    return groupedRewards;
+  }, [rewards]);
 
   return (
     <Container className='space-y-10 py-10'>
@@ -98,11 +129,11 @@ const Rewards = () => {
         </div>
       </Paper>
 
-      <Paper className='shadow-none'>
+      <Paper elevation={0}>
         <DataGrid
           loading={isFetching}
-          getRowId={(row) => `${row.type}-${row.name}-${row.token0Reward.symbol}`}
-          rows={rewards}
+          getRowId={(row) => row.key}
+          rows={Object.values(groupedTableRewards)}
           initialState={{
             sorting: {
               sortModel: [{ field: 'name', sort: null }],
@@ -117,14 +148,23 @@ const Rewards = () => {
               sortable: false,
               renderCell: ({ row }) => (
                 <div className='flex items-center gap-1'>
-                  <AvatarGroup>
-                    <Avatar src={row.token0InPool.logoURI} />
-                    <Avatar src={row.token1InPool.logoURI} />
-                  </AvatarGroup>
-                  <div>
-                    <div>{row.name}</div>
-                    <div>{row.type}</div>
-                  </div>
+                  {row.type === 'RebaseAmount' ? (
+                    <>
+                      <Avatar src={AuragiIcon.src} />
+                      <div>ve{BASE_TOKEN_SYMBOL}</div>
+                    </>
+                  ) : (
+                    <>
+                      <AvatarGroup>
+                        <Avatar src={row.token0InPool.logoURI} />
+                        <Avatar src={row.token1InPool.logoURI} />
+                      </AvatarGroup>
+                      <div>
+                        <div>{row.name}</div>
+                        <div className='font-medium'>{row.type}</div>
+                      </div>
+                    </>
+                  )}
                 </div>
               ),
             },
@@ -133,15 +173,15 @@ const Rewards = () => {
               headerName: 'Your Position',
               flex: 1,
               minWidth: 200,
-              valueGetter: ({ row }) => row.token0AmountInPool,
+              sortable: false,
               renderCell: ({ row }) => (
                 <div>
                   <div>
-                    <span className='font-medium'>{formatNumber(row.token0AmountInPool)}</span>{' '}
+                    <span className='font-medium'>{formatNumber(row.token0InPool.optionalValue)}</span>{' '}
                     <span className='text-neutral-secondary'>{row.token0InPool.symbol}</span>
                   </div>
                   <div>
-                    <span className='font-medium'>{formatNumber(row.token1AmountInPool)}</span>{' '}
+                    <span className='font-medium'>{formatNumber(row.token1InPool.optionalValue)}</span>{' '}
                     <span className='text-neutral-secondary'>{row.token1InPool.symbol}</span>
                   </div>
                 </div>
@@ -155,18 +195,13 @@ const Rewards = () => {
               sortable: false,
               renderCell: ({ row }) => (
                 <div>
-                  <div className='flex items-center gap-1'>
-                    <Avatar src={row.token0Reward.logoURI} sx={{ width: 32, height: 32 }} />
-                    <span className='font-medium'>{formatNumber(row.reward0, true)}</span>{' '}
-                    <span className='text-neutral-secondary'>{row.token0Reward.symbol}</span>
-                  </div>
-                  {row.token1Reward && (
-                    <div className='flex items-center gap-1'>
-                      <Avatar src={row.token1Reward.logoURI} sx={{ width: 32, height: 32 }} />
-                      <span className='font-medium'>{formatNumber(row.reward1, true)}</span>{' '}
-                      <span className='text-neutral-secondary'>{row.token1Reward.symbol}</span>
+                  {row.optionalTokensReward?.map((item) => (
+                    <div key={item.symbol} className='flex items-center gap-1'>
+                      <Avatar src={item.logoURI} sx={{ width: 32, height: 32 }} />
+                      <span className='font-medium'>{formatNumber(item.optionalValue, true)}</span>{' '}
+                      <span className='text-neutral-secondary'>{item.symbol}</span>
                     </div>
-                  )}
+                  ))}
                 </div>
               ),
             },
@@ -195,7 +230,7 @@ const Rewards = () => {
       </Paper>
 
       <Dialog open={openClaim}>
-        <PopupClaimReward rewards={chosenRows} onClose={() => setOpenClaim(false)} />
+        <PopupClaimReward tokenId={tokenId!} rewards={chosenRows} onClose={() => setOpenClaim(false)} />
       </Dialog>
     </Container>
   );

@@ -3,13 +3,8 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_agi",
+        "name": "_voter",
         "type": "address"
-      },
-      {
-        "internalType": "bytes32",
-        "name": "_merkleRoot",
-        "type": "bytes32"
       }
     ],
     "stateMutability": "nonpayable",
@@ -19,58 +14,54 @@
     "anonymous": false,
     "inputs": [
       {
-        "indexed": true,
+        "indexed": false,
         "internalType": "address",
-        "name": "to",
+        "name": "old_bribe",
         "type": "address"
       },
       {
         "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "Claim",
-    "type": "event"
-  },
-  {
-    "inputs": [],
-    "name": "AGI",
-    "outputs": [
-      {
-        "internalType": "contract IAuragi",
-        "name": "",
+        "internalType": "address",
+        "name": "wrap_ex_bribe",
         "type": "address"
       }
     ],
-    "stateMutability": "view",
-    "type": "function"
+    "name": "CreateWrapExternalBribe",
+    "type": "event"
   },
   {
     "inputs": [
       {
         "internalType": "address",
-        "name": "to",
+        "name": "existing_bribe",
         "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes32[]",
-        "name": "proof",
-        "type": "bytes32[]"
       }
     ],
-    "name": "claim",
-    "outputs": [],
+    "name": "createBribe",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "last_bribe",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       {
         "internalType": "address",
@@ -78,12 +69,12 @@
         "type": "address"
       }
     ],
-    "name": "hasClaimed",
+    "name": "oldBribeToNew",
     "outputs": [
       {
-        "internalType": "bool",
+        "internalType": "address",
         "name": "",
-        "type": "bool"
+        "type": "address"
       }
     ],
     "stateMutability": "view",
@@ -91,12 +82,12 @@
   },
   {
     "inputs": [],
-    "name": "merkleRoot",
+    "name": "voter",
     "outputs": [
       {
-        "internalType": "bytes32",
+        "internalType": "address",
         "name": "",
-        "type": "bytes32"
+        "type": "address"
       }
     ],
     "stateMutability": "view",

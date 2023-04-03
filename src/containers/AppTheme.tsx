@@ -62,7 +62,7 @@ export const appTheme = createTheme({
         disableColumnMenu: true,
         hideFooter: true,
         rowSelection: false,
-        rowHeight: 88,
+        getRowHeight: () => 'auto',
         slots: {
           loadingOverlay: LinearProgress,
           noRowsOverlay: GridEmpty,
