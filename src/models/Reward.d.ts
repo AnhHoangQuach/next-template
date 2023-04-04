@@ -4,7 +4,6 @@ type RewardType = {
   key: string;
   type: RewardFixedType;
   name: string;
-  symbol: string;
 
   reward0: number;
   reward1: number;

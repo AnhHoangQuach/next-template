@@ -6,6 +6,7 @@ import { Abi } from 'contracts';
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { contractSelector } from 'reducers/contractSlice';
+import { BASE_TOKEN_SYMBOL } from 'utils/constants';
 import { useAccount } from 'wagmi';
 import { StepClaimReward } from '.';
 
@@ -15,6 +16,7 @@ type Props = PopupController & {
 };
 
 const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
+  const isMany = rewards.length > 1;
   const { AGI, RewardsDistributor, Voter, GaugeFactory } = useSelector(contractSelector);
   const { address } = useAccount();
 
@@ -90,26 +92,47 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
     return (await writeContract(config)).wait();
   });
 
+  const getDescription = (reward: RewardType, isMany: boolean) => {
+    switch (reward.type) {
+      case 'BribeReward': {
+        return isMany ? 'Claim all your available bribes' : `Claim bribe reward for ${reward.name}`;
+      }
+      case 'FeeReward': {
+        return isMany ? 'Claim all your available fees' : `Claim fee reward for ${reward.name}`;
+      }
+      case 'RebaseAmount': {
+        return `Claim rebase for ve${BASE_TOKEN_SYMBOL}`;
+      }
+      case 'EmissionReward': {
+        return `Claim emission reward for ${reward.name}`;
+      }
+      case 'LiquidityReward': {
+        return `Claim liquidity reward for ${reward.name}`;
+      }
+    }
+  };
+
   return (
     <>
       <DialogClose onClick={onClose} />
-      <DialogTitle>{rewards.length > 1 ? 'Claim Rewards' : 'Claim Reward'}</DialogTitle>
+      <DialogTitle>{isMany ? 'Claim Rewards' : 'Claim Reward'}</DialogTitle>
       <DialogContent>
         {Object.entries(groupedClaimRewards).map(([type, rewards]: [RewardFixedType, RewardType[]]) => {
           if (rewards.length === 0) return null;
-          if (type === 'BribeReward') {
+          if (type === 'BribeReward' || type === 'FeeReward') {
             return (
-              <StepClaimReward key={type} status='ERROR' action={type} description='Claim all your available bribes' />
+              <StepClaimReward
+                key={type}
+                status='ERROR'
+                action={type}
+                description={getDescription(rewards[0], isMany)}
+              />
             );
+          } else {
+            return rewards.map((reward) => (
+              <StepClaimReward key={reward.key} action={reward.type} description={getDescription(reward, isMany)} />
+            ));
           }
-          if (type === 'FeeReward') {
-            return (
-              <StepClaimReward key={type} status='LOADING' action={type} description='Claim all your available fees' />
-            );
-          }
-          return rewards.map((reward) => (
-            <StepClaimReward key={reward.key} action={reward.type} description={reward.name} />
-          ));
         })}
       </DialogContent>
       <DialogActions></DialogActions>

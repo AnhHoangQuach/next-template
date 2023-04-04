@@ -136,7 +136,7 @@ const Rewards = () => {
           rows={Object.values(groupedTableRewards)}
           initialState={{
             sorting: {
-              sortModel: [{ field: 'name', sort: null }],
+              sortModel: [{ field: 'position', sort: 'desc' }],
             },
           }}
           columns={[
@@ -145,7 +145,6 @@ const Rewards = () => {
               headerName: 'Pool',
               flex: 1,
               minWidth: 280,
-              sortable: false,
               renderCell: ({ row }) => (
                 <div className='flex items-center gap-1'>
                   {row.type === 'RebaseAmount' ? (
@@ -173,7 +172,7 @@ const Rewards = () => {
               headerName: 'Your Position',
               flex: 1,
               minWidth: 200,
-              sortable: false,
+              valueGetter: ({ row }) => row.token0InPool.optionalValue,
               renderCell: ({ row }) => (
                 <div>
                   <div>

@@ -3,7 +3,7 @@ import { AppBar, Container, IconButton, Toolbar, Tooltip } from '@mui/material';
 const AppFooter = () => {
   return (
     <AppBar component='footer' position='static' color='transparent' elevation={0}>
-      <Toolbar component={Container} maxWidth='xl'>
+      <Toolbar component={Container} maxWidth='xl' className='min-h-[88px]'>
         <div className='ml-auto flex items-center gap-2'>
           {[
             {

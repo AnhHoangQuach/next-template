@@ -1,4 +1,5 @@
-import { getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { connectorsForWallets } from '@rainbow-me/rainbowkit';
+import { coinbaseWallet, metaMaskWallet, walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 import { CHAIN_ID } from 'env';
 import { configureChains, createClient } from 'wagmi';
 import { arbitrum, arbitrumGoerli } from 'wagmi/chains';
@@ -11,10 +12,16 @@ const defaultChain = () => {
 
 const { chains, provider, webSocketProvider } = configureChains([defaultChain()], [publicProvider()]);
 
-const { connectors } = getDefaultWallets({
-  appName: 'Auragi Finance dApp',
-  chains,
-});
+const connectors = connectorsForWallets([
+  {
+    groupName: 'Recommended',
+    wallets: [
+      metaMaskWallet({ chains }),
+      coinbaseWallet({ appName: 'Auragi Finance dApp', chains }),
+      walletConnectWallet({ chains }),
+    ],
+  },
+]);
 
 const wagmiClient = createClient({
   autoConnect: true,
