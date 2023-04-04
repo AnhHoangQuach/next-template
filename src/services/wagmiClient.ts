@@ -2,7 +2,7 @@ import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import { coinbaseWallet, metaMaskWallet, walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 import { CHAIN_ID } from 'env';
 import { configureChains, createClient } from 'wagmi';
-import { arbitrum, arbitrumGoerli, optimism, mainnet } from 'wagmi/chains';
+import { arbitrum, arbitrumGoerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
 const defaultChain = () => {
