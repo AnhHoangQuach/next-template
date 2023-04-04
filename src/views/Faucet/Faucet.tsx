@@ -35,7 +35,7 @@ const Faucet = () => {
     {
       onSuccess: () => {
         enqueueSnackbar('Claim successfully');
-        queryClient.invalidateQueries(['fetchBalance']);
+        queryClient.invalidateQueries(['Wagmi.fetchBalance']);
       },
     },
   );
