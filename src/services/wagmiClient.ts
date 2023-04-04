@@ -10,10 +10,7 @@ const defaultChain = () => {
   return chainList.find((chain) => chain.id === CHAIN_ID) ?? chainList[0];
 };
 
-const { chains, provider, webSocketProvider } = configureChains(
-  [arbitrumGoerli, arbitrum, mainnet, optimism],
-  [publicProvider()],
-);
+const { chains, provider, webSocketProvider } = configureChains([defaultChain()], [publicProvider()]);
 
 const connectors = connectorsForWallets([
   {
