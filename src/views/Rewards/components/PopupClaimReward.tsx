@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { prepareWriteContract, writeContract } from '@wagmi/core';
 import { DialogClose } from 'components';
 import { Abi } from 'contracts';
-import { useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { contractSelector } from 'reducers/contractSlice';
 import { BASE_TOKEN_SYMBOL } from 'utils/constants';
@@ -16,9 +16,13 @@ type Props = PopupController & {
 };
 
 const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
-  const isMany = rewards.length > 1;
-  const { AGI, RewardsDistributor, Voter, GaugeFactory } = useSelector(contractSelector);
+  const { AGI, RewardsDistributor, Voter } = useSelector(contractSelector);
   const { address } = useAccount();
+
+  const [stepStatus, setStatusMap] = useState<Record<string, PopupStepStatus>>({});
+  const [currentStep, setCurrentStep] = useState<[RewardFixedType, string]>(['BribeReward', '']);
+
+  const isMany = rewards.length > 1;
 
   const groupedClaimRewards = useMemo(() => {
     const groupedRewards = rewards.reduce(
@@ -32,8 +36,51 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
       },
       { BribeReward: [], FeeReward: [], RebaseAmount: [], EmissionReward: [], LiquidityReward: [] },
     );
+
+    for (const type of Object.keys(groupedRewards) as RewardFixedType[]) {
+      const rewards = groupedRewards[type];
+      if (rewards.length > 0) {
+        setCurrentStep([type, rewards[0].key]);
+        break;
+      }
+    }
     return groupedRewards;
   }, [rewards]);
+
+  useEffect(() => {
+    console.log(currentStep);
+    console.log(stepStatus);
+  }, [currentStep, stepStatus]);
+
+  useEffect(() => {
+    const [type, key] = currentStep;
+    if (key === '') return;
+    setStatusMap((map) => ({ ...map, [key]: 'LOADING' }));
+    const rewards = groupedClaimRewards[type];
+    switchRewardType(rewards).writeContract(
+      { rewards },
+      {
+        onSuccess: () => {
+          setStatusMap((map) => ({ ...map, [key]: 'SUCCESS' }));
+          const types = Object.keys(groupedClaimRewards) as RewardFixedType[];
+          let isDone = true;
+          for (let i = types.indexOf(type) + 1; i < types.length; i++) {
+            const nextType = types[i];
+            const nextRewards = groupedClaimRewards[nextType];
+            if (nextRewards.length > 0) {
+              setCurrentStep([nextType, nextRewards[0].key]);
+              isDone = false;
+              break;
+            }
+          }
+          if (isDone) alert('DONE');
+        },
+        onError: () => {
+          setStatusMap((map) => ({ ...map, [key]: 'ERROR' }));
+        },
+      },
+    );
+  }, [currentStep, groupedClaimRewards]);
 
   const { mutate: claimBribes } = useMutation(async ({ rewards }: { rewards: RewardType[] }) => {
     const config = await prepareWriteContract({
@@ -57,12 +104,13 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
       args: [
         rewards.map((reward) => reward.internalBribeAddress),
         rewards.map((reward) => reward.optionalTokensReward?.map((item) => item.address)),
+        tokenId,
       ],
     });
     return (await writeContract(config)).wait();
   });
 
-  const { mutate: claimRebase } = useMutation(async () => {
+  const { mutate: claimRebase } = useMutation(async ({ rewards }: { rewards: RewardType[] }) => {
     const config = await prepareWriteContract({
       address: RewardsDistributor,
       abi: Abi.RewardsDistributor,
@@ -72,9 +120,9 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
     return (await writeContract(config)).wait();
   });
 
-  const { mutate: claimReward } = useMutation(async () => {
+  const { mutate: claimReward } = useMutation(async ({ rewards }: { rewards: RewardType[] }) => {
     const config = await prepareWriteContract({
-      address: GaugeFactory,
+      address: rewards[0].gaugeAddress,
       abi: Abi.GaugeFactory,
       functionName: 'getReward',
       args: [address, [AGI]],
@@ -82,9 +130,9 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
     return (await writeContract(config)).wait();
   });
 
-  const { mutate: claimLiquidity } = useMutation(async ({ reward }: { reward: RewardType }) => {
+  const { mutate: claimLiquidity } = useMutation(async ({ rewards }: { rewards: RewardType[] }) => {
     const config = await prepareWriteContract({
-      address: reward.pairAddress,
+      address: rewards[0].pairAddress,
       abi: Abi.PairFactory,
       functionName: 'claimFees',
       args: [],
@@ -92,22 +140,38 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
     return (await writeContract(config)).wait();
   });
 
-  const getDescription = (reward: RewardType, isMany: boolean) => {
+  const switchRewardType = (rewards: RewardType[]) => {
+    const reward = rewards[0];
     switch (reward.type) {
       case 'BribeReward': {
-        return isMany ? 'Claim all your available bribes' : `Claim bribe reward for ${reward.name}`;
+        return {
+          description: isMany ? 'Claim all your available bribes' : `Claim bribe reward for ${reward.name}`,
+          writeContract: claimBribes,
+        };
       }
       case 'FeeReward': {
-        return isMany ? 'Claim all your available fees' : `Claim fee reward for ${reward.name}`;
+        return {
+          description: isMany ? 'Claim all your available fees' : `Claim fee reward for ${reward.name}`,
+          writeContract: claimFees,
+        };
       }
       case 'RebaseAmount': {
-        return `Claim rebase for ve${BASE_TOKEN_SYMBOL}`;
+        return {
+          description: `Claim rebase for ve${BASE_TOKEN_SYMBOL}`,
+          writeContract: claimRebase,
+        };
       }
       case 'EmissionReward': {
-        return `Claim emission reward for ${reward.name}`;
+        return {
+          description: `Claim emission reward for ${reward.name}`,
+          writeContract: claimReward,
+        };
       }
       case 'LiquidityReward': {
-        return `Claim liquidity reward for ${reward.name}`;
+        return {
+          description: `Claim liquidity reward for ${reward.name}`,
+          writeContract: claimLiquidity,
+        };
       }
     }
   };
@@ -122,15 +186,21 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
           if (type === 'BribeReward' || type === 'FeeReward') {
             return (
               <StepClaimReward
-                key={type}
-                status='ERROR'
+                key={rewards[0].key}
+                status={stepStatus[rewards[0].key]}
                 action={type}
-                description={getDescription(rewards[0], isMany)}
+                description={switchRewardType(rewards).description}
+                onTryAgain={() => setCurrentStep((value) => [...value])}
               />
             );
           } else {
             return rewards.map((reward) => (
-              <StepClaimReward key={reward.key} action={reward.type} description={getDescription(reward, isMany)} />
+              <StepClaimReward
+                key={reward.key}
+                status={stepStatus[reward.key]}
+                action={reward.type}
+                description={switchRewardType(rewards).description}
+              />
             ));
           }
         })}

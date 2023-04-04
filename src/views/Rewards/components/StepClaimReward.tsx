@@ -1,5 +1,5 @@
-import { CancelOutlined, CheckCircle, RadioButtonUnchecked } from '@mui/icons-material';
-import { Button, CircularProgress } from '@mui/material';
+import { CancelOutlined, CheckCircle, PlayCircleOutline, RadioButtonUnchecked } from '@mui/icons-material';
+import { CircularProgress, IconButton, Tooltip } from '@mui/material';
 
 const StatusIcon = ({ status }: { status: PopupStepStatus }) => {
   if (status === 'IDLE') {
@@ -27,23 +27,19 @@ type Props = {
 const StepClaimReward = ({ status = 'IDLE', action, description, onTryAgain }: Props) => {
   return (
     <div className='mb-3 flex flex-row-reverse gap-1'>
-      <div className='flex h-[32px] w-[32px] items-center justify-center'>
+      <div className='flex h-[32px] items-center justify-end'>
+        {status === 'ERROR' && (
+          <Tooltip title='Try Again'>
+            <IconButton size='small' color='primary' onClick={onTryAgain}>
+              <PlayCircleOutline sx={{ fontSize: 28 }} />
+            </IconButton>
+          </Tooltip>
+        )}
         <StatusIcon status={status} />
       </div>
       <div className='flex-1 py-[3px]'>
         <div className='font-medium'>{action}</div>
         <div className='text-sm text-neutral-secondary'>{description}</div>
-        {/* {(status === 'ERROR' || status === 'TRYAGAIN') && (
-          <Button
-            size='small'
-            variant='outlined'
-            disabled={status === 'TRYAGAIN'}
-            onClick={onTryAgain}
-            className='mt-1 rounded'
-          >
-            Try again
-          </Button>
-        )} */}
       </div>
     </div>
   );

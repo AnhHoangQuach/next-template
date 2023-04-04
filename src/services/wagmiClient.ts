@@ -2,7 +2,7 @@ import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import { coinbaseWallet, metaMaskWallet, walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 import { CHAIN_ID } from 'env';
 import { configureChains, createClient } from 'wagmi';
-import { arbitrum, arbitrumGoerli } from 'wagmi/chains';
+import { arbitrum, arbitrumGoerli, optimism, mainnet } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
 const defaultChain = () => {
@@ -10,7 +10,10 @@ const defaultChain = () => {
   return chainList.find((chain) => chain.id === CHAIN_ID) ?? chainList[0];
 };
 
-const { chains, provider, webSocketProvider } = configureChains([defaultChain()], [publicProvider()]);
+const { chains, provider, webSocketProvider } = configureChains(
+  [arbitrumGoerli, arbitrum, mainnet, optimism],
+  [publicProvider()],
+);
 
 const connectors = connectorsForWallets([
   {

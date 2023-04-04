@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { useQuery } from '@tanstack/react-query';
+import { AuragiIcon } from 'assets/icons';
 import { RewardsImage } from 'assets/images';
 import { NextImage } from 'components/next';
 import { useMemo, useState } from 'react';
@@ -21,7 +22,6 @@ import { formatNumber } from 'utils/common';
 import { BASE_TOKEN_SYMBOL } from 'utils/constants';
 import { useAccount } from 'wagmi';
 import { PopupClaimReward } from './components';
-import { AuragiIcon } from 'assets/icons';
 
 const Rewards = () => {
   const { address } = useAccount();
@@ -59,7 +59,7 @@ const Rewards = () => {
 
   const groupedTableRewards = useMemo(() => {
     const groupedRewards = rewards.reduce((group, reward) => {
-      const key = `${reward.type}_${reward.pairAddress}`;
+      const key = `${reward.type}-${reward.name}`;
       const rewards = [reward.token0Reward].concat(reward.token1Reward ?? []);
       if (group[key]) {
         group[key].optionalTokensReward = group[key].optionalTokensReward?.concat(rewards);
@@ -71,6 +71,8 @@ const Rewards = () => {
     }, {} as Record<string, RewardType>);
     return groupedRewards;
   }, [rewards]);
+
+  console.log(groupedTableRewards);
 
   return (
     <Container className='space-y-10 py-10'>
@@ -108,7 +110,7 @@ const Rewards = () => {
           startIcon={<AddCircle />}
           className='px-10'
           onClick={() => {
-            setChosenRows(rewards);
+            setChosenRows(Object.values(rewards));
             setOpenClaim(true);
           }}
         >
