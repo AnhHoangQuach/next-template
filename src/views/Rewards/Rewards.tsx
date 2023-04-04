@@ -72,8 +72,6 @@ const Rewards = () => {
     return groupedRewards;
   }, [rewards]);
 
-  console.log(groupedTableRewards);
-
   return (
     <Container className='space-y-10 py-10'>
       <Paper className='flex h-[240px] items-center justify-between bg-transparent p-6'>

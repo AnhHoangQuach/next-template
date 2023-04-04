@@ -6,7 +6,7 @@ const StatusIcon = ({ status }: { status: PopupStepStatus }) => {
     return <RadioButtonUnchecked sx={{ fontSize: 28 }} color='disabled' />;
   }
   if (status === 'LOADING' || status === 'TRYAGAIN') {
-    return <CircularProgress size={23} />;
+    return <CircularProgress size={24} sx={{ margin: '2px' }} />;
   }
   if (status === 'ERROR') {
     return <CancelOutlined sx={{ fontSize: 28 }} color='error' />;

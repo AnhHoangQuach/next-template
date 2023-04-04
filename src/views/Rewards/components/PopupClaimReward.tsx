@@ -73,7 +73,9 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
               break;
             }
           }
-          if (isDone) alert('DONE');
+          if (isDone) {
+            // TODO
+          }
         },
         onError: () => {
           setStatusMap((map) => ({ ...map, [key]: 'ERROR' }));
