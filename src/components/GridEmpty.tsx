@@ -5,6 +5,7 @@ const StyledGridOverlay = styled('div')(({ theme }) => ({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
+  padding: '4px',
   gap: '4px',
   height: '100%',
   '& .ant-empty-img-1': {

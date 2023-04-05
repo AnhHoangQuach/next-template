@@ -3,7 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { prepareWriteContract, writeContract } from '@wagmi/core';
 import { DialogClose } from 'components';
 import { Abi } from 'contracts';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { contractSelector } from 'reducers/contractSlice';
 import { BASE_TOKEN_SYMBOL } from 'utils/constants';
@@ -23,6 +23,7 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
   const [currentStep, setCurrentStep] = useState<[RewardFixedType, string]>(['BribeReward', '']);
 
   const isMany = rewards.length > 1;
+  const currentKey = useRef('');
 
   const groupedClaimRewards = useMemo(() => {
     const groupedRewards = rewards.reduce(
@@ -48,13 +49,10 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
   }, [rewards]);
 
   useEffect(() => {
-    console.log(currentStep);
-    console.log(stepStatus);
-  }, [currentStep, stepStatus]);
-
-  useEffect(() => {
     const [type, key] = currentStep;
-    if (key === '') return;
+    if (key === '' || key === currentKey.current) return;
+    currentKey.current = key;
+
     setStatusMap((map) => ({ ...map, [key]: 'LOADING' }));
     const rewards = groupedClaimRewards[type];
     switchRewardType(rewards).writeContract(
