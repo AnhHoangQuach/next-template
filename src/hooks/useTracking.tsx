@@ -14,6 +14,7 @@ const useSetupGA = (key: string = 'G-WB087MBQ5V') => {
     const sendGa = (event: MouseEvent) => {
       const element = event.target as HTMLElement;
       const content = element.innerText || element.getAttribute('title');
+      if (!content) return;
 
       if (element.tagName === 'A' || element.parentElement?.tagName === 'A') {
         const href = element.getAttribute('href');
