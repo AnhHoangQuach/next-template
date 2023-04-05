@@ -1,3 +1,4 @@
+import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
 import { CssBaseline, LinearProgress, ThemeProvider } from '@mui/material';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import type {} from '@mui/x-data-grid/themeAugmentation';
@@ -64,8 +65,10 @@ export const appTheme = createTheme({
         rowSelection: false,
         getRowHeight: () => 'auto',
         slots: {
-          loadingOverlay: LinearProgress,
           noRowsOverlay: GridEmpty,
+          loadingOverlay: LinearProgress,
+          columnSortedAscendingIcon: ArrowDropUp,
+          columnSortedDescendingIcon: ArrowDropDown,
         },
         showCellVerticalBorder: true,
         showColumnVerticalBorder: true,
