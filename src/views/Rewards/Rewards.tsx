@@ -32,8 +32,13 @@ const Rewards = () => {
 
   const { data: vests } = useQuery(
     ['Api.fetchAddressVest', address],
-    () => Api.fetchAddressVest({ address: address! }),
-    { enabled: !!address },
+    () => Api.fetchAddressVest({ address: address! }).then((vests) => vests.sort((a, b) => a.tokenId - b.tokenId)),
+    {
+      enabled: !!address,
+      onSuccess: (vests) => {
+        setTokenId(vests[0]?.tokenId);
+      },
+    },
   );
 
   const { data: rewards = [], isFetching } = useQuery(
