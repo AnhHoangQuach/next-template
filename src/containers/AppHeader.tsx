@@ -4,11 +4,18 @@ import { AuragiLogo } from 'assets/icons';
 import { ConnectWallet, Mapple } from 'components';
 import { NextImage, NextLink } from 'components/next';
 import { AppMenu } from 'containers';
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { publicRoute } from 'routes';
 
 const AppHeader = () => {
+  const router = useRouter();
+
   const [openDrawer, setOpenDrawer] = useState(false);
+
+  useEffect(() => {
+    setOpenDrawer(false);
+  }, [router]);
 
   return (
     <>
