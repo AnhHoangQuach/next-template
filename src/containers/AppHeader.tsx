@@ -37,7 +37,9 @@ const AppHeader = () => {
         </List>
       </Drawer>
 
-      <Mapple />
+      <div className='px:3 bg-primary-main md:px-20'>
+        <Mapple />
+      </div>
       <AppBar position='sticky' color='transparent' elevation={0} className='bg-neutral-main'>
         <Toolbar component={Container} maxWidth='xl' className='flex items-center lg:py-4'>
           <IconButton className='lg:hidden' onClick={() => setOpenDrawer(true)}>

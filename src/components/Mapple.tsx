@@ -2,7 +2,7 @@ import { default as Marquee } from 'react-fast-marquee';
 
 const Mapple = () => {
   return (
-    <Marquee pauseOnHover gradient={false} speed={60} className='bg-primary-main'>
+    <Marquee pauseOnHover gradient={false} speed={60}>
       <h5 className='p-1 font-bold text-white lg:p-2'>
         Use faucet and claim airdrop on Testnet to whitelist for retroactive airdrop at token generation event on April
         5th!
