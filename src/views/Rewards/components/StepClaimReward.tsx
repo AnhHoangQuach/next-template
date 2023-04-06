@@ -44,9 +44,9 @@ const StepClaimReward = ({ info, action, description, onTryAgain }: Props) => {
             </IconButton>
           </Tooltip>
         )}
-        {status === 'SUCCESS' && (
+        {status === 'SUCCESS' && transactionHash && (
           <Tooltip title='View on Arbitrum scan' placement='left'>
-            <a href={getBlockExplorerTxHash(transactionHash!)} target='_blank'>
+            <a href={getBlockExplorerTxHash(transactionHash)} target='_blank'>
               <IconButton size='small' color='info'>
                 <ReceiptLongOutlined sx={{ fontSize: 28 }} />
               </IconButton>
