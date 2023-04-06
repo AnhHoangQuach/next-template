@@ -1,7 +1,7 @@
 import { DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import { useMutation } from '@tanstack/react-query';
 import { prepareWriteContract, writeContract } from '@wagmi/core';
-import { DialogClose } from 'components';
+import { DialogClose, DialogStep } from 'components';
 import { Abi } from 'contracts';
 import { enqueueSnackbar } from 'notistack';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -10,7 +10,6 @@ import { contractSelector } from 'reducers/contractSlice';
 import { queryClient } from 'services';
 import { BASE_TOKEN_SYMBOL } from 'utils/constants';
 import { useAccount } from 'wagmi';
-import { StepClaimReward } from '.';
 
 type Props = PopupController & {
   tokenId: number;
@@ -192,7 +191,7 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
           if (rewards.length === 0) return null;
           if (type === 'BribeReward' || type === 'FeeReward') {
             return (
-              <StepClaimReward
+              <DialogStep
                 key={rewards[0].key}
                 info={stepStatus[rewards[0].key]}
                 action={type}
@@ -202,7 +201,7 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
             );
           } else {
             return rewards.map((reward) => (
-              <StepClaimReward
+              <DialogStep
                 key={reward.key}
                 info={stepStatus[reward.key]}
                 action={reward.type}
