@@ -17,13 +17,13 @@ const Home = () => {
         margin: 10,
       }}
     >
-      <Typography variant='h4' component='h1' color='secondary'>
+      <Typography variant='h3' component='h1' color='textSecondary'>
         An unexpected error occurred, please try again later.
       </Typography>
 
       <Box sx={{ textAlign: 'center', marginTop: 2 }}>
         <NextLink href={publicRoute.home.path}>
-          <Button size='large' variant='outlined'>
+          <Button size='large' variant='text'>
             BACK TO HOME
           </Button>
         </NextLink>
