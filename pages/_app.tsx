@@ -1,8 +1,8 @@
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import 'App.scss';
-import { NextHead } from 'components/next';
 import { AppProvider } from 'containers';
 import { StaticLayout } from 'layouts';
+import { NextSeo } from 'next-seo';
 import { AppProps } from 'next/app';
 import { publicRoute } from 'routes';
 import { createEmotionCache } from 'utils/createEmotionCache';
@@ -10,6 +10,11 @@ import { Home } from 'views/Home';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
+
+const { title, description } = {
+  title: `Auragi - The Trading and Liquidity Marketplace on Arbitrum`,
+  description: `Take advantage of Auragi's minimal slippage, low swapping fees, and deep liquidity.`,
+};
 
 export type MyAppProps = AppProps & {
   emotionCache?: EmotionCache;
@@ -23,25 +28,21 @@ const MyApp = (props: MyAppProps) => {
   return (
     <CacheProvider value={emotionCache}>
       {isHome && (
-        <NextHead>
-          <title>Auragi - The Trading and Liquidity Marketplace on Arbitrum</title>
-          <meta name='viewport' content='initial-scale=1, width=device-width' />
-          <meta name='robots' content='index,follow' />
-          <meta
-            name='description'
-            content="Take advantage of Auragi's minimal slippage, low swapping fees, and deep liquidity."
-          />
-          <meta name='twitter:card' content='summary_large_image' />
-          <meta property='og:title' content='Auragi - The Trading and Liquidity Marketplace on Arbitrum' />
-          <meta
-            property='og:description'
-            content="Take advantage of Auragi's minimal slippage, low swapping fees, and deep liquidity."
-          />
-          <meta property='og:url' content='https://auragi.finance' />
-          <meta property='og:type' content='website' />
-          <meta property='og:image' content='https://auragi.finance/thumbnail.png' />
-          <meta property='og:site_name' content='Auragi Finance' />
-        </NextHead>
+        <NextSeo
+          title={title}
+          description={description}
+          openGraph={{
+            title,
+            description,
+            siteName: 'Auragi Finance',
+            url: 'https://auragi.finance',
+            images: [{ url: 'https://auragi.finance/thumbnail.png' }],
+            type: 'website',
+          }}
+          twitter={{
+            cardType: 'summary_large_image',
+          }}
+        />
       )}
       <AppProvider>
         {isHome ? (
