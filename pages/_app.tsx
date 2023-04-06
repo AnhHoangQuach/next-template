@@ -38,6 +38,7 @@ const MyApp = (props: MyAppProps) => {
             content="Take advantage of Auragi's minimal slippage, low swapping fees, and deep liquidity."
           />
           <meta property='og:url' content='https://auragi.finance' />
+          <meta property='og:type' content='website' />
           <meta property='og:image' content='https://auragi.finance/thumbnail.png' />
           <meta property='og:site_name' content='Auragi Finance' />
         </NextHead>

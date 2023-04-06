@@ -17,6 +17,7 @@ const Page = () => {
           siteName: 'Auragi Finance | Swap',
           url: 'https://auragi.finance/swap',
           images: [{ url: 'https://auragi.finance/thumbnail.png' }],
+          type: 'website',
         }}
         twitter={{
           cardType: 'summary_large_image',

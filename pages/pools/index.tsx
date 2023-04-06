@@ -17,6 +17,7 @@ const Page = () => {
           siteName: 'Auragi Finance | Pools',
           url: 'https://auragi.finance/pools',
           images: [{ url: 'https://auragi.finance/thumbnail.png' }],
+          type: 'website',
         }}
         twitter={{
           cardType: 'summary_large_image',

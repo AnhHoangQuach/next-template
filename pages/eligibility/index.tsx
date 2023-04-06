@@ -17,6 +17,7 @@ const Page = () => {
           siteName: 'Auragi Finance | Airdrop',
           url: 'https://auragi.finance/airdrop',
           images: [{ url: 'https://auragi.finance/thumbnail.png' }],
+          type: 'website',
         }}
         twitter={{
           cardType: 'summary_large_image',
