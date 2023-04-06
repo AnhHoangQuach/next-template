@@ -1,4 +1,3 @@
-export { default as ConnectWallet } from './ConnectWallet';
 export { default as DialogClose } from './DialogClose';
 export { default as DialogStep } from './DialogStep';
 export { default as GridEmpty } from './GridEmpty';

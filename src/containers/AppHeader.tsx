@@ -1,7 +1,8 @@
 import { Menu as MenuIcon } from '@mui/icons-material';
 import { AppBar, Container, Divider, Drawer, IconButton, List, Paper, Toolbar } from '@mui/material';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { AuragiLogo } from 'assets/icons';
-import { ConnectWallet, Mapple } from 'components';
+import { Mapple } from 'components';
 import { NextImage, NextLink } from 'components/next';
 import { AppMenu } from 'containers';
 import { useRouter } from 'next/router';
@@ -58,7 +59,7 @@ const AppHeader = () => {
             </List>
           </div>
 
-          <ConnectWallet />
+          <ConnectButton />
         </Toolbar>
       </AppBar>
     </>
