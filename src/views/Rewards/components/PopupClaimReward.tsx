@@ -3,6 +3,7 @@ import { useMutation } from '@tanstack/react-query';
 import { prepareWriteContract, writeContract } from '@wagmi/core';
 import { DialogClose } from 'components';
 import { Abi } from 'contracts';
+import { enqueueSnackbar } from 'notistack';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { contractSelector } from 'reducers/contractSlice';
@@ -20,7 +21,7 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
   const { AGI, RewardsDistributor, Voter } = useSelector(contractSelector);
   const { address } = useAccount();
 
-  const [stepStatus, setStatusMap] = useState<Record<string, PopupStepStatus>>({});
+  const [stepStatus, setStepStatus] = useState<Record<string, PopupStepInfo>>({});
   const [currentStep, setCurrentStep] = useState<[RewardFixedType, string]>(['BribeReward', '']);
 
   const isMany = rewards.length > 1;
@@ -54,12 +55,12 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
     if (key === '' || key === currentKey.current) return;
     currentKey.current = key;
 
-    setStatusMap((map) => ({ ...map, [key]: 'LOADING' }));
+    setStepStatus((map) => ({ ...map, [key]: { status: 'LOADING' } }));
     const rewards = groupedClaimRewards[type];
     switchRewardType(rewards)
       .writeContract({ rewards })
-      .then(() => {
-        setStatusMap((map) => ({ ...map, [key]: 'SUCCESS' }));
+      .then((data: TransactionReceipt) => {
+        setStepStatus((map) => ({ ...map, [key]: { status: 'SUCCESS', transactionHash: data.transactionHash } }));
         const types = Object.keys(groupedClaimRewards) as RewardFixedType[];
         let isDone = true;
         for (let i = types.indexOf(type) + 1; i < types.length; i++) {
@@ -72,10 +73,11 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
           }
         }
         if (isDone) {
+          enqueueSnackbar(isMany ? 'Claim all rewards successfully' : 'Claim reward successfully');
         }
       })
       .catch(() => {
-        setStatusMap((map) => ({ ...map, [key]: 'ERROR' }));
+        setStepStatus((map) => ({ ...map, [key]: { status: 'ERROR' } }));
       })
       .finally(() => {
         queryClient.invalidateQueries(['Api.fetchAddressReward']);
@@ -192,7 +194,7 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
             return (
               <StepClaimReward
                 key={rewards[0].key}
-                status={stepStatus[rewards[0].key]}
+                info={stepStatus[rewards[0].key]}
                 action={type}
                 description={switchRewardType(rewards).description}
                 onTryAgain={() => handleTryAgain(rewards[0])}
@@ -202,7 +204,7 @@ const PopupClaimReward = ({ tokenId, rewards, onClose }: Props) => {
             return rewards.map((reward) => (
               <StepClaimReward
                 key={reward.key}
-                status={stepStatus[reward.key]}
+                info={stepStatus[reward.key]}
                 action={reward.type}
                 description={switchRewardType(rewards).description}
                 onTryAgain={() => handleTryAgain(reward)}

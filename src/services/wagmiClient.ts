@@ -5,7 +5,7 @@ import { configureChains, createClient } from 'wagmi';
 import { arbitrum, arbitrumGoerli } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
-const defaultChain = () => {
+export const defaultChain = () => {
   const chainList = [arbitrumGoerli, arbitrum];
   return chainList.find((chain) => chain.id === CHAIN_ID) ?? chainList[0];
 };

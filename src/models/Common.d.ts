@@ -15,3 +15,8 @@ type ByAddress = {
 };
 
 type PopupStepStatus = 'IDLE' | 'LOADING' | 'ERROR' | 'TRYAGAIN' | 'SUCCESS';
+
+type PopupStepInfo = {
+  status: PopupStepStatus;
+  transactionHash?: string;
+};
