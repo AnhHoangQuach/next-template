@@ -22,9 +22,26 @@ const MyApp = (props: MyAppProps) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps, ...others } = props;
   return (
     <CacheProvider value={emotionCache}>
-      <NextHead>
-        <meta name='viewport' content='initial-scale=1, width=device-width' />
-      </NextHead>
+      {isHome && (
+        <NextHead>
+          <title>Auragi - The Trading and Liquidity Marketplace on Arbitrum</title>
+          <meta name='viewport' content='initial-scale=1, width=device-width' />
+          <meta name='robots' content='index,follow' />
+          <meta
+            name='description'
+            content="Take advantage of Auragi's minimal slippage, low swapping fees, and deep liquidity."
+          />
+          <meta name='twitter:card' content='summary_large_image' />
+          <meta property='og:title' content='Auragi - The Trading and Liquidity Marketplace on Arbitrum' />
+          <meta
+            property='og:description'
+            content="Take advantage of Auragi's minimal slippage, low swapping fees, and deep liquidity."
+          />
+          <meta property='og:url' content='https://auragi.finance' />
+          <meta property='og:image' content='https://auragi.finance/thumbnail.png' />
+          <meta property='og:site_name' content='Auragi Finance' />
+        </NextHead>
+      )}
       <AppProvider>
         {isHome ? (
           <Home />
