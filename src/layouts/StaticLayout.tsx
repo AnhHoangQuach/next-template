@@ -12,14 +12,14 @@ const StaticLayout = ({ children }) => {
         sx={{
           minHeight: {
             lg: `calc(100vh - 40px - 88px - 88px)`,
-            sm: `calc(100vh - 32px - 64px - 88px)`,
-            xs: `calc(100vh - 32px - 56px - 88px)`,
+            sm: `calc(100vh - 40px - 64px - 88px)`,
+            xs: `calc(100vh - 40px - 56px - 88px)`,
           },
         }}
       >
         {children}
       </Box>
-      <AppFooter />
+      <AppFooter reverse />
     </main>
   );
 };

@@ -27,7 +27,7 @@ const AppHeader = () => {
         PaperProps={{ sx: { width: 280, padding: '8px 16px' } }}
       >
         <div className='relative flex h-12 items-center justify-center lg:h-16'>
-          <NextLink href={publicRoute.home.path}>
+          <NextLink href={publicRoute.swap.path}>
             <NextImage src={AuragiLogo} alt='Logo' height={40} />
           </NextLink>
         </div>
@@ -46,8 +46,8 @@ const AppHeader = () => {
             <MenuIcon />
           </IconButton>
 
-          <div className='relative hidden lg:block'>
-            <NextLink href={publicRoute.home.path}>
+          <div className='relative hidden w-[240px]  lg:block'>
+            <NextLink href={publicRoute.swap.path}>
               <NextImage src={AuragiLogo} alt='Logo' height={40} />
             </NextLink>
           </div>

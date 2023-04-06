@@ -1,5 +1,5 @@
 import { NextSeo } from 'next-seo';
-import { Swap } from 'views/Swap';
+import { Home } from 'views/Home';
 
 const App = () => {
   const { title, description } = {
@@ -22,7 +22,7 @@ const App = () => {
           cardType: 'summary_large_image',
         }}
       />
-      <Swap />
+      <Home />
     </>
   );
 };

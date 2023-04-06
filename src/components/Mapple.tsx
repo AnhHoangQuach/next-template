@@ -1,13 +1,22 @@
+import { Close } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
+import { useState } from 'react';
 import { default as Marquee } from 'react-fast-marquee';
 
 const Mapple = () => {
-  return (
-    <Marquee pauseOnHover gradient={false} speed={60}>
-      <h5 className='p-1 font-bold text-white lg:p-2'>
-        Use faucet and claim airdrop on Testnet to whitelist for retroactive airdrop at token generation event on April
-        5th!
+  const [visible, setVisible] = useState(true);
+
+  return visible ? (
+    <Marquee pauseOnHover play={false} gradient={false} speed={60}>
+      <h5 className='mx-auto p-2 font-bold text-white'>
+        Claim AGI token airdrop from token generation event on April 5th!
       </h5>
+      <IconButton size='small' className='absolute right-0' onClick={() => setVisible(false)}>
+        <Close className='text-white' />
+      </IconButton>
     </Marquee>
+  ) : (
+    <></>
   );
 };
 
