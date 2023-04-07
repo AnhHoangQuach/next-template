@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { AppFooter, AppHeader } from 'containers';
-import { initContract } from 'reducers/persisted';
+import { initContract } from 'reducers/contractPersist';
 
 initContract();
 
