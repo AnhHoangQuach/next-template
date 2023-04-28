@@ -33,6 +33,7 @@ module.exports = {
       },
     },
     screens: {
+      mobile: { max: '900px' },
       sm: '600px',
       md: '900px',
       lg: '1400px',

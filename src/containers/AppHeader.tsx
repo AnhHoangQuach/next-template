@@ -38,7 +38,7 @@ const AppHeader = () => {
         </List>
       </Drawer>
 
-      <div className='px:3 bg-primary-main md:px-20'>
+      <div className='bg-primary-main px-20 mobile:px-3'>
         <Mapple />
       </div>
       <AppBar position='sticky' color='transparent' elevation={0} className='bg-neutral-main'>
