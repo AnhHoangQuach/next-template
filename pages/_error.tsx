@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { NextLink } from 'components/next';
 import { publicRoute } from 'routes';
 
@@ -17,9 +17,9 @@ const Home = () => {
         margin: 10,
       }}
     >
-      <Typography variant='h3' component='h1' color='textSecondary'>
+      <h1 className='text-3xl font-bold text-neutral-secondary'>
         An unexpected error occurred, please try again later.
-      </Typography>
+      </h1>
 
       <Box sx={{ textAlign: 'center', marginTop: 2 }}>
         <NextLink href={publicRoute.home.path}>

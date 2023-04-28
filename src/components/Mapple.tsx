@@ -12,11 +12,11 @@ const Mapple = ({ hidden }: Props) => {
 
   return visible ? (
     <Marquee pauseOnHover play={false} gradient={false} speed={60}>
-      <h5 className='mx-auto p-2 font-bold text-white'>
+      <h5 className='mx-auto p-2 font-bold text-neutral-primary'>
         Claim AGI token airdrop from token generation event on April 5th!
       </h5>
       <IconButton size='small' className='absolute right-0' onClick={() => setVisible(false)}>
-        <Close className='text-white' />
+        <Close className='text-neutral-primary' />
       </IconButton>
     </Marquee>
   ) : (

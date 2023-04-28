@@ -11,9 +11,7 @@ const StaticLayout = ({ children }) => {
       <Box
         sx={{
           minHeight: {
-            lg: `calc(100vh - 40px - 88px - 88px)`,
-            sm: `calc(100vh - 40px - 64px - 88px)`,
-            xs: `calc(100vh - 40px - 56px - 88px)`,
+            sm: `calc(100vh - 64px - 88px)`,
           },
         }}
       >

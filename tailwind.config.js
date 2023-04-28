@@ -14,14 +14,18 @@ module.exports = {
         main: 'var(--color-secondary-main)',
         dark: 'var(--color-secondary-dark)',
       },
+      paper: {
+        main: 'var(--color-paper-main)',
+        grey: 'var(--color-paper-grey)',
+      },
+      background: {
+        main: 'var(--color-background-main)',
+        dialog: 'var(--color-background-dialog)',
+      },
       neutral: {
-        main: 'var(--color-neutral-main)',
-        dialog: 'var(--color-neutral-dialog)',
         primary: 'var(--color-text-primary)',
         secondary: 'var(--color-text-secondary)',
       },
-      black: 'rgb(0, 0, 0)',
-      white: 'rgb(255, 255, 255)',
       transparent: 'rgba(0, 0, 0, 0)',
     },
     extend: {

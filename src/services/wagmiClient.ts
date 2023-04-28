@@ -1,16 +1,18 @@
 import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import { coinbaseWallet, metaMaskWallet, walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
-import { CHAIN_ID } from 'env';
+import { ENV } from 'env';
 import { configureChains, createClient } from 'wagmi';
-import { arbitrum, arbitrumGoerli } from 'wagmi/chains';
+import { arbitrum, arbitrumGoerli, bscTestnet, bsc } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
-export const defaultChain = () => {
-  const chainList = [arbitrumGoerli, arbitrum];
-  return chainList.find((chain) => chain.id === CHAIN_ID) ?? chainList[0];
+export const defaultChains = () => {
+  const testnet = [arbitrumGoerli, bscTestnet];
+  const mainnet = [arbitrum, bsc];
+  const chainList = ENV === 'DEV' ? testnet : mainnet;
+  return chainList;
 };
 
-const { chains, provider, webSocketProvider } = configureChains([defaultChain()], [publicProvider()]);
+const { chains, provider, webSocketProvider } = configureChains([...defaultChains()], [publicProvider()]);
 
 const connectors = connectorsForWallets([
   {

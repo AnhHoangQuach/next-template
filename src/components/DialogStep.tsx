@@ -56,7 +56,7 @@ const DialogStep = ({ info, action, description, onTryAgain }: Props) => {
         <StatusIcon status={status} />
       </div>
       <div className='flex-1 py-[3px]'>
-        <div className='font-medium'>{action}</div>
+        <div className='font-bold'>{action}</div>
         <div className='text-sm text-neutral-secondary'>{description}</div>
       </div>
     </div>

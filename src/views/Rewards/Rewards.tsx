@@ -1,16 +1,5 @@
 import { AddCircle } from '@mui/icons-material';
-import {
-  Avatar,
-  AvatarGroup,
-  Button,
-  Container,
-  Dialog,
-  FormControl,
-  MenuItem,
-  Paper,
-  Select,
-  Typography,
-} from '@mui/material';
+import { Avatar, AvatarGroup, Button, Container, Dialog, FormControl, MenuItem, Paper, Select } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { useQuery } from '@tanstack/react-query';
 import { AuragiIcon } from 'assets/icons';
@@ -76,19 +65,17 @@ const Rewards = () => {
     <Container className='space-y-10 py-10'>
       <Paper className='flex h-[240px] items-center justify-between bg-transparent p-6'>
         <div>
-          <Typography variant='h3' component='h1' gutterBottom>
-            Rewards
-          </Typography>
-          <Typography variant='h6' color='textSecondary' className='font-normal'>
+          <h1 className='mb-3 text-3xl font-bold'>Rewards</h1>
+          <div className='font-semibold text-neutral-secondary'>
             Claim rewards for locking tokens, including new token emissions, bribes, and a slice of the transaction fees
             from your pools
-          </Typography>
+          </div>
         </div>
         <NextImage src={RewardsImage} alt='Rewards' height={240} />
       </Paper>
 
       <div className='flex items-end justify-between gap-6'>
-        <FormControl className='flex max-w-[940px] flex-1 flex-row items-center justify-between gap-6 rounded-base bg-white pl-6'>
+        <FormControl className='flex max-w-[940px] flex-1 flex-row items-center justify-between gap-6 rounded-base bg-paper-main pl-6'>
           <label>Please select your ve{BASE_TOKEN_SYMBOL}</label>
           <Select
             size='medium'
@@ -117,7 +104,7 @@ const Rewards = () => {
       </div>
 
       <Paper className='p-6'>
-        <div className='mb-1 font-medium'>
+        <div className='mb-1 font-bold'>
           Rewards displayed are an estimation of the trading fees, voting rewards and rebases that you can claim.
         </div>
         <div>
@@ -160,7 +147,7 @@ const Rewards = () => {
                       </AvatarGroup>
                       <div>
                         <div>{row.name}</div>
-                        <div className='font-medium'>{row.type}</div>
+                        <div className='font-bold'>{row.type}</div>
                       </div>
                     </>
                   )}
@@ -176,11 +163,11 @@ const Rewards = () => {
               renderCell: ({ row }) => (
                 <div>
                   <div>
-                    <span className='font-medium'>{formatNumber(row.token0InPool.optionalValue)}</span>{' '}
+                    <span className='font-bold'>{formatNumber(row.token0InPool.optionalValue)}</span>{' '}
                     <span className='text-neutral-secondary'>{row.token0InPool.symbol}</span>
                   </div>
                   <div>
-                    <span className='font-medium'>{formatNumber(row.token1InPool.optionalValue)}</span>{' '}
+                    <span className='font-bold'>{formatNumber(row.token1InPool.optionalValue)}</span>{' '}
                     <span className='text-neutral-secondary'>{row.token1InPool.symbol}</span>
                   </div>
                 </div>
@@ -197,7 +184,7 @@ const Rewards = () => {
                   {row.optionalTokensReward?.map((item) => (
                     <div key={item.symbol} className='flex items-center gap-1'>
                       <Avatar src={item.logoURI} sx={{ width: 32, height: 32 }} />
-                      <span className='font-medium'>{formatNumber(item.optionalValue, true)}</span>{' '}
+                      <span className='font-bold'>{formatNumber(item.optionalValue, true)}</span>{' '}
                       <span className='text-neutral-secondary'>{item.symbol}</span>
                     </div>
                   ))}

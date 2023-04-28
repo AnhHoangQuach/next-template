@@ -1,5 +1,3 @@
-type EligibileNumber = number;
-
 type TokenType = {
   name: string;
   symbol: string;

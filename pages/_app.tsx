@@ -1,9 +1,14 @@
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import 'App.scss';
 import { AppProvider } from 'containers';
+import { appTheme } from 'containers/AppTheme';
 import { StaticLayout } from 'layouts';
 import { NextSeo } from 'next-seo';
 import { AppProps } from 'next/app';
+import { default as NextNProgress } from 'nextjs-progressbar';
+import { Provider } from 'react-redux';
+import { persistor, store } from 'reducers/store';
+import { PersistGate } from 'redux-persist/integration/react';
 import { publicRoute } from 'routes';
 import { createEmotionCache } from 'utils/createEmotionCache';
 import { Home } from 'views/Home';
@@ -44,15 +49,21 @@ const MyApp = (props: MyAppProps) => {
           }}
         />
       )}
-      <AppProvider>
-        {isHome ? (
-          <Home />
-        ) : (
-          <StaticLayout>
-            <Component {...others} {...pageProps} />
-          </StaticLayout>
-        )}
-      </AppProvider>
+      <Provider store={store}>
+        {/* PersistGate >< Server Side Rendering */}
+        <PersistGate loading={null} persistor={persistor}>
+          <AppProvider>
+            {isHome ? (
+              <Home />
+            ) : (
+              <StaticLayout>
+                <NextNProgress color={appTheme.palette.secondary.main} />
+                <Component {...others} {...pageProps} />
+              </StaticLayout>
+            )}
+          </AppProvider>
+        </PersistGate>
+      </Provider>
     </CacheProvider>
   );
 };

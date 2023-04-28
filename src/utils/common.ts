@@ -1,5 +1,5 @@
 import { ethers } from 'ethers';
-import { defaultChain } from 'services/wagmiClient';
+import { Chain } from 'wagmi';
 
 export const formatNumber = (number?: number, amountSmall?: boolean) => {
   if (amountSmall) {
@@ -16,8 +16,9 @@ export const shorten = (address?: Address, head: number = 4, tail: number = 4) =
   return address.slice(0, head) + '...' + address.slice(address.length - tail);
 };
 
-export const getBlockExplorerTxHash = (txHash: string) => {
-  let blockExplorer: string = defaultChain().blockExplorers.default.url;
+// TODO
+export const getBlockExplorerTxHash = (txHash: string, chain?: Chain) => {
+  let blockExplorer: string = chain?.blockExplorers?.default.url!;
   if (blockExplorer.endsWith('/')) blockExplorer = blockExplorer.slice(0, -1);
   return blockExplorer + '/tx/' + txHash;
 };

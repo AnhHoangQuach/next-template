@@ -1,8 +1,8 @@
 import { Menu as MenuIcon } from '@mui/icons-material';
-import { AppBar, Container, Divider, Drawer, IconButton, List, Paper, Toolbar } from '@mui/material';
+import { AppBar, Divider, Drawer, IconButton, List, Toolbar } from '@mui/material';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { AuragiLogo } from 'assets/icons';
-import { Mapple } from 'components';
+import { Mapple, SwitchTheme } from 'components';
 import { NextImage, NextLink } from 'components/next';
 import { AppMenu } from 'containers';
 import { useRouter } from 'next/router';
@@ -39,27 +39,31 @@ const AppHeader = () => {
       </Drawer>
 
       <div className='bg-primary-main px-20 mobile:px-3'>
-        <Mapple />
+        <Mapple hidden />
       </div>
-      <AppBar position='sticky' color='transparent' elevation={0} className='bg-neutral-main'>
-        <Toolbar component={Container} maxWidth='xl' className='flex items-center lg:py-4'>
-          <IconButton className='lg:hidden' onClick={() => setOpenDrawer(true)}>
-            <MenuIcon />
-          </IconButton>
 
-          <div className='relative hidden w-[240px]  lg:block'>
+      <AppBar position='sticky' color='transparent' elevation={0}>
+        <Toolbar className='flex h-[64px] items-center'>
+          <div className='flex'>
+            <IconButton className='lg:hidden' onClick={() => setOpenDrawer(true)}>
+              <MenuIcon />
+            </IconButton>
+          </div>
+
+          <div className='relative hidden lg:block'>
             <NextLink href={publicRoute.swap.path}>
               <NextImage src={AuragiLogo} alt='Logo' height={40} />
             </NextLink>
           </div>
 
-          <div className='flex flex-1 items-center justify-center'>
-            <List component={Paper} className='hidden rounded-full px-3 lg:flex xl:gap-2'>
-              <AppMenu />
-            </List>
-          </div>
+          <List className='mx-10 hidden self-start py-0 lg:flex'>
+            <AppMenu />
+          </List>
+          <div className='flex-1'></div>
 
           <ConnectButton />
+          <div className='w-2'></div>
+          <SwitchTheme />
         </Toolbar>
       </AppBar>
     </>

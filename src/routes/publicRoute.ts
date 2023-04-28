@@ -1,6 +1,5 @@
 import { Airdrop } from 'views/Airdrop';
 import { Bride } from 'views/Bride';
-import { Faucet } from 'views/Faucet';
 import { Home } from 'views/Home';
 import { Pools } from 'views/Pools';
 import { Rewards } from 'views/Rewards';
@@ -44,19 +43,9 @@ const publicRoute = {
     name: 'Bride',
     component: Bride,
   },
-  faucet: {
-    path: '/faucet',
-    name: 'Faucet',
-    component: Faucet,
-  },
   airdrop: {
     path: '/airdrop',
     name: 'Airdrop',
-    component: Airdrop,
-  },
-  eligibility: {
-    path: '/eligibility',
-    name: '',
     component: Airdrop,
   },
 };

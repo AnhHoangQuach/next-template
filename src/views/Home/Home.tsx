@@ -1,5 +1,5 @@
 import { KeyboardArrowRight } from '@mui/icons-material';
-import { AppBar, Button, Container, Toolbar, Typography } from '@mui/material';
+import { AppBar, Button, Container, Toolbar } from '@mui/material';
 import { AuragiIconTrans, AuragiLogo } from 'assets/icons';
 import { HomeBackground } from 'assets/images';
 import { NextImage, NextLink } from 'components/next';
@@ -20,13 +20,14 @@ const Home = () => {
         <Container maxWidth='xl' className='px-0'>
           <Container maxWidth='md' className='ml-0 flex flex-col items-start gap-8'>
             <NextImage src={AuragiIconTrans} alt='Icon' />
-            <Typography variant='h3' component='h1' className='text-primary-dark'>
+            <h1 className='text-3xl font-bold text-secondary-dark'>
               Swap, earn, and govern the real yield decentralized crypto trading protocol.
-            </Typography>
+            </h1>
             <NextLink href={publicRoute.swap.path}>
               <Button
-                endIcon={<KeyboardArrowRight className='text-[32px]' />}
-                className='h-[60px] px-[40px] text-xl tracking-wider'
+                color='secondary'
+                endIcon={<KeyboardArrowRight className='text-3xl' />}
+                className='px-[40px] py-[16px] text-xl tracking-wider'
               >
                 LAUNCH APP
               </Button>
