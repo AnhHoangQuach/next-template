@@ -3,8 +3,12 @@ import { IconButton } from '@mui/material';
 import { useState } from 'react';
 import { default as Marquee } from 'react-fast-marquee';
 
-const Mapple = () => {
-  const [visible, setVisible] = useState(true);
+type Props = {
+  hidden?: boolean;
+};
+
+const Mapple = ({ hidden }: Props) => {
+  const [visible, setVisible] = useState(hidden ? false : true);
 
   return visible ? (
     <Marquee pauseOnHover play={false} gradient={false} speed={60}>

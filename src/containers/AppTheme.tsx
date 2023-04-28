@@ -2,7 +2,7 @@ import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
 import { CssBaseline, LinearProgress, ThemeProvider } from '@mui/material';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import type {} from '@mui/x-data-grid/themeAugmentation';
-import { GridEmpty } from 'components';
+import { GridEmpty } from 'components/common';
 import { Roboto } from 'next/font/google';
 
 export const appFont = Roboto({
