@@ -9,20 +9,20 @@ const Swap = () => {
           Spinning
         </LoadingButton>
         <LoadingButton variant='contained' color='primary'>
-          LoadingButton
+          Idle
         </LoadingButton>
         <Button variant='contained' color='primary' disabled>
-          DisabledButton
+          Disabled
         </Button>
 
         <LoadingButton variant='contained' color='secondary' loading>
-          Spinning{' '}
+          Spinning
         </LoadingButton>
         <LoadingButton variant='contained' color='secondary'>
-          LoadingButton
+          Idle
         </LoadingButton>
         <Button variant='contained' color='secondary' disabled>
-          DisabledButton
+          Disabled
         </Button>
       </div>
 
@@ -31,20 +31,20 @@ const Swap = () => {
           Spinning
         </LoadingButton>
         <LoadingButton variant='outlined' color='primary'>
-          LoadingButton
+          Idle
         </LoadingButton>
         <Button variant='outlined' color='primary' disabled>
-          DisabledButton
+          Disabled
         </Button>
 
         <LoadingButton variant='outlined' color='secondary' loading>
           Spinning
         </LoadingButton>
         <LoadingButton variant='outlined' color='secondary'>
-          LoadingButton
+          Idle{' '}
         </LoadingButton>
         <Button variant='outlined' color='secondary' disabled>
-          DisabledButton
+          Disabled
         </Button>
       </div>
 
@@ -53,20 +53,20 @@ const Swap = () => {
           Spinning
         </LoadingButton>
         <LoadingButton variant='contained' color='inherit'>
-          LoadingButton
+          Idle
         </LoadingButton>
         <Button variant='contained' color='inherit' disabled>
-          DisabledButton
+          Disabled
         </Button>
 
         <LoadingButton variant='outlined' color='inherit' loading>
           Spinning
         </LoadingButton>
         <LoadingButton variant='outlined' color='inherit'>
-          LoadingButton
+          Idle
         </LoadingButton>
         <Button variant='outlined' color='inherit' disabled>
-          DisabledButton
+          Disabled
         </Button>
       </div>
     </Container>

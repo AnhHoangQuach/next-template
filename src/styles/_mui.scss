@@ -76,6 +76,9 @@
   &.MuiPaper-elevation1 {
     @apply shadow-base;
   }
+  &.MuiPaper-outlined {
+    border-color: var(--color-border-main);
+  }
 }
 
 .MuiButton-containedPrimary {
@@ -87,9 +90,9 @@
 }
 
 .MuiButton-containedInherit {
-  background-color: var(--color-paper-main);
+  background-color: var(--color-paper-dark);
   &:hover {
-    background-color: var(--color-paper-dark);
+    background-color: var(--color-paper-grey);
   }
 }
 

@@ -3,13 +3,13 @@ import { CssBaseline, LinearProgress, PaletteMode, ThemeProvider } from '@mui/ma
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import type {} from '@mui/x-data-grid/themeAugmentation';
 import { GridEmpty } from 'components/common';
-import { Nunito } from 'next/font/google';
+import { Inter } from 'next/font/google';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { themeSelector } from 'reducers/themeSlice';
 
-export const appFont = Nunito({
-  weight: ['400', '600', '700', '900'],
+export const appFont = Inter({
+  weight: ['400', '500', '700', '900'],
   subsets: ['latin'],
   display: 'swap',
   fallback: ['Roboto', 'Arial', 'sans-serif'],
@@ -100,7 +100,7 @@ const createAppTheme = (mode?: PaletteMode) =>
         xs: 0,
         sm: 600,
         md: 900,
-        lg: 1400,
+        lg: 1200,
         xl: 1600,
       },
     },

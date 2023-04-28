@@ -25,6 +25,12 @@ module.exports = {
       neutral: {
         primary: 'var(--color-text-primary)',
         secondary: 'var(--color-text-secondary)',
+        disbled: 'var(--color-text-disabled)',
+      },
+      border: {
+        main: 'var(--color-border-main)',
+        dark: 'var(--color-border-dark)',
+        grey: 'var(--color-border-grey)',
       },
       transparent: 'rgba(0, 0, 0, 0)',
     },
@@ -33,14 +39,15 @@ module.exports = {
         base: '8px',
       },
       boxShadow: {
-        base: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+        sm: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+        base: '0px 4px 8px rgba(0, 0, 0, 0.1)',
       },
     },
     screens: {
       mobile: { max: '900px' },
       sm: '600px',
       md: '900px',
-      lg: '1400px',
+      lg: '1200px',
       xl: '1600px',
     },
   },

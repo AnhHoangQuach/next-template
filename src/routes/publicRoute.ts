@@ -1,6 +1,7 @@
 import { Airdrop } from 'views/Airdrop';
 import { Bride } from 'views/Bride';
 import { Home } from 'views/Home';
+import { Market } from 'views/Market';
 import { Pools } from 'views/Pools';
 import { Rewards } from 'views/Rewards';
 import { Swap } from 'views/Swap';
@@ -12,6 +13,11 @@ const publicRoute = {
     path: '/',
     name: '',
     component: Home,
+  },
+  market: {
+    path: '/market',
+    name: 'Market',
+    component: Market,
   },
   swap: {
     path: '/swap',

@@ -13,6 +13,7 @@ const StaticLayout = ({ children }) => {
           minHeight: {
             sm: `calc(100vh - 64px - 88px)`,
           },
+          padding: '24px 0',
         }}
       >
         {children}
