@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next -p 3008",
+    "dev": "next -p 3018",
     "build": "next build",
-    "start": "next start",
-    "type-check": "tsc"
+    "start": "next start"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",
