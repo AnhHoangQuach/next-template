@@ -16,7 +16,7 @@ module.exports = {
       },
       paper: {
         main: 'var(--color-paper-main)',
-        grey: 'var(--color-paper-grey)',
+        dark: 'var(--color-paper-dark)',
       },
       background: {
         main: 'var(--color-background-main)',

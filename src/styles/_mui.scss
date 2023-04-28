@@ -60,6 +60,7 @@
   .MuiDialogTitle-root {
     padding: 24px 24px 12px;
     font-size: 22px;
+    font-weight: 700;
     text-align: center;
   }
   .MuiDialogContent-root {
@@ -77,32 +78,81 @@
   }
 }
 
-.MuiButton-root {
-  &.MuiButton-outlinedInherit {
-    // color: #000e;
-    // border-color: #0008;
-  }
-}
-.MuiButton-textInherit {
-  // background-color: rgba(255, 255, 255, 0.94);
+.MuiButton-containedPrimary {
+  background-color: var(--color-primary-main);
 }
 
-.MuiLoadingButton-root {
+.MuiButton-containedSecondary {
+  background-color: var(--color-secondary-main);
+}
+
+.MuiButton-containedInherit {
+  background-color: var(--color-paper-main);
+  &:hover {
+    background-color: var(--color-paper-dark);
+  }
+}
+
+.MuiButton-root {
   .MuiLoadingButton-loadingIndicator {
     position: static;
     left: 0px;
     margin-left: 4px;
-    // color: #fff9 !important;
-  }
-
-  &.MuiLoadingButton-loading {
-    // color: #fff9 !important;
   }
 }
 
-.MuiButton-containedPrimary {
-  background-color: var(--color-primary-main);
+.MuiButton-root {
+  &.MuiButton-containedPrimary {
+    &.Mui-disabled,
+    &.MuiLoadingButton-loading,
+    .MuiLoadingButton-loadingIndicator {
+      background-color: var(--color-primary-dark);
+      color: #fffc;
+    }
+  }
+
+  &.MuiButton-containedSecondary {
+    &.Mui-disabled,
+    &.MuiLoadingButton-loading,
+    .MuiLoadingButton-loadingIndicator {
+      background-color: var(--color-secondary-dark);
+      color: #fffc;
+    }
+  }
+
+  &.MuiButton-containedInherit {
+    &.MuiLoadingButton-loading,
+    .MuiLoadingButton-loadingIndicator {
+      color: var(--color-text-disabled);
+    }
+  }
 }
-.MuiButton-containedSecondary {
-  background-color: var(--color-secondary-main);
+
+.MuiButton-root {
+  &.MuiButton-outlinedPrimary {
+    color: var(--color-primary-light);
+    &.Mui-disabled,
+    &.MuiLoadingButton-loading,
+    .MuiLoadingButton-loadingIndicator {
+      color: var(--color-primary-main);
+    }
+  }
+
+  &.MuiButton-outlinedSecondary {
+    color: var(--color-secondary-main);
+    &.Mui-disabled,
+    &.MuiLoadingButton-loading,
+    .MuiLoadingButton-loadingIndicator {
+      color: var(--color-secondary-dark);
+    }
+  }
+
+  &.MuiButton-outlinedInherit {
+    border-color: var(--color-border-grey);
+    &.Mui-disabled,
+    &.MuiLoadingButton-loading,
+    .MuiLoadingButton-loadingIndicator {
+      color: var(--color-text-disabled);
+    }
+  }
 }

@@ -22,28 +22,32 @@ main {
   --color-secondary-dark: #1c54b2;
 
   --color-paper-main: #ffffff;
-  --color-paper-grey: #f0f0f0;
+  --color-paper-dark: #f0f0f0;
 
   --color-background-main: #ffffff;
   --color-background-dialog: #f0f0f0;
 
   --color-text-primary: rgba(0, 0, 0, 0.96);
   --color-text-secondary: rgba(0, 0, 0, 0.6);
+  --color-text-disabled: rgba(0, 0, 0, 0.4);
 
   --color-border-main: rgba(0, 0, 0, 0.06);
   --color-border-dark: rgba(0, 0, 0, 0.08);
+  --color-border-grey: rgba(0, 0, 0, 0.2);
 }
 
 body[data-theme='dark'] {
   --color-paper-main: #0f0f0f;
-  --color-paper-grey: #2f2f2f;
+  --color-paper-dark: #1f1f1f;
 
   --color-background-main: #000000;
   --color-background-dialog: #0f0f0f;
 
   --color-text-primary: rgba(255, 255, 255, 0.96);
   --color-text-secondary: rgba(255, 255, 255, 0.6);
+  --color-text-disabled: rgba(255, 255, 255, 0.4);
 
   --color-border-main: rgba(255, 255, 255, 0.06);
   --color-border-dark: rgba(255, 255, 255, 0.08);
+  --color-border-grey: rgba(255, 255, 255, 0.2);
 }
