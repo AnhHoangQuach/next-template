@@ -1,14 +1,14 @@
 import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
 import { CssBaseline, LinearProgress, PaletteMode, ThemeProvider } from '@mui/material';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-import type {} from '@mui/x-data-grid/themeAugmentation';
+import type { } from '@mui/x-data-grid/themeAugmentation';
 import { GridEmpty } from 'components/common';
 import { Inter } from 'next/font/google';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { themeSelector } from 'reducers/themeSlice';
 
-export const appFont = Inter({
+const appFont = Inter({
   weight: ['400', '500', '700', '900'],
   subsets: ['latin'],
   display: 'swap',
@@ -106,13 +106,12 @@ const createAppTheme = (mode?: PaletteMode) =>
     },
   });
 
-export const appTheme = createAppTheme();
-
 const AppTheme = ({ children }) => {
   const { mode } = useSelector(themeSelector);
 
   useEffect(() => {
     document.body.dataset.theme = mode;
+    document.body.className = mode;
   }, [mode]);
 
   return (

@@ -4,6 +4,7 @@ import { Button, Container } from '@mui/material';
 const Swap = () => {
   return (
     <Container className='space-y-10 py-10'>
+      <div className='text-[black] dark:text-[white]'>Toggle dark mode by Tailwindcss</div>
       <div className='flex gap-3'>
         <LoadingButton variant='contained' color='primary' loading>
           Spinning

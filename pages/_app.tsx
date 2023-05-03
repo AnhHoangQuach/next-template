@@ -1,7 +1,6 @@
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import 'App.scss';
 import { AppProvider } from 'containers';
-import { appTheme } from 'containers/AppTheme';
 import { StaticLayout } from 'layouts';
 import { NextSeo } from 'next-seo';
 import { AppProps } from 'next/app';
@@ -57,7 +56,7 @@ const MyApp = (props: MyAppProps) => {
               <Home />
             ) : (
               <StaticLayout>
-                <NextNProgress color={appTheme.palette.secondary.main} />
+                <NextNProgress color='var(--color-secondary-main)' />
                 <Component {...others} {...pageProps} />
               </StaticLayout>
             )}

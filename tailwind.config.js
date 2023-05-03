@@ -43,5 +43,6 @@ module.exports = {
       xl: '1600px',
     },
   },
+  darkMode: 'class',
   plugins: [],
 };

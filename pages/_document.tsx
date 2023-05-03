@@ -1,4 +1,3 @@
-import { appFont, appTheme } from 'containers/AppTheme';
 import { AppType } from 'next/app';
 import { default as Document, DocumentContext, DocumentProps, Head, Html, Main, NextScript } from 'next/document';
 import { createEmotionCache, createEmotionServer } from 'utils/createEmotionCache';
@@ -45,10 +44,9 @@ type MyDocumentProps = DocumentProps & {
 
 const MyDocument = ({ emotionStyleTags }: MyDocumentProps) => {
   return (
-    <Html lang='en' className={appFont.className}>
+    <Html lang='en'>
       <Head>
         <link rel='shortcut icon' href='/auragi.ico' />
-        <meta name='theme-color' content={appTheme.palette.primary.main} />
         <meta name='emotion-insertion-point' content='' />
         {emotionStyleTags}
       </Head>
