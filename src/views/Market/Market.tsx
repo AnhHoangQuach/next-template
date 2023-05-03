@@ -84,7 +84,7 @@ const Market = () => {
                   <Chip
                     label='5.71% APR'
                     icon={<AvatarSize size={24} />}
-                    className='rounded-none bg-background-main font-bold'
+                    className='rounded-none bg-paper-main font-bold'
                   />
                 </div>
               </div>
