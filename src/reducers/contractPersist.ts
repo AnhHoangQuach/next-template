@@ -11,12 +11,13 @@ export const initContract = async () => {
         ...map,
         [contract.name]: contract.address,
       }),
-      {},
+      {} as ContractMap,
     );
     const { contract: savedContract } = store.getState();
     store.dispatch(saveContract(newContract));
     assert.deepStrictEqual(savedContract, newContract);
   } catch {
     // TODO: Contract updated => should `unmount` root component
+    console.warn('Contract updated => should `unmount` root component');
   }
 };

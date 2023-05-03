@@ -9,7 +9,7 @@ import { useSelector } from 'react-redux';
 import { themeSelector } from 'reducers/themeSlice';
 
 const appFont = Inter({
-  weight: ['400', '500', '700', '900'],
+  weight: ['400', '600', '700', '900'],
   subsets: ['latin'],
   display: 'swap',
   fallback: ['Roboto', 'Arial', 'sans-serif'],

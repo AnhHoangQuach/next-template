@@ -32,3 +32,7 @@ type ContractType = {
 };
 
 type ContractMap = Record<ContractName, Address>;
+
+type TokenName = 'AGI' | 'ETH' | 'WETH';
+
+type TokenMap = Record<TokenName, TokenType>;

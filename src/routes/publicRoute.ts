@@ -14,6 +14,11 @@ const publicRoute = {
     name: 'Market',
     component: Market,
   },
+  assetsView: {
+    url: (address: Address) => `/assets/${address}`,
+    name: 'Market',
+    component: Market,
+  },
   swap: {
     path: '/swap',
     name: 'Swap',

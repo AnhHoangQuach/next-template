@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
 
 const initialState = {} as ContractMap;
@@ -7,7 +7,7 @@ export const contractSlice = createSlice({
   name: 'contract',
   initialState,
   reducers: {
-    saveContract: (state, { payload }) => {
+    saveContract: (state, { payload }: PayloadAction<ContractMap>) => {
       return payload;
     },
   },

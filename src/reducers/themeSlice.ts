@@ -2,10 +2,6 @@ import { PaletteMode } from '@mui/material';
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { RootState } from './store';
 
-type SwitchThemePayload = {
-  mode: PaletteMode;
-};
-
 type ThemeState = {
   mode: PaletteMode;
 };
@@ -18,7 +14,7 @@ export const themeSlice = createSlice({
   name: 'theme',
   initialState,
   reducers: {
-    switchTheme: (state, { payload }: PayloadAction<SwitchThemePayload>) => {
+    switchTheme: (state, { payload }: PayloadAction<ThemeState>) => {
       return { ...state, ...payload };
     },
   },
