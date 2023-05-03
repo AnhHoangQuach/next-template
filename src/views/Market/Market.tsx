@@ -1,6 +1,6 @@
 import { ArrowDropDown, BarChart, Bolt } from '@mui/icons-material';
-import { Button, Chip, Container, Divider, Grid, Paper } from '@mui/material';
-import { AvatarSize } from 'components/common';
+import { Button, Container, Divider, Grid, Paper } from '@mui/material';
+import { TokenRow } from './components';
 
 const Market = () => {
   return (
@@ -8,8 +8,8 @@ const Market = () => {
       <Paper variant='outlined' className='shadow-base'>
         <div className='flex justify-between px-6 py-3'>
           <div className='font-bold'>Stats overview</div>
-          <div>
-            <span className='mr-2 text-sm font-bold text-neutral-secondary'>Asset breadown</span>
+          <div className='cursor-pointer text-neutral-secondary hover:text-primary-main'>
+            <span className='mr-2 text-sm font-bold'>Asset breadown</span>
             <BarChart />
           </div>
         </div>
@@ -22,21 +22,21 @@ const Market = () => {
           <Grid item md>
             <div className='mb-1 text-sm font-bold text-neutral-secondary'>Total dLP value looked</div>
             <div className='text-2xl font-bold'>$40.07M</div>
-            <Button size='small' className='rounded-full' color='inherit' startIcon={<Bolt />}>
+            <Button size='small' className='mt-2 rounded-full px-4' color='inherit' startIcon={<Bolt />}>
               ZAP
             </Button>
           </Grid>
           <Grid item md>
             <div className='mb-1 text-sm font-bold text-neutral-secondary'>RDNT price</div>
             <div className='text-2xl font-bold'>$0.04</div>
-            <Button size='small' className='rounded-full' color='inherit'>
+            <Button size='small' className='mt-2 rounded-full px-4' color='inherit'>
               BUY
             </Button>
           </Grid>
           <Grid item md>
             <div className='mb-1 text-sm font-bold text-neutral-secondary'>Fees paid to lockers</div>
             <div className='text-2xl font-bold'>$8.16M</div>
-            <Button size='small' className='rounded-full' color='inherit'>
+            <Button size='small' className='mt-2 rounded-full px-4' color='inherit'>
               START EARNING
             </Button>
           </Grid>
@@ -62,36 +62,9 @@ const Market = () => {
             )}
           </Grid>
 
-          <Grid container component={Paper} variant='outlined' className='rounded-base p-4 shadow-sm'>
-            <Grid item md>
-              <div className='space-y-2'>
-                <div className='flex items-center gap-2'>
-                  <AvatarSize size={24} />
-                  <span className='font-bold'>DAI</span>
-                </div>
-                <div className='text-sm'>
-                  <span className='font-bold'>Deposits:</span> <span>$24,123,323.12</span>
-                </div>
-                <div className='text-sm'>
-                  <span className='font-bold'>Borrows:</span> <span>$23,323.12</span>
-                </div>
-              </div>
-            </Grid>
-            <Grid item md>
-              <div className='flex flex-col items-center'>
-                <div className='mb-1 text-sm text-neutral-secondary'>1.84%</div>
-                <div className='bg-gradient-to-t from-[orange] to-[cyan] p-px'>
-                  <Chip
-                    label='5.71% APR'
-                    icon={<AvatarSize size={24} />}
-                    className='rounded-none bg-paper-main font-bold'
-                  />
-                </div>
-              </div>
-            </Grid>
-            <Grid item md></Grid>
-            <Grid item md></Grid>
-          </Grid>
+          {Array.from({ length: 3 }).map((item, index) => (
+            <TokenRow key={index} />
+          ))}
         </div>
       </Paper>
     </Container>

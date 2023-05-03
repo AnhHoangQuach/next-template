@@ -52,6 +52,15 @@
   }
 }
 
+.MuiTextField-root {
+  .MuiInputBase-root.MuiOutlinedInput-root {
+    border-radius: 4px;
+  }
+  input.MuiInputBase-input {
+    padding: 12px 0px;
+  }
+}
+
 .MuiDialog-root {
   .MuiDialogTitle-root {
     padding: 24px 24px 12px;

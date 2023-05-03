@@ -31,8 +31,8 @@ module.exports = {
         base: '8px',
       },
       boxShadow: {
-        sm: '0px 2px 4px rgba(0, 0, 0, 0.1)',
-        base: '0px 4px 8px rgba(0, 0, 0, 0.1)',
+        sm: '0px 0px 4px rgba(0, 0, 0, 0.1)',
+        base: '0px 0px 8px rgba(0, 0, 0, 0.1)',
       },
     },
     screens: {

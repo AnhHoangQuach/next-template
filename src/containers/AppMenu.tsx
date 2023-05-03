@@ -25,7 +25,7 @@ const MenuItem = ({ path, name }: { path: string; name?: string }) => {
   return (
     <NextLink href={path} className='rounded-full'>
       <StyledListItem selected={isSelected}>
-        <ListItemText classes={{ primary: 'font-medium' }}>{name}</ListItemText>
+        <ListItemText classes={{ primary: 'font-bold' }}>{name}</ListItemText>
       </StyledListItem>
     </NextLink>
   );
@@ -35,13 +35,8 @@ const AppMenu = () => {
   return (
     <>
       <MenuItem {...publicRoute.market} />
-      <MenuItem {...publicRoute.swap} />
-      <MenuItem {...publicRoute.pools} />
-      <MenuItem {...publicRoute.vest} />
-      <MenuItem {...publicRoute.vote} />
       <MenuItem {...publicRoute.rewards} />
-      <MenuItem {...publicRoute.bride} />
-      <MenuItem {...publicRoute.airdrop} />
+      <MenuItem {...publicRoute.swap} />
     </>
   );
 };
