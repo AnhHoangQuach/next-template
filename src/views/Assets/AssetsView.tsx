@@ -16,7 +16,7 @@ const AssetsView = () => {
   return (
     <Container>
       <Grid container component={Paper} variant='outlined'>
-        <Grid item md={4} className='flex items-center py-6 pr-6'>
+        <Grid item md={3.5} className='flex items-center py-6 pr-6'>
           <TextField
             select
             fullWidth
@@ -43,7 +43,7 @@ const AssetsView = () => {
                 <div className='flex items-center gap-3'>
                   <AvatarSize sizes='large' src={token.logoURI} />
                   <div>
-                    <div className='text-sm font-semibold text-neutral-secondary'> {token.symbol}</div>
+                    <div className='text-sm font-medium text-neutral-secondary'> {token.symbol}</div>
                     <div className='text-xl font-bold'>{token.name}</div>
                   </div>
                 </div>
@@ -53,8 +53,8 @@ const AssetsView = () => {
             {allTokens.map((item) => (
               <MenuItem key={item.address} value={item.address} className='flex gap-6'>
                 <AvatarSize sizes='small' src={item.logoURI} />
-                <div className='w-[80px] font-semibold'>{item.symbol}</div>
-                <div className='font-semibold text-neutral-secondary'>{item.name}</div>
+                <div className='w-[80px] font-medium'>{item.symbol}</div>
+                <div className='font-medium text-neutral-secondary'>{item.name}</div>
               </MenuItem>
             ))}
           </TextField>
@@ -68,8 +68,8 @@ const AssetsView = () => {
               { label: 'Available liquidity', value: '8.48M' },
               { label: 'Utillzation rate', value: '64.27%' },
             ].map((item, index) => (
-              <Grid item md key={index}>
-                <div className='mb-1 text-sm font-bold text-neutral-secondary'>{item.label}</div>
+              <Grid item md key={index} className='space-y-1'>
+                <div className='font-medium'>{item.label}</div>
                 <div className='text-2xl font-bold'>{item.value}</div>
               </Grid>
             ))}

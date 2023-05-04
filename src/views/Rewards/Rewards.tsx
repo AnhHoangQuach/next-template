@@ -65,7 +65,7 @@ const Rewards = () => {
       <Paper className='flex h-[240px] items-center justify-between bg-transparent p-6'>
         <div>
           <h1 className='mb-3 text-3xl font-bold'>Rewards</h1>
-          <div className='font-semibold text-neutral-secondary'>
+          <div className='font-medium text-neutral-secondary'>
             Claim rewards for locking tokens, including new token emissions, bribes, and a slice of the transaction fees
             from your pools
           </div>
@@ -145,7 +145,7 @@ const Rewards = () => {
                         <Avatar src={row.token1InPool.logoURI} />
                       </AvatarGroup>
                       <div>
-                        <div className='font-semibold text-neutral-secondary'>{row.name}</div>
+                        <div className='font-medium text-neutral-secondary'>{row.name}</div>
                         <div className='font-bold'>{row.type}</div>
                       </div>
                     </>
@@ -163,11 +163,11 @@ const Rewards = () => {
                 <div>
                   <div>
                     <span className='font-bold'>{formatNumber(row.token0InPool.optionalValue)}</span>{' '}
-                    <span className='text-sm font-semibold text-neutral-secondary'>{row.token0InPool.symbol}</span>
+                    <span className='text-sm font-medium text-neutral-secondary'>{row.token0InPool.symbol}</span>
                   </div>
                   <div>
                     <span className='font-bold'>{formatNumber(row.token1InPool.optionalValue)}</span>{' '}
-                    <span className='text-sm font-semibold text-neutral-secondary'>{row.token1InPool.symbol}</span>
+                    <span className='text-sm font-medium text-neutral-secondary'>{row.token1InPool.symbol}</span>
                   </div>
                 </div>
               ),
@@ -184,7 +184,7 @@ const Rewards = () => {
                     <div key={item.symbol} className='flex items-center gap-1'>
                       <Avatar src={item.logoURI} sx={{ width: 32, height: 32 }} />
                       <span className='font-bold'>{formatNumber(item.optionalValue, true)}</span>{' '}
-                      <span className='text-sm font-semibold text-neutral-secondary'>{item.symbol}</span>
+                      <span className='text-sm font-medium text-neutral-secondary'>{item.symbol}</span>
                     </div>
                   ))}
                 </div>

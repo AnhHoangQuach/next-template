@@ -25,7 +25,7 @@ const TokenRow = ({ token }: Props) => {
         component={Paper}
         variant='outlined'
         className={
-          'relative rounded-base p-4 shadow-sm hover:shadow-base hover:shadow-primary-main ' +
+          'relative rounded-base p-4 shadow-sm hover:shadow-md hover:shadow-primary-main ' +
           (isOpen ? 'rounded-b-none shadow-primary-main' : '')
         }
       >
@@ -37,17 +37,17 @@ const TokenRow = ({ token }: Props) => {
             </div>
             <div className='text-sm'>
               <span className='font-bold'>Deposits:</span>{' '}
-              <span className='font-semibold text-neutral-secondary'>$24,123,323.12</span>
+              <span className='font-medium text-neutral-secondary'>$24,123,323.12</span>
             </div>
             <div className='text-sm'>
               <span className='font-bold'>Borrows:</span>{' '}
-              <span className='font-semibold text-neutral-secondary'>$23,323.12</span>
+              <span className='font-medium text-neutral-secondary'>$23,323.12</span>
             </div>
           </div>
         </Grid>
         <Grid item md>
           <div className='flex flex-col items-center'>
-            <div className='mb-1 text-sm font-semibold text-neutral-secondary'>1.84%</div>
+            <div className='mb-1 text-sm font-medium text-neutral-secondary'>1.84%</div>
             <div className='rounded-full bg-gradient-to-t from-[orange] to-[cyan] p-[1px]'>
               <Chip
                 label='5.71% APR'
@@ -91,8 +91,8 @@ const TokenRow = ({ token }: Props) => {
               <div className='mb-3 text-sm font-bold'>Please enter the amount you would like to deposit.</div>
               <div>
                 <div className='mb-1 flex justify-between'>
-                  <span className='text-sm font-semibold'>Available {token.symbol}:</span>
-                  <span className='text-sm font-semibold'>
+                  <span className='text-sm font-medium'>Available {token.symbol}:</span>
+                  <span className='text-sm font-medium'>
                     0 <b>{token.symbol}</b>
                   </span>
                 </div>

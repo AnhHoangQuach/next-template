@@ -42,7 +42,7 @@ const AppHeader = () => {
         <Mapple hidden />
       </div>
 
-      <AppBar position='sticky' color='transparent' elevation={0}>
+      <AppBar position='sticky' color='transparent' elevation={1}>
         <Toolbar className='flex h-[64px] items-center'>
           <div className='flex'>
             <IconButton className='lg:hidden' onClick={() => setOpenDrawer(true)}>

@@ -1,4 +1,4 @@
-import { ArrowDropDown, BarChart, Bolt } from '@mui/icons-material';
+import { ArrowDropDown, BarChart } from '@mui/icons-material';
 import { Button, Container, Divider, Grid, Paper } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { assetSelector } from 'reducers/assetSlice';
@@ -9,7 +9,7 @@ const Market = () => {
 
   return (
     <Container className='space-y-6'>
-      <Paper variant='outlined' className='shadow-base'>
+      <Paper variant='outlined' className='shadow-md'>
         <div className='flex justify-between px-6 py-3'>
           <div className='font-bold'>Stats overview</div>
           <div className='cursor-pointer text-neutral-secondary hover:text-primary-main'>
@@ -20,28 +20,30 @@ const Market = () => {
         <Divider />
         <Grid container gap={2} className='p-6 pt-3'>
           {[
-            { label: 'Total market size', value: '$392.97M' },
-            { label: 'Total dLP value looked', value: '$40.07M' },
-            { label: 'RDNT price', value: '$0.04' },
-            { label: 'Fees paid to lockers', value: '$8.16M' },
+            { label: 'Total Market Size', value: '$ 3.97M' },
+            { label: 'Fees Paid to Lockers', value: '$ 40.07M' },
+            { label: 'RDNT Price', value: '$ 0.04' },
+            { label: 'Locking APR', value: '0.00 %' },
+            { label: 'Pool2 APR', value: '0.00 %' },
           ].map((item, index) => {
             return (
-              <Grid item md key={index}>
-                <div className='mb-1 text-sm font-bold text-neutral-secondary'>{item.label}</div>
-                <div className='text-2xl font-bold'>{item.value}</div>
-                {index === 1 && (
-                  <Button size='small' className='mt-2 rounded-full px-4' color='inherit' startIcon={<Bolt />}>
-                    ZAP
-                  </Button>
-                )}
+              <Grid item md key={index} className='space-y-1'>
+                <div className='font-medium'>{item.label}</div>
+                <div className={'font-bold ' + (index <= 1 ? 'text-4xl' : 'text-2xl')}>{item.value}</div>
+                <div></div>
                 {index === 2 && (
-                  <Button size='small' className='mt-2 rounded-full px-4' color='inherit'>
-                    BUY
+                  <Button variant='outlined' className='w-[120px]'>
+                    Buy
                   </Button>
                 )}
                 {index === 3 && (
-                  <Button size='small' className='mt-2 rounded-full px-4' color='inherit'>
-                    START EARNING
+                  <Button variant='outlined' className='w-[120px]'>
+                    Lock
+                  </Button>
+                )}
+                {index === 4 && (
+                  <Button variant='outlined' className='w-[120px]'>
+                    Stake
                   </Button>
                 )}
               </Grid>
@@ -50,7 +52,7 @@ const Market = () => {
         </Grid>
       </Paper>
 
-      <Paper variant='outlined' className='shadow-base'>
+      <Paper variant='outlined' className='shadow-md'>
         <div className='flex justify-between px-6 py-3'>
           <div className='font-bold'>Arbitrum assets</div>
         </div>

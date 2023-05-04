@@ -41,7 +41,7 @@
       position: sticky;
       background: var(--color-background-main);
       z-index: 1;
-      @apply shadow-base;
+      @apply shadow-md;
     }
     &.-right {
       right: 0px;
@@ -85,10 +85,18 @@
 
 .MuiPaper-root {
   &.MuiPaper-elevation1 {
-    @apply shadow-base;
+    @apply shadow-md;
   }
   &.MuiPaper-outlined {
     border-color: var(--color-border-main);
+  }
+}
+
+.MuiButton-root {
+  .MuiLoadingButton-loadingIndicator {
+    position: static;
+    left: 0px;
+    margin-left: 4px;
   }
 }
 
@@ -98,14 +106,6 @@
 
 .MuiButton-containedSecondary {
   background-color: var(--color-secondary-main);
-}
-
-.MuiButton-root {
-  .MuiLoadingButton-loadingIndicator {
-    position: static;
-    left: 0px;
-    margin-left: 4px;
-  }
 }
 
 .MuiButton-root {
@@ -140,12 +140,15 @@
 }
 
 .MuiButton-root {
+  &.MuiButton-outlined {
+    @apply shadow-sm;
+  }
   &.MuiButton-outlinedPrimary {
-    color: var(--color-primary-light);
+    color: var(--color-primary-main);
     &.Mui-disabled,
     &.MuiLoadingButton-loading,
     .MuiLoadingButton-loadingIndicator {
-      color: var(--color-primary-main);
+      color: var(--color-primary-dark);
     }
   }
 
