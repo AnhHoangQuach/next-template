@@ -1,9 +1,9 @@
 import { NextSeo } from 'next-seo';
-import { Market } from 'views/Market';
+import { Dashboard } from 'views/Dashboard';
 
 const Page = () => {
   const { title, description } = {
-    title: `Muragi - Market of earn high yield`,
+    title: `Muragi - Dashboard of earn high yield`,
     description: `Create and manage your locked tokens for longer to earn higher rewards with Muragi.`,
   };
   return (
@@ -14,8 +14,8 @@ const Page = () => {
         openGraph={{
           title,
           description,
-          siteName: 'Muragi Finance | Market',
-          url: 'https://auragi.finance/market',
+          siteName: 'Muragi Finance | Dashboard',
+          url: 'https://auragi.finance/dashboard',
           images: [{ url: '/Muragi.svg' }],
           type: 'website',
         }}
@@ -23,7 +23,7 @@ const Page = () => {
           cardType: 'summary_large_image',
         }}
       />
-      <Market />
+      <Dashboard />
     </>
   );
 };

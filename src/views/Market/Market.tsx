@@ -62,7 +62,7 @@ const Market = () => {
         </Grid>
       </Grid>
 
-      <Paper variant='outlined' className='shadow-md'>
+      <Paper>
         <div className='flex justify-between px-6 py-3'>
           <div className='font-bold'>Stats overview</div>
           <div className='cursor-pointer text-neutral-secondary hover:text-primary-main'>
@@ -105,7 +105,7 @@ const Market = () => {
         </Grid>
       </Paper>
 
-      <Paper variant='outlined' className='shadow-md'>
+      <Paper>
         <div className='flex justify-between px-6 py-3'>
           <div className='font-bold'>Market assets</div>
         </div>

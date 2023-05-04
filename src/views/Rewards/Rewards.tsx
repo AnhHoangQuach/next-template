@@ -64,7 +64,7 @@ const Rewards = () => {
     <Container className='space-y-10 py-10'>
       <Paper className='flex h-[240px] items-center justify-between bg-transparent p-6'>
         <div>
-          <h1 className='mb-3 text-3xl font-bold'>Rewards</h1>
+          <h1 className='mb-3 text-4xl font-bold'>Rewards</h1>
           <div className='font-medium text-neutral-secondary'>
             Claim rewards for locking tokens, including new token emissions, bribes, and a slice of the transaction fees
             from your pools

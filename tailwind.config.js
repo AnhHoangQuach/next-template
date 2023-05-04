@@ -29,6 +29,8 @@ module.exports = {
         dark: 'var(--color-border-dark)',
       },
       transparent: 'rgba(0, 0, 0, 0)',
+      brown: '#6a0505',
+      green: '#008000',
     },
     extend: {
       borderRadius: {

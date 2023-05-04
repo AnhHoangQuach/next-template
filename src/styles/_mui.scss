@@ -140,9 +140,7 @@
 }
 
 .MuiButton-root {
-  &.MuiButton-outlined {
-    @apply shadow-sm;
-  }
+  @apply shadow-sm;
   &.MuiButton-outlinedPrimary {
     color: var(--color-primary-main);
     &.Mui-disabled,
