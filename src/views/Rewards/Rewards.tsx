@@ -2,7 +2,6 @@ import { AddCircle } from '@mui/icons-material';
 import { Avatar, AvatarGroup, Button, Container, Dialog, FormControl, MenuItem, Paper, Select } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { useQuery } from '@tanstack/react-query';
-import { AuragiIcon } from 'assets/icons';
 import { RewardsImage } from 'assets/images';
 import { NextImage } from 'components/next';
 import { useMemo, useState } from 'react';
@@ -136,7 +135,7 @@ const Rewards = () => {
                 <div className='flex items-center gap-1'>
                   {row.type === 'RebaseAmount' ? (
                     <>
-                      <Avatar src={AuragiIcon.src} />
+                      <Avatar />
                       <div>ve{BASE_TOKEN_SYMBOL}</div>
                     </>
                   ) : (

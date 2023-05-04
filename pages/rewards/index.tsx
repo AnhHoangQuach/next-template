@@ -3,8 +3,8 @@ import { Rewards } from 'views/Rewards';
 
 const Page = () => {
   const { title, description } = {
-    title: `Auragi - Rewards with real yield`,
-    description: `Claim rewards for locking tokens, including new token emissions, bribes, and a slice of the transaction fees from your pools with Auragi.`,
+    title: `Muragi - Rewards with real yield`,
+    description: `Claim rewards for locking tokens, including new token emissions, bribes, and a slice of the transaction fees from your pools with Muragi.`,
   };
   return (
     <>
@@ -14,9 +14,9 @@ const Page = () => {
         openGraph={{
           title,
           description,
-          siteName: 'Auragi Finance | Rewards',
+          siteName: 'Muragi Finance | Rewards',
           url: 'https://auragi.finance/rewards',
-          images: [{ url: 'https://auragi.finance/thumbnail.png' }],
+          images: [{ url: '/Muragi.svg' }],
           type: 'website',
         }}
         twitter={{

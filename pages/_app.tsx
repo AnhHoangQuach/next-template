@@ -16,8 +16,8 @@ import { Home } from 'views/Home';
 const clientSideEmotionCache = createEmotionCache();
 
 const { title, description } = {
-  title: `Auragi - The Trading and Liquidity Marketplace on Arbitrum`,
-  description: `Take advantage of Auragi's minimal slippage, low swapping fees, and deep liquidity.`,
+  title: `Muragi - The Trading and Liquidity Marketplace on Arbitrum`,
+  description: `Take advantage of Muragi's minimal slippage, low swapping fees, and deep liquidity.`,
 };
 
 export type MyAppProps = AppProps & {
@@ -38,9 +38,9 @@ const MyApp = (props: MyAppProps) => {
           openGraph={{
             title,
             description,
-            siteName: 'Auragi Finance',
+            siteName: 'Muragi Finance',
             url: 'https://auragi.finance',
-            images: [{ url: 'https://auragi.finance/thumbnail.png' }],
+            images: [{ url: 'https://auragi.finance/Muragi.svg' }],
             type: 'website',
           }}
           twitter={{
