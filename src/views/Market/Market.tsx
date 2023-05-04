@@ -1,5 +1,6 @@
 import { ArrowDropDown, BarChart } from '@mui/icons-material';
 import { Button, Container, Divider, Grid, Paper } from '@mui/material';
+import { AvatarSize } from 'components/common';
 import { useSelector } from 'react-redux';
 import { assetSelector } from 'reducers/assetSlice';
 import { TokenRow } from './components';
@@ -8,7 +9,59 @@ const Market = () => {
   const { allTokens } = useSelector(assetSelector);
 
   return (
-    <Container className='space-y-6'>
+    <Container className='space-y-10'>
+      <Grid container gap={2} className='pt-10'>
+        <Grid item md className='space-y-3'>
+          <h1
+            className='text-[60px] font-black uppercase leading-none'
+            style={{
+              WebkitTextFillColor: 'transparent',
+              background: 'linear-gradient(120deg, var(--color-primary-light) 0%, var(--color-secondary-main)) text',
+            }}
+          >
+            Earn interest & borrow assets cross-chain in 3 clicks
+          </h1>
+          <h6 className='text-xl uppercase'>Welcome to the future of Omnichain lending</h6>
+          <div className='flex gap-3'>
+            <Button size='large' variant='outlined' className='rounded-xl border-2 px-10'>
+              Learn More
+            </Button>
+            <Button size='large' className='rounded-xl px-14'>
+              Buy RDNT
+            </Button>
+          </div>
+        </Grid>
+
+        <Grid item md={4} className='space-y-6'>
+          <Paper className='px-3 py-6 text-center'>
+            <div>Platform Fees Paid to Lockers</div>
+            <div className='mb-3 mt-1 text-4xl font-bold text-primary-main'>$6,476,686.80</div>
+            <div className='text-sm'>
+              Platform Fees such as interest, early exit penalties and liquidations are distributed to RDNT Lockers.
+            </div>
+          </Paper>
+          <Paper className='px-3 py-6'>
+            <div className='mb-3 text-center text-lg font-bold'>
+              Lock <span className='text-primary-main'>RDNT</span> <span className='font-normal'>and</span> earn{' '}
+              <span className='text-primary-main'>0% APR</span> <span className='font-normal'>paid in</span>
+            </div>
+            <Grid container spacing={1}>
+              {allTokens.map((item) => (
+                <Grid item md={6} key={item.address}>
+                  <div className='flex justify-between rounded border border-border-main p-3'>
+                    <div className='flex items-center gap-2'>
+                      <AvatarSize size={24} src={item.logoURI} />
+                      <span className='text-sm font-medium'>{item.symbol}</span>
+                    </div>
+                    <div className='font-bold'>{item.decimals}%</div>
+                  </div>
+                </Grid>
+              ))}
+            </Grid>
+          </Paper>
+        </Grid>
+      </Grid>
+
       <Paper variant='outlined' className='shadow-md'>
         <div className='flex justify-between px-6 py-3'>
           <div className='font-bold'>Stats overview</div>
@@ -54,7 +107,7 @@ const Market = () => {
 
       <Paper variant='outlined' className='shadow-md'>
         <div className='flex justify-between px-6 py-3'>
-          <div className='font-bold'>Arbitrum assets</div>
+          <div className='font-bold'>Market assets</div>
         </div>
         <Divider />
         <div className='space-y-3 p-6'>

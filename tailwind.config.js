@@ -24,6 +24,10 @@ module.exports = {
         secondary: 'var(--color-text-secondary)',
         disbled: 'var(--color-text-disabled)',
       },
+      border: {
+        main: 'var(--color-border-main)',
+        dark: 'var(--color-border-dark)',
+      },
       transparent: 'rgba(0, 0, 0, 0)',
     },
     extend: {

@@ -15,8 +15,8 @@ const AssetsView = () => {
 
   return (
     <Container>
-      <Grid container component={Paper} variant='outlined'>
-        <Grid item md={3.5} className='flex items-center py-6 pr-6'>
+      <Grid container gap={2} component={Paper} variant='outlined'>
+        <Grid item md={3.5} className='flex items-center py-6'>
           <TextField
             select
             fullWidth
