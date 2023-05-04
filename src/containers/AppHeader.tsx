@@ -1,0 +1,73 @@
+import { Menu as MenuIcon } from '@mui/icons-material';
+import { AppBar, Divider, Drawer, IconButton, List, Toolbar } from '@mui/material';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { AuragiLogo } from 'assets/icons';
+import { Mapple, SwitchTheme } from 'components';
+import { NextImage, NextLink } from 'components/next';
+import { AppMenu } from 'containers';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { publicRoute } from 'routes';
+
+const AppHeader = () => {
+  const router = useRouter();
+
+  const [openDrawer, setOpenDrawer] = useState(false);
+
+  useEffect(() => {
+    setOpenDrawer(false);
+  }, [router]);
+
+  return (
+    <>
+      <Drawer
+        variant='temporary'
+        anchor='left'
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        PaperProps={{ sx: { width: 280, padding: '8px 16px' } }}
+      >
+        <div className='relative flex h-12 items-center justify-center lg:h-16'>
+          <NextLink href={publicRoute.swap.path}>
+            <NextImage src={AuragiLogo} alt='Logo' height={40} />
+          </NextLink>
+        </div>
+        <Divider className='my-2' />
+        <List className='flex flex-col gap-1'>
+          <AppMenu />
+        </List>
+      </Drawer>
+
+      <div className='bg-primary-main px-20 mobile:px-3'>
+        <Mapple hidden />
+      </div>
+
+      <AppBar position='sticky' color='transparent' elevation={0}>
+        <Toolbar className='flex h-[64px] items-center'>
+          <div className='flex'>
+            <IconButton className='lg:hidden' onClick={() => setOpenDrawer(true)}>
+              <MenuIcon />
+            </IconButton>
+          </div>
+
+          <div className='relative hidden lg:block'>
+            <NextLink href={publicRoute.swap.path}>
+              <NextImage src={AuragiLogo} alt='Logo' height={40} />
+            </NextLink>
+          </div>
+
+          <List className='mx-10 hidden self-start py-0 lg:flex'>
+            <AppMenu />
+          </List>
+          <div className='flex-1'></div>
+
+          <ConnectButton />
+          <div className='w-2'></div>
+          <SwitchTheme />
+        </Toolbar>
+      </AppBar>
+    </>
+  );
+};
+
+export default AppHeader;
