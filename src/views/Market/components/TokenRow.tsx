@@ -25,40 +25,40 @@ const TokenRow = ({ token }: Props) => {
         component={Paper}
         variant='outlined'
         className={
-          'relative rounded-base p-4 shadow-sm hover:shadow-md hover:shadow-primary-main ' +
+          'relative items-center rounded-base px-4 py-3 shadow-sm hover:shadow-md hover:shadow-primary-main ' +
           (isOpen ? 'rounded-b-none shadow-primary-main' : '')
         }
       >
         <Grid item md>
-          <div className='space-y-2'>
-            <div className='flex items-center gap-2'>
-              <AvatarSize size={24} src={token.logoURI} />
-              <span className='font-bold'>{token.symbol}</span>
-            </div>
-            <div className='text-sm'>
-              <span className='font-bold'>Deposits:</span>{' '}
-              <span className='font-medium text-neutral-secondary'>$24,123,323.12</span>
-            </div>
-            <div className='text-sm'>
-              <span className='font-bold'>Borrows:</span>{' '}
-              <span className='font-medium text-neutral-secondary'>$23,323.12</span>
-            </div>
+          <div className='flex items-center gap-2'>
+            <AvatarSize size={40} src={token.logoURI} />
+            <span className='text-xl font-bold'>{token.symbol}</span>
           </div>
         </Grid>
         <Grid item md>
-          <div className='flex flex-col items-center'>
-            <div className='mb-1 text-sm font-medium text-neutral-secondary'>1.84%</div>
-            <div className='rounded-full bg-gradient-to-t from-[orange] to-[cyan] p-[1px]'>
-              <Chip
-                label='5.71% APR'
-                icon={<AvatarSize size={24} src={AGI.logoURI} />}
-                className='bg-paper-main font-bold'
-              />
-            </div>
+          <div className='text-center font-medium text-neutral-secondary'>$24,123,323.12</div>
+        </Grid>
+        <Grid item md>
+          <div className='text-center font-medium text-neutral-secondary'>$24,123,323.12</div>
+        </Grid>
+        <Grid item md className='flex justify-center'>
+          <div className='rounded-full bg-gradient-to-t from-[orange] to-[cyan] p-[1px]'>
+            <Chip
+              label='5.71% APR'
+              icon={<AvatarSize size={24} src={AGI.logoURI} />}
+              className='bg-paper-main font-bold'
+            />
           </div>
         </Grid>
-        <Grid item md></Grid>
-        <Grid item md></Grid>
+        <Grid item md className='flex justify-center'>
+          <div className='rounded-full bg-gradient-to-t from-[orange] to-[cyan] p-[1px]'>
+            <Chip
+              label='5.71% APR'
+              icon={<AvatarSize size={24} src={AGI.logoURI} />}
+              className='bg-paper-main font-bold'
+            />
+          </div>
+        </Grid>
         <div className='absolute inset-0 left-[unset] flex items-center p-2'>
           <IconButton
             onClick={() => {
@@ -78,7 +78,7 @@ const TokenRow = ({ token }: Props) => {
             <Tab
               label={
                 <div className='relative'>
-                  <span>Loop</span>
+                  <span>Detail</span>
                   <OpenInNew className='absolute right-[-20px] top-[-4px] text-sm' />
                 </div>
               }
@@ -89,34 +89,31 @@ const TokenRow = ({ token }: Props) => {
           <Grid container gap={5} className='px-4 pb-6 pt-3'>
             <Grid item md={4}>
               <div className='mb-3 text-sm font-bold'>Please enter the amount you would like to deposit.</div>
-              <div>
-                <div className='mb-1 flex justify-between'>
-                  <span className='text-sm font-medium'>Available {token.symbol}:</span>
-                  <span className='text-sm font-medium'>
-                    0 <b>{token.symbol}</b>
-                  </span>
-                </div>
-                <TextField
-                  fullWidth
-                  size='medium'
-                  placeholder='Amount'
-                  InputProps={{
-                    inputComponent: InputNumber,
-                    startAdornment: (
-                      <InputAdornment position='start'>
-                        <AvatarSize size={24} src={token.logoURI} />
-                      </InputAdornment>
-                    ),
-                    endAdornment: (
-                      <InputAdornment position='end'>
-                        <Button size='small' variant='text'>
-                          MAX
-                        </Button>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
+              <div className='mb-1 flex justify-between text-sm font-medium'>
+                <span>Available {token.symbol}:</span>
+                <span>
+                  {0} <span className='font-bold'>{token.symbol}</span>
+                </span>
               </div>
+              <TextField
+                fullWidth
+                placeholder='0.00'
+                InputProps={{
+                  inputComponent: InputNumber,
+                  startAdornment: (
+                    <InputAdornment position='start'>
+                      <AvatarSize size={24} src={token.logoURI} />
+                    </InputAdornment>
+                  ),
+                  endAdornment: (
+                    <InputAdornment position='end'>
+                      <Button size='small' variant='text'>
+                        MAX
+                      </Button>
+                    </InputAdornment>
+                  ),
+                }}
+              />
             </Grid>
             <Grid item md={3} className='flex items-end py-1'>
               <div className='flex-1 space-y-1'>
@@ -131,7 +128,7 @@ const TokenRow = ({ token }: Props) => {
               </div>
             </Grid>
             <Grid item md className='flex items-end py-1.5'>
-              <Button className='rounded-full px-10' variant='outlined' size='medium'>
+              <Button variant='outlined' className='rounded-full px-10'>
                 Deposit
               </Button>
             </Grid>

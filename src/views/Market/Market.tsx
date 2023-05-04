@@ -9,14 +9,13 @@ const Market = () => {
   const { allTokens } = useSelector(assetSelector);
 
   return (
-    <Container className='space-y-10'>
-      <Grid container gap={2} className='pt-10'>
+    <Container className='space-y-10 py-10'>
+      <Grid container gap={2}>
         <Grid item md className='space-y-3'>
           <h1
-            className='text-[60px] font-black uppercase leading-none'
+            className='text-gradient text-[60px] font-black uppercase leading-none'
             style={{
-              WebkitTextFillColor: 'transparent',
-              background: 'linear-gradient(120deg, var(--color-primary-light) 0%, var(--color-secondary-main)) text',
+              background: 'linear-gradient(120deg, var(--color-primary-light) 0%, var(--color-secondary-main))',
             }}
           >
             Earn interest & borrow assets cross-chain in 3 clicks
@@ -34,7 +33,7 @@ const Market = () => {
 
         <Grid item md={4} className='space-y-6'>
           <Paper className='px-3 py-6 text-center'>
-            <div>Platform Fees Paid to Lockers</div>
+            <div className='font-medium'>Platform Fees Paid to Lockers</div>
             <div className='mb-3 mt-1 text-4xl font-bold text-primary-main'>$6,476,686.80</div>
             <div className='text-sm'>
               Platform Fees such as interest, early exit penalties and liquidations are distributed to RDNT Lockers.
@@ -48,7 +47,7 @@ const Market = () => {
             <Grid container spacing={1}>
               {allTokens.map((item) => (
                 <Grid item md={6} key={item.address}>
-                  <div className='flex justify-between rounded border border-border-main p-3'>
+                  <div className='flex justify-between rounded border p-3'>
                     <div className='flex items-center gap-2'>
                       <AvatarSize size={24} src={item.logoURI} />
                       <span className='text-sm font-medium'>{item.symbol}</span>
@@ -66,7 +65,7 @@ const Market = () => {
         <div className='flex justify-between px-6 py-3'>
           <div className='font-bold'>Stats overview</div>
           <div className='cursor-pointer text-neutral-secondary hover:text-primary-main'>
-            <span className='mr-2 text-sm font-bold'>Asset breadown</span>
+            <span className='mr-2 text-sm font-bold'>Assets breakdown</span>
             <BarChart />
           </div>
         </div>
@@ -84,21 +83,15 @@ const Market = () => {
                 <div className='font-medium'>{item.label}</div>
                 <div className={'font-bold ' + (index <= 1 ? 'text-4xl' : 'text-2xl')}>{item.value}</div>
                 <div></div>
-                {index === 2 && (
-                  <Button variant='outlined' className='w-[120px]'>
-                    Buy
-                  </Button>
-                )}
-                {index === 3 && (
-                  <Button variant='outlined' className='w-[120px]'>
-                    Lock
-                  </Button>
-                )}
-                {index === 4 && (
-                  <Button variant='outlined' className='w-[120px]'>
-                    Stake
-                  </Button>
-                )}
+                <Button variant='outlined' className='w-[120px]' hidden={index !== 2}>
+                  Buy
+                </Button>
+                <Button variant='outlined' className='w-[120px]' hidden={index !== 3}>
+                  Lock
+                </Button>
+                <Button variant='outlined' className='w-[120px]' hidden={index !== 4}>
+                  Stake
+                </Button>
               </Grid>
             );
           })}
@@ -111,17 +104,37 @@ const Market = () => {
         </div>
         <Divider />
         <div className='space-y-3 p-6'>
-          <Grid container>
-            {[{ label: 'Assets' }, { label: 'Deposit APY' }, { label: 'Borrow APY' }, { label: 'Loop APR' }].map(
-              (item, index) => (
-                <Grid key={index} item md className='flex justify-center text-neutral-secondary'>
-                  <div className='cursor-pointer pl-3 hover:text-neutral-primary'>
-                    <span className='text-sm font-bold'>{item.label}</span>
-                    <ArrowDropDown />
-                  </div>
-                </Grid>
-              ),
-            )}
+          <Grid container className='px-4'>
+            <Grid item md className='flex justify-start'>
+              <div className='cursor-pointer pl-3 text-neutral-secondary hover:text-neutral-primary'>
+                <span className='text-sm font-bold'>Assets</span>
+                <ArrowDropDown />
+              </div>
+            </Grid>
+            <Grid item md className='flex justify-center'>
+              <div className='cursor-pointer pl-3 text-neutral-secondary hover:text-neutral-primary'>
+                <span className='text-sm font-bold'>Market Size</span>
+                <ArrowDropDown />
+              </div>
+            </Grid>
+            <Grid item md className='flex justify-center'>
+              <div className='cursor-pointer pl-3 text-neutral-secondary hover:text-neutral-primary'>
+                <span className='text-sm font-bold'>Total Borrowed</span>
+                <ArrowDropDown />
+              </div>
+            </Grid>
+            <Grid item md className='flex justify-center'>
+              <div className='cursor-pointer pl-3 text-neutral-secondary hover:text-neutral-primary'>
+                <span className='text-sm font-bold'>Deposit APY</span>
+                <ArrowDropDown />
+              </div>
+            </Grid>
+            <Grid item md className='flex justify-center'>
+              <div className='cursor-pointer pl-3 text-neutral-secondary hover:text-neutral-primary'>
+                <span className='text-sm font-bold'>Borrow APY</span>
+                <ArrowDropDown />
+              </div>
+            </Grid>
           </Grid>
 
           {allTokens.map((token) => (

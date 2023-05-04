@@ -14,7 +14,7 @@ const AssetsView = () => {
   const [token, setToken] = useState(allTokens.find((item) => item.address === address) ?? allTokens[0]);
 
   return (
-    <Container>
+    <Container className='py-10'>
       <Grid container gap={2} component={Paper} variant='outlined'>
         <Grid item md={3.5} className='flex items-center py-6'>
           <TextField
@@ -59,7 +59,7 @@ const AssetsView = () => {
             ))}
           </TextField>
         </Grid>
-        <Grid item md className='px-3 py-6'>
+        <Grid item md className='py-6'>
           <Grid container gap={2}>
             {[
               { label: 'Asset price', value: '$1.00' },

@@ -8,8 +8,8 @@ type AvatarSizeProps = AvatarProps & {
 
 const AvatarSize = styled(({ size, sizes, ...props }: AvatarSizeProps) => {
   const [width, height] = useMemo(() => {
-    if (sizes === 'small') return [32, 32];
-    if (sizes === 'medium') return [40, 40];
+    if (sizes === 'small') return [24, 24];
+    if (sizes === 'medium') return [32, 32];
     if (sizes === 'large') return [48, 48];
     return [size, size];
   }, [size, sizes]);
