@@ -1,7 +1,7 @@
 import { Menu as MenuIcon } from '@mui/icons-material';
 import { AppBar, Divider, Drawer, IconButton, List, Toolbar } from '@mui/material';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { AuragiLogo } from 'assets/icons';
+import { AuragiIcon } from 'assets/icons';
 import { Mapple, SwitchTheme } from 'components';
 import { NextImage, NextLink } from 'components/next';
 import { AppMenu } from 'containers';
@@ -29,7 +29,7 @@ const AppHeader = () => {
       >
         <div className='relative flex h-12 items-center justify-center lg:h-16'>
           <NextLink href={publicRoute.swap.path}>
-            <NextImage src={AuragiLogo} alt='Logo' height={40} />
+            <NextImage src={AuragiIcon} alt='Logo' height={40} />
           </NextLink>
         </div>
         <Divider className='my-2' />
@@ -52,7 +52,7 @@ const AppHeader = () => {
 
           <div className='relative hidden lg:block'>
             <NextLink href={publicRoute.swap.path}>
-              <NextImage src={AuragiLogo} alt='Logo' height={40} />
+              <NextImage src={AuragiIcon} alt='Logo' height={40} />
             </NextLink>
           </div>
 

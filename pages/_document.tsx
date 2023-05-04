@@ -46,7 +46,7 @@ const MyDocument = ({ emotionStyleTags }: MyDocumentProps) => {
   return (
     <Html lang='en'>
       <Head>
-        <link rel='shortcut icon' href='/auragi.ico' />
+        <link rel='shortcut icon' href='/Muragi.svg' />
         <meta name='emotion-insertion-point' content='' />
         {emotionStyleTags}
       </Head>

@@ -2,7 +2,7 @@ import { connectorsForWallets } from '@rainbow-me/rainbowkit';
 import { coinbaseWallet, metaMaskWallet, walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
 import { ENV } from 'env';
 import { configureChains, createClient } from 'wagmi';
-import { arbitrum, arbitrumGoerli, bscTestnet, bsc } from 'wagmi/chains';
+import { arbitrum, arbitrumGoerli, bsc, bscTestnet } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
 export const defaultChains = () => {
@@ -19,7 +19,7 @@ const connectors = connectorsForWallets([
     groupName: 'Recommended',
     wallets: [
       metaMaskWallet({ chains }),
-      coinbaseWallet({ appName: 'Auragi Finance dApp', chains }),
+      coinbaseWallet({ appName: 'Muragi Finance dApp', chains }),
       walletConnectWallet({ chains }),
     ],
   },

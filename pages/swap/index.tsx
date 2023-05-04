@@ -3,8 +3,8 @@ import { Swap } from 'views/Swap';
 
 const Page = () => {
   const { title, description } = {
-    title: `Auragi - Swap tokens at the best rates`,
-    description: `Take advantage of minimal slippage, low swapping fees, and deep liquidity with Auragi.`,
+    title: `Muragi - Swap tokens at the best rates`,
+    description: `Take advantage of minimal slippage, low swapping fees, and deep liquidity with Muragi.`,
   };
   return (
     <>
@@ -14,9 +14,9 @@ const Page = () => {
         openGraph={{
           title,
           description,
-          siteName: 'Auragi Finance | Swap',
+          siteName: 'Muragi Finance | Swap',
           url: 'https://auragi.finance/swap',
-          images: [{ url: 'https://auragi.finance/thumbnail.png' }],
+          images: [{ url: '/Muragi.svg' }],
           type: 'website',
         }}
         twitter={{
