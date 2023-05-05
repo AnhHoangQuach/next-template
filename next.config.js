@@ -2,6 +2,6 @@
 module.exports = {
   reactStrictMode: true,
   experimental: {
-    optimizeCss: true, // enabling this will enable SSR for Tailwind
+    optimizeCss: false, // enabling this will enable SSR for Tailwind
   },
 };
