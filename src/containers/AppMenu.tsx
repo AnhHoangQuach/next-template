@@ -36,9 +36,8 @@ const AppMenu = () => {
     <>
       <MenuItem {...publicRoute.market} />
       <MenuItem {...publicRoute.dashboard} />
-      <MenuItem {...publicRoute.rewards} />
-      <MenuItem {...publicRoute.swap} />
       <MenuItem {...publicRoute.deposit} />
+      <MenuItem {...publicRoute.swap} />
     </>
   );
 };

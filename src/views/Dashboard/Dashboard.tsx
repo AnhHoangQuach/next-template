@@ -1,5 +1,6 @@
 import { ArrowDropDown } from '@mui/icons-material';
 import { Button, Container, FormControlLabel, Grid, Paper, Switch } from '@mui/material';
+import { HealthFactor } from 'components';
 import { AvatarSize } from 'components/common';
 import { useSelector } from 'react-redux';
 import { assetSelector } from 'reducers/assetSlice';
@@ -33,7 +34,9 @@ const Dashboard = () => {
           </Grid>
           <Grid item md={3} className='flex flex-col space-y-1 px-6'>
             <div className='font-bold'>Health Factor</div>
-            <div className='text-4xl font-bold text-green'>100.73</div>
+            <div className='text-4xl font-bold'>
+              <HealthFactor value={32} />
+            </div>
             <div>
               <div className='flex justify-between'>
                 <span>Borrowing Power Used:</span>
@@ -108,11 +111,11 @@ const Dashboard = () => {
                       <span className='font-bold'>{item.symbol}</span>
                     </div>
                   </Grid>
-                  <Grid item md={2.5} className='text-center text-sm'>
+                  <Grid item md={2.5} className='text-center'>
                     <div className='font-medium'>0.01</div>
-                    <div className='font-medium text-neutral-secondary'>$ 0.01</div>
+                    <div className='text-sm font-medium text-neutral-secondary'>$ 0.01</div>
                   </Grid>
-                  <Grid item md={2} className='text-center text-sm'>
+                  <Grid item md={2} className='text-center'>
                     <div className='font-medium'>20 %</div>
                   </Grid>
                   <Grid item md className='flex items-center gap-3 pr-3'>
@@ -167,11 +170,11 @@ const Dashboard = () => {
                       <span className='font-bold'>{item.symbol}</span>
                     </div>
                   </Grid>
-                  <Grid item md={2.5} className='text-center text-sm'>
+                  <Grid item md={2.5} className='text-center'>
                     <div className='font-medium'>0.01</div>
-                    <div className='font-medium text-neutral-secondary'>$ 0.01</div>
+                    <div className='text-sm font-medium text-neutral-secondary'>$ 0.01</div>
                   </Grid>
-                  <Grid item md={2} className='text-center text-sm'>
+                  <Grid item md={2} className='text-center'>
                     <div className='font-medium'>20 %</div>
                   </Grid>
                   <Grid item md className='flex items-center gap-3 pr-3'>

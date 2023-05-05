@@ -1,30 +1,32 @@
-import React from 'react';
-import { Container, Grid } from '@mui/material';
-import { useRouter } from 'next/router';
-import { AvatarSize } from '../../src/components/common';
-import DepositInfo from '../../src/views/Deposit/components/DepositInfo';
-import CardDeposit from '../../src/views/Deposit/components/CardDeposit';
+import { NextSeo } from 'next-seo';
+import { DepositAsset } from 'views/Deposit';
 
-const DepositDetail: React.FunctionComponent = () => {
-  const router = useRouter();
+const Page = () => {
+  const { title, description } = {
+    title: `Auragi - Deposit tokens at the best rates`,
+    description: `Take advantage of minimal slippage, low swapping fees, and deep liquidity with Auragi.`,
+  };
+
   return (
-    <Container>
-      <div>
-        <div className={'flex items-center gap-1'}>
-          <AvatarSize size={32} src={'https://image.auragi.finance/usdc.png'} />
-          <h2 className={'text-xl font-bold'}>USDC</h2>
-        </div>
-      </div>
-      <Grid container spacing={2}>
-        <Grid item md={7}>
-          <CardDeposit />
-        </Grid>
-        <Grid item md={5}>
-          <DepositInfo />
-        </Grid>
-      </Grid>
-    </Container>
+    <>
+      <NextSeo
+        title={title}
+        description={description}
+        openGraph={{
+          title,
+          description,
+          siteName: 'Auragi Finance | Deposit',
+          url: 'https://auragi.finance/swap',
+          images: [{ url: 'https://auragi.finance/thumbnail.png' }],
+          type: 'website',
+        }}
+        twitter={{
+          cardType: 'summary_large_image',
+        }}
+      />
+      <DepositAsset />
+    </>
   );
 };
 
-export default DepositDetail;
+export default Page;

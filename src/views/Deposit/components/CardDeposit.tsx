@@ -1,43 +1,46 @@
-import React from 'react';
-import { Button, Grid, InputAdornment, Paper, TextField } from '@mui/material';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import { AvatarSize, InputNumber } from '../../../components/common';
-import { useRouter } from 'next/router';
+import { KeyboardArrowLeft } from '@mui/icons-material';
+import { Button, InputAdornment, Paper, TextField } from '@mui/material';
+import { AvatarSize, InputNumber } from 'components/common';
+import { NextLink } from 'components/next';
+import { publicRoute } from 'routes';
 
-const CardDeposit: React.FunctionComponent = () => {
-  const router = useRouter();
+type Props = {
+  token: TokenType;
+};
+
+const CardDeposit = ({ token }: Props) => {
   return (
-    <Paper className={'mt-4 p-5'} elevation={3}>
-      <Button size={'small'} onClick={() => router.back()} variant={'outlined'}>
-        <ChevronLeftIcon fontSize={'small'} />
-        Back
-      </Button>
-      <Grid className={'flex justify-center'}>
-        <Grid md={8}>
-          <div className={'flex justify-center'}>
-            <div className={'text-center'}>
-              <div className={'text-center font-bold'}>How much would you like to deposit?</div>
-              <p className={'text-center text-sm'}>
-                Please enter an amount you would like to deposit. The maximum amount you can deposit is shown below.
-              </p>
-            </div>
+    <Paper className='p-6'>
+      <div>
+        <NextLink href={publicRoute.deposit.path}>
+          <Button size='small' variant='outlined' className='pr-4' startIcon={<KeyboardArrowLeft />}>
+            Back
+          </Button>
+        </NextLink>
+      </div>
+
+      <div className='flex justify-center'>
+        <div className='max-w-[400px]'>
+          <div className='mb-3 text-center text-xl font-bold'>How much would you like to deposit?</div>
+          <div className='mb-6 text-center text-sm'>
+            Please enter an amount you would like to deposit. The maximum amount you can deposit is shown below.
           </div>
-          <div className={'mt-4'}>
-            <div className='mb-1 flex justify-between'>
-              <span className='text-sm font-medium'>Available USDC:</span>
-              <span className='text-sm font-medium'>
-                0 <b>USDC</b>
+
+          <div>
+            <div className='mb-2 flex justify-between text-sm font-medium'>
+              <span>Available to Deposit:</span>
+              <span>
+                {0} <span className='font-bold'>{token.symbol}</span>
               </span>
             </div>
             <TextField
               fullWidth
-              size='medium'
-              placeholder='Amount'
+              placeholder='0.00'
               InputProps={{
                 inputComponent: InputNumber,
                 startAdornment: (
                   <InputAdornment position='start'>
-                    <AvatarSize size={24} src={'https://image.auragi.finance/usdc.png'} />
+                    <AvatarSize size={24} src={token.logoURI} />
                   </InputAdornment>
                 ),
                 endAdornment: (
@@ -50,11 +53,12 @@ const CardDeposit: React.FunctionComponent = () => {
               }}
             />
           </div>
-          <div className={'text-center'} style={{ marginTop: '1.5rem' }}>
-            <Button variant={'contained'}>Continue</Button>
+
+          <div className='mt-6 flex justify-center'>
+            <Button>Continue</Button>
           </div>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </Paper>
   );
 };

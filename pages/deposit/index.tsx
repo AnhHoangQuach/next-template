@@ -1,10 +1,9 @@
-import React from 'react';
 import { NextSeo } from 'next-seo';
-import Deposit from '../../src/views/Deposit';
+import { Deposit } from 'views/Deposit';
 
-const Page: React.FunctionComponent = () => {
+const Page = () => {
   const { title, description } = {
-    title: `Auragi - Swap tokens at the best rates`,
+    title: `Auragi - Deposit tokens at the best rates`,
     description: `Take advantage of minimal slippage, low swapping fees, and deep liquidity with Auragi.`,
   };
 

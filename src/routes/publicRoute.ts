@@ -1,9 +1,8 @@
 import { Dashboard } from 'views/Dashboard';
+import { Deposit } from 'views/Deposit';
 import { Home } from 'views/Home';
 import { Market } from 'views/Market';
-import { Rewards } from 'views/Rewards';
 import { Swap } from 'views/Swap';
-import Deposit from '../views/Deposit';
 
 const publicRoute = {
   home: {
@@ -16,29 +15,27 @@ const publicRoute = {
     name: 'Market',
     component: Market,
   },
-  assetsView: {
-    url: (address: Address) => `/assets/${address}`,
-    name: 'Market',
-    component: Market,
-  },
   dashboard: {
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard,
   },
+
   deposit: {
     path: '/deposit',
     name: 'Deposit',
     component: Deposit,
   },
-  rewards: {
-    path: '/rewards',
-    name: 'Rewards',
-    component: Rewards,
+  depositAsset: {
+    path: '/deposit/:address',
+    url: ({ address }: ByAddress) => `/deposit/${address}`,
+    name: 'Deposit Asset',
+    component: Deposit,
   },
+
   swap: {
     path: '/swap',
-    name: 'Swap',
+    name: 'Components',
     component: Swap,
   },
 };

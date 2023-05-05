@@ -56,8 +56,9 @@
   .MuiInputBase-root.MuiOutlinedInput-root {
     border-radius: 4px;
   }
-  input.MuiInputBase-input {
-    padding: 12px 0px;
+  .MuiInputBase-input {
+    padding-top: 12px;
+    padding-bottom: 12px;
   }
 }
 

@@ -10,7 +10,7 @@ const Market = () => {
 
   return (
     <Container className='space-y-10 py-10'>
-      <Grid container gap={2}>
+      <Grid container gap={5}>
         <Grid item md className='space-y-3'>
           <h1
             className='text-gradient text-[60px] font-black uppercase leading-none'
@@ -103,8 +103,8 @@ const Market = () => {
           <div className='font-bold'>Market assets</div>
         </div>
         <Divider />
-        <div className='space-y-3 p-6'>
-          <Grid container className='px-4'>
+        <div className='p-6'>
+          <Grid container className='mb-3 px-4'>
             <Grid item md className='flex justify-start'>
               <div className='cursor-pointer pl-3 text-neutral-secondary hover:text-neutral-primary'>
                 <span className='text-sm font-bold'>Assets</span>
@@ -137,9 +137,11 @@ const Market = () => {
             </Grid>
           </Grid>
 
-          {allTokens.map((token) => (
-            <TokenRow key={token.address} token={token} />
-          ))}
+          <div className='space-y-3'>
+            {allTokens.map((token) => (
+              <TokenRow key={token.address} token={token} />
+            ))}
+          </div>
         </div>
       </Paper>
     </Container>
