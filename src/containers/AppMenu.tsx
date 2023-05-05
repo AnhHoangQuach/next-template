@@ -38,6 +38,7 @@ const AppMenu = () => {
       <MenuItem {...publicRoute.dashboard} />
       <MenuItem {...publicRoute.rewards} />
       <MenuItem {...publicRoute.swap} />
+      <MenuItem {...publicRoute.deposit} />
     </>
   );
 };
