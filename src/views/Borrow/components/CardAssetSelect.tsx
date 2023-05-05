@@ -21,19 +21,14 @@ const CardAssetSelect = ({ token }: Props) => {
           fullWidth
           value={token.address}
           onChange={({ target: { value } }) => {
-            router.replace(publicRoute.depositAsset.url({ address: value } as TokenType), undefined, { shallow: true });
+            router.replace(publicRoute.borrowAsset.url({ address: value } as TokenType), undefined, { shallow: true });
           }}
-          size='small'
-          color='secondary'
           sx={{
-            '&:hover': {
-              backgroundColor: 'var(--color-paper-dark)',
-            },
             '& .MuiOutlinedInput-notchedOutline': {
               borderRadius: 0,
               borderWidth: '0px !important',
               borderLeftWidth: '4px !important',
-              borderColor: 'var(--color-secondary-main)',
+              borderColor: 'var(--color-secondary-main) !important',
             },
           }}
           SelectProps={{

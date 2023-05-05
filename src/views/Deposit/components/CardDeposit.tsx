@@ -20,12 +20,14 @@ const CardDeposit = ({ token }: Props) => {
       </div>
 
       <div className='flex justify-center'>
-        <div className='max-w-[400px]'>
-          <div className='mb-3 text-center text-xl font-bold'>How much would you like to deposit?</div>
-          <div className='mb-6 text-center text-sm'>
-            Please enter an amount you would like to deposit.
-            <br />
-            The maximum amount you can deposit is shown below.
+        <div className='max-w-[400px] space-y-6'>
+          <div>
+            <div className='mb-3 text-center text-xl font-bold'>How much would you like to deposit?</div>
+            <div className='text-center text-sm'>
+              Please enter an amount you would like to deposit.
+              <br />
+              The maximum amount you can deposit is shown below.
+            </div>
           </div>
 
           <div>
@@ -56,7 +58,7 @@ const CardDeposit = ({ token }: Props) => {
             />
           </div>
 
-          <div className='mt-6 flex justify-center'>
+          <div className='flex justify-center'>
             <Button>Continue</Button>
           </div>
         </div>

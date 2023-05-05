@@ -18,7 +18,7 @@ const BorrowAsset = () => {
     if (selectToken) {
       setToken(selectToken);
     } else {
-      router.replace(publicRoute.deposit.path);
+      router.replace(publicRoute.borrow.path);
     }
   }, [router, allTokens]);
 

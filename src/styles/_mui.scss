@@ -55,6 +55,11 @@
 .MuiTextField-root {
   .MuiInputBase-root.MuiOutlinedInput-root {
     border-radius: 4px;
+
+    &:hover .MuiOutlinedInput-notchedOutline {
+      border-color: var(--color-border-dark);
+      background-color: rgba(0, 0, 0, 0.02);
+    }
   }
   .MuiInputBase-input {
     padding-top: 12px;
