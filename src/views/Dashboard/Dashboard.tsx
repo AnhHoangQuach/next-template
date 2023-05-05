@@ -2,8 +2,10 @@ import { ArrowDropDown } from '@mui/icons-material';
 import { Button, Container, FormControlLabel, Grid, Paper, Switch } from '@mui/material';
 import { HealthFactor } from 'components';
 import { AvatarSize } from 'components/common';
+import { NextLink } from 'components/next';
 import { useSelector } from 'react-redux';
 import { assetSelector } from 'reducers/assetSlice';
+import { publicRoute } from 'routes';
 
 const Dashboard = () => {
   const { allTokens } = useSelector(assetSelector);
@@ -120,12 +122,14 @@ const Dashboard = () => {
                   </Grid>
                   <Grid item md className='flex items-center gap-3 pr-3'>
                     <FormControlLabel label={<span>Yes</span>} labelPlacement='start' control={<Switch />} />
-                    <Button size='small' className='ml-auto'>
-                      Deposit
-                    </Button>
-                    <Button size='small' variant='text'>
-                      Withdraw
-                    </Button>
+                    <NextLink href={publicRoute.depositAsset.url(item)} className='ml-auto'>
+                      <Button size='small'>Deposit</Button>
+                    </NextLink>
+                    <NextLink href={publicRoute.withdrawAsset.url(item)}>
+                      <Button size='small' variant='text'>
+                        Withdraw
+                      </Button>
+                    </NextLink>
                   </Grid>
                 </Grid>
               ))}
@@ -178,12 +182,14 @@ const Dashboard = () => {
                     <div className='font-medium'>20 %</div>
                   </Grid>
                   <Grid item md className='flex items-center gap-3 pr-3'>
-                    <Button size='small' className='ml-auto'>
-                      Borrow
-                    </Button>
-                    <Button size='small' variant='text'>
-                      Repay
-                    </Button>
+                    <NextLink href={publicRoute.borrowAsset.url(item)} className='ml-auto'>
+                      <Button size='small'>Borrow</Button>
+                    </NextLink>
+                    <NextLink href={publicRoute.repayAsset.url(item)}>
+                      <Button size='small' variant='text'>
+                        Repay
+                      </Button>
+                    </NextLink>
                   </Grid>
                 </Grid>
               ))}

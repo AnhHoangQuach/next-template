@@ -1,26 +1,10 @@
 import { Container, Grid } from '@mui/material';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { assetSelector } from 'reducers/assetSlice';
+import { useRouterAsset } from 'hooks';
 import { publicRoute } from 'routes';
 import { CardAssetSelect, CardBalance, CardBorrow } from './components';
 
 const BorrowAsset = () => {
-  const router = useRouter();
-  const { allTokens } = useSelector(assetSelector);
-
-  const [token, setToken] = useState<TokenType>();
-
-  useEffect(() => {
-    const { address } = router.query;
-    const selectToken = allTokens.find((item) => item.address === address);
-    if (selectToken) {
-      setToken(selectToken);
-    } else {
-      router.replace(publicRoute.borrow.path);
-    }
-  }, [router, allTokens]);
+  const { token } = useRouterAsset(publicRoute.borrow.path);
 
   if (!token) return <></>;
   return (
