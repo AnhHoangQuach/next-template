@@ -1,9 +1,10 @@
 type TokenType = {
   name: string;
   symbol: string;
-  logoURI: string;
   address: Address;
+  logoURI: string;
   decimals: number;
+  price: number;
 };
 
 type TokenName = 'AGI' | 'ETH' | 'WETH';

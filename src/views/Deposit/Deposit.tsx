@@ -34,6 +34,7 @@ const Deposit = () => {
                     <Button
                       key={index}
                       variant={isActive ? 'contained' : 'outlined'}
+                      className='w-[120px]'
                       onClick={() => setStable(item.value)}
                     >
                       {item.label}

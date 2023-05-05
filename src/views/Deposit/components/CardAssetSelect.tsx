@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { useSelector } from 'react-redux';
 import { assetSelector } from 'reducers/assetSlice';
 import { publicRoute } from 'routes';
+import { formatNumber } from 'utils/common';
 
 type Props = {
   token: TokenType;
@@ -55,7 +56,7 @@ const CardAssetSelect = ({ token }: Props) => {
       <Grid item md className='py-6'>
         <Grid container gap={2}>
           {[
-            { label: 'Asset Price', value: '$1.00' },
+            { label: 'Asset Price', value: `$${formatNumber(token.price)}` },
             { label: 'Deposit APY', value: '11.26%' },
             { label: 'Reserve Size', value: '23.73M' },
             { label: 'Available Liquidity', value: '8.48M' },
