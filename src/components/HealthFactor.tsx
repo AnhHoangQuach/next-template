@@ -5,10 +5,16 @@ type Props = React.HTMLProps<HTMLSpanElement> & {
 };
 
 const HealthFactor = styled(({ value, ...props }: Props) => {
-  return <span {...props}>{value}</span>;
+  const formated = value
+    .toLocaleString('en-US', {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    })
+    .replaceAll(/,/g, '');
+  return <span {...props}>{formated}</span>;
 })(({ value }) => {
   return {
-    color: value > 2 ? 'green' : 'orangered',
+    color: value > 2 ? 'green' : value > 1.5 ? 'orange' : value > 1 ? 'orangered' : 'red',
   };
 });
 

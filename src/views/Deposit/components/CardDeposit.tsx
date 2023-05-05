@@ -23,7 +23,9 @@ const CardDeposit = ({ token }: Props) => {
         <div className='max-w-[400px]'>
           <div className='mb-3 text-center text-xl font-bold'>How much would you like to deposit?</div>
           <div className='mb-6 text-center text-sm'>
-            Please enter an amount you would like to deposit. The maximum amount you can deposit is shown below.
+            Please enter an amount you would like to deposit.
+            <br />
+            The maximum amount you can deposit is shown below.
           </div>
 
           <div>

@@ -29,10 +29,13 @@ module.exports = {
         dark: 'var(--color-border-dark)',
       },
       transparent: 'rgba(0, 0, 0, 0)',
+
       white: '#ffffff',
       black: '#000000',
-      brown: '#6a0505',
       green: '#008000',
+      brown: '#6a0505',
+      orange: '#ffc64e',
+      purple: '#ff46a5',
     },
     extend: {
       borderRadius: {

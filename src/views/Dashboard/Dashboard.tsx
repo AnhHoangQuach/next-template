@@ -35,7 +35,7 @@ const Dashboard = () => {
           <Grid item md={3} className='flex flex-col space-y-1 px-6'>
             <div className='font-bold'>Health Factor</div>
             <div className='text-4xl font-bold'>
-              <HealthFactor value={32} />
+              <HealthFactor value={3232322.232} />
             </div>
             <div>
               <div className='flex justify-between'>

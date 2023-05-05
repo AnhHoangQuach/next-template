@@ -37,6 +37,7 @@ const AppMenu = () => {
       <MenuItem {...publicRoute.market} />
       <MenuItem {...publicRoute.dashboard} />
       <MenuItem {...publicRoute.deposit} />
+      <MenuItem {...publicRoute.borrow} />
       <MenuItem {...publicRoute.swap} />
     </>
   );

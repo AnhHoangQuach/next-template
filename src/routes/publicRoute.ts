@@ -1,3 +1,4 @@
+import { Borrow, BorrowAsset } from 'views/Borrow';
 import { Dashboard } from 'views/Dashboard';
 import { Deposit } from 'views/Deposit';
 import { Home } from 'views/Home';
@@ -31,6 +32,18 @@ const publicRoute = {
     url: ({ address }: ByAddress) => `/deposit/${address}`,
     name: 'Deposit Asset',
     component: Deposit,
+  },
+
+  borrow: {
+    path: '/borrow',
+    name: 'Borrow',
+    component: Borrow,
+  },
+  borrowAsset: {
+    path: '/borrow/:address',
+    url: ({ address }: ByAddress) => `/borrow/${address}`,
+    name: 'Borrow Asset',
+    component: BorrowAsset,
   },
 
   swap: {
