@@ -24,7 +24,6 @@ const CardBalance = ({ token }: Props) => {
       {[
         { label: 'You Borrowed', value: `< 0.01 ${token.symbol}` },
         { label: 'Total Collateral', value: `< 0.01 ${token.symbol}` },
-        { label: 'Loan to Value', value: '80%' },
         { label: 'Health Factor', value: <HealthFactor value={1.2} /> },
         { label: 'RDNT Rewards APR', value: '0 %' },
       ].map((item, index) => (
