@@ -1,3 +1,4 @@
+import { Dashboard } from 'views/Dashboard';
 import { Home } from 'views/Home';
 import { Market } from 'views/Market';
 import { Rewards } from 'views/Rewards';
@@ -20,10 +21,10 @@ const publicRoute = {
     name: 'Market',
     component: Market,
   },
-  swap: {
-    path: '/swap',
-    name: 'Swap',
-    component: Swap,
+  dashboard: {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard,
   },
   deposit: {
     path: '/deposit',
@@ -34,6 +35,11 @@ const publicRoute = {
     path: '/rewards',
     name: 'Rewards',
     component: Rewards,
+  },
+  swap: {
+    path: '/swap',
+    name: 'Swap',
+    component: Swap,
   },
 };
 
