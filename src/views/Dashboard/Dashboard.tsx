@@ -1,5 +1,5 @@
 import { ArrowDropDown } from '@mui/icons-material';
-import { Button, Container, Grid, Paper, Switch } from '@mui/material';
+import { Button, Container, FormControlLabel, Grid, Paper, Switch } from '@mui/material';
 import { AvatarSize } from 'components/common';
 import { useSelector } from 'react-redux';
 import { assetSelector } from 'reducers/assetSlice';
@@ -115,14 +115,72 @@ const Dashboard = () => {
                   <Grid item md={2} className='text-center text-sm'>
                     <div className='font-medium'>20 %</div>
                   </Grid>
-                  <Grid item md className='flex items-center'>
-                    <Switch />
-                    <div className='ml-auto space-x-3 px-3'>
-                      <Button size='small'>Deposit</Button>
-                      <Button size='small' variant='text'>
-                        Withdraw
-                      </Button>
+                  <Grid item md className='flex items-center gap-3 pr-3'>
+                    <FormControlLabel label={<span>Yes</span>} labelPlacement='start' control={<Switch />} />
+                    <Button size='small' className='ml-auto'>
+                      Deposit
+                    </Button>
+                    <Button size='small' variant='text'>
+                      Withdraw
+                    </Button>
+                  </Grid>
+                </Grid>
+              ))}
+            </div>
+          </Grid>
+
+          <Grid item md={6}>
+            <Grid container className='mb-2'>
+              <Grid item md={2.5} className='flex justify-start'>
+                <div className='cursor-pointer pl-3 text-neutral-secondary hover:text-neutral-primary'>
+                  <span className='text-sm font-bold'>Your Borrows</span>
+                  <ArrowDropDown />
+                </div>
+              </Grid>
+              <Grid item md={2.5} className='flex justify-center'>
+                <div className='cursor-pointer pl-3 text-neutral-secondary hover:text-neutral-primary'>
+                  <span className='text-sm'>Your Balance</span>
+                  <ArrowDropDown />
+                </div>
+              </Grid>
+              <Grid item md={2} className='flex justify-center'>
+                <div className='cursor-pointer pl-3 text-neutral-secondary hover:text-neutral-primary'>
+                  <span className='text-sm'>APY</span>
+                  <ArrowDropDown />
+                </div>
+              </Grid>
+              <Grid item md></Grid>
+            </Grid>
+
+            <div className='space-y-3'>
+              {allTokens.map((item) => (
+                <Grid
+                  container
+                  key={item.address}
+                  component={Paper}
+                  variant='outlined'
+                  className='items-center py-3 shadow-sm'
+                >
+                  <Grid item md={2.5}>
+                    <div className='flex items-center gap-2 border-l-2 border-secondary-main px-3'>
+                      <AvatarSize size={24} src={item.logoURI} />
+                      <span className='font-bold'>{item.symbol}</span>
                     </div>
+                  </Grid>
+                  <Grid item md={2.5} className='text-center text-sm'>
+                    <div className='font-medium'>0.01</div>
+                    <div className='font-medium text-neutral-secondary'>$ 0.01</div>
+                  </Grid>
+                  <Grid item md={2} className='text-center text-sm'>
+                    <div className='font-medium'>20 %</div>
+                  </Grid>
+                  <Grid item md className='flex items-center gap-3 pr-3'>
+                    <Button size='small' className='ml-auto'>
+                      Borrow
+                    </Button>
+                    <Button size='small' variant='text'>
+                      Repay
+                    </Button>
                   </Grid>
                 </Grid>
               ))}
