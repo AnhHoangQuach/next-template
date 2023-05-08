@@ -1,22 +1,27 @@
 import { KeyboardArrowLeft } from '@mui/icons-material';
 import { Button, InputAdornment, Paper, TextField } from '@mui/material';
 import { AvatarSize, InputNumber } from 'components/common';
-import { NextLink } from 'components/next';
-import { publicRoute } from 'routes';
+import { useRouter } from 'next/router';
 
 type Props = {
   token: TokenType;
 };
 
 const CardDeposit = ({ token }: Props) => {
+  const router = useRouter();
+
   return (
     <Paper className='p-6'>
       <div>
-        <NextLink href={publicRoute.deposit.path}>
-          <Button size='small' variant='outlined' className='pr-4' startIcon={<KeyboardArrowLeft />}>
-            Back
-          </Button>
-        </NextLink>
+        <Button
+          size='small'
+          variant='outlined'
+          className='pr-4'
+          startIcon={<KeyboardArrowLeft />}
+          onClick={() => router.back()}
+        >
+          Back
+        </Button>
       </div>
 
       <div className='flex justify-center'>
