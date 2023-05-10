@@ -1,10 +1,10 @@
 import { NextSeo } from 'next-seo';
-import { Market } from 'views/Market';
+import { RepayAsset } from 'views/Replay';
 
 const Page = () => {
   const { title, description } = {
-    title: `Muragi - Market of earn high yield`,
-    description: `Create and manage your locked tokens for longer to earn higher rewards with Muragi.`,
+    title: `Muragi - Repay tokens at the best rates`,
+    description: `Take advantage of minimal slippage, low swapping fees, and deep liquidity with Muragi.`,
   };
   return (
     <>
@@ -14,8 +14,8 @@ const Page = () => {
         openGraph={{
           title,
           description,
-          siteName: 'Muragi Finance | Market',
-          url: 'https://auragi.finance/market',
+          siteName: 'Muragi Finance | Repay',
+          url: 'https://auragi.finance/repay',
           images: [{ url: '/Muragi.svg' }],
           type: 'website',
         }}
@@ -23,7 +23,7 @@ const Page = () => {
           cardType: 'summary_large_image',
         }}
       />
-      <Market />
+      <RepayAsset />
     </>
   );
 };

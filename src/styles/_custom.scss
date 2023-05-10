@@ -17,9 +17,11 @@
   }
 }
 
-.colored-link {
-  color: var(--color-primary-main);
-  &:hover {
-    color: var(--color-primary-dark);
-  }
+.text-gradient {
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+}
+
+* {
+  border-color: var(--color-border-main);
 }

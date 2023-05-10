@@ -1,11 +1,12 @@
 import { NextSeo } from 'next-seo';
-import { Market } from 'views/Market';
+import { Deposit } from 'views/Deposit';
 
 const Page = () => {
   const { title, description } = {
-    title: `Muragi - Market of earn high yield`,
-    description: `Create and manage your locked tokens for longer to earn higher rewards with Muragi.`,
+    title: `Auragi - Deposit tokens at the best rates`,
+    description: `Take advantage of minimal slippage, low swapping fees, and deep liquidity with Auragi.`,
   };
+
   return (
     <>
       <NextSeo
@@ -14,16 +15,16 @@ const Page = () => {
         openGraph={{
           title,
           description,
-          siteName: 'Muragi Finance | Market',
-          url: 'https://auragi.finance/market',
-          images: [{ url: '/Muragi.svg' }],
+          siteName: 'Auragi Finance | Deposit',
+          url: 'https://auragi.finance/swap',
+          images: [{ url: 'https://auragi.finance/thumbnail.png' }],
           type: 'website',
         }}
         twitter={{
           cardType: 'summary_large_image',
         }}
       />
-      <Market />
+      <Deposit />
     </>
   );
 };

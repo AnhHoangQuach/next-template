@@ -1,19 +1,21 @@
-type TransactionReceipt = {
-  to: string;
-  from: string;
-  contractAddress: string;
-  transactionIndex: number;
-  root?: string;
-  gasUsed: BigNumber;
-  logsBloom: string;
-  blockHash: string;
-  transactionHash: string;
-  logs: Array<Log>;
-  blockNumber: number;
-  confirmations: number;
-  cumulativeGasUsed: BigNumber;
-  effectiveGasPrice: BigNumber;
-  byzantium: boolean;
-  type: number;
-  status?: number;
+type ContractType = {
+  name: string;
+  address: Address;
 };
+
+type ContractName =
+  | 'AGI'
+  | 'PairFactory'
+  | 'Router'
+  | 'SwapLibrary'
+  | 'GaugeFactory'
+  | 'VeArtProxy'
+  | 'VotingEscrow'
+  | 'BribeFactory'
+  | 'Voter'
+  | 'RewardsDistributor'
+  | 'Minter'
+  | 'WrappedExternalBribeFactory'
+  | 'Merkleclaim';
+
+type ContractMap = Record<ContractName, Address>;

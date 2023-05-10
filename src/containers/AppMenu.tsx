@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { publicRoute } from 'routes';
 
 const StyledListItem = styled(ListItemButton)({
-  padding: '12px 20px',
+  padding: '13px 20px',
   borderTop: '3px solid transparent',
   borderBottom: '3px solid transparent',
   '&.Mui-selected': {
@@ -35,7 +35,9 @@ const AppMenu = () => {
   return (
     <>
       <MenuItem {...publicRoute.market} />
-      <MenuItem {...publicRoute.rewards} />
+      <MenuItem {...publicRoute.dashboard} />
+      <MenuItem {...publicRoute.deposit} />
+      <MenuItem {...publicRoute.borrow} />
       <MenuItem {...publicRoute.swap} />
     </>
   );

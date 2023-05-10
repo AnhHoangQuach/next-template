@@ -1,13 +1,24 @@
 import { ethers } from 'ethers';
 import { Chain } from 'wagmi';
 
-export const formatNumber = (number?: number, amountSmall?: boolean) => {
-  if (amountSmall) {
-    if (Number(number) > 0 && Number(number) < 0.01) return `< 0.01`;
+type Options = {
+  digits?: number;
+  isSmall?: boolean;
+  symbol?: string;
+};
+
+export const formatNumber = (value?: number | string, options?: Options) => {
+  const { digits = 2, isSmall = false } = options ?? {};
+  const number = Number(value) || 0;
+  if (isSmall) {
+    const minimumValue = 1 * 10 ** -digits;
+    if (number > 0 && number < minimumValue) {
+      return `< ${minimumValue}`;
+    }
   }
-  return (number ?? 0).toLocaleString(undefined, {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+  return number.toLocaleString(undefined, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: digits,
   });
 };
 

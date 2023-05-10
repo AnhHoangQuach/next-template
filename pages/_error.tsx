@@ -17,7 +17,7 @@ const Home = () => {
         margin: 10,
       }}
     >
-      <h1 className='text-3xl font-bold text-neutral-secondary'>
+      <h1 className='text-2xl font-bold text-neutral-secondary'>
         An unexpected error occurred, please try again later.
       </h1>
 

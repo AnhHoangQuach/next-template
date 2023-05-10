@@ -1,22 +1,11 @@
-import { GetServerSideProps } from 'next';
 import { NextSeo } from 'next-seo';
-import { AssetsView } from 'views/Assets';
-
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const { address } = params!;
-  console.log(address);
-
-  return {
-    props: {},
-  };
-};
+import { Dashboard } from 'views/Dashboard';
 
 const Page = () => {
   const { title, description } = {
-    title: `Muragi - Vest to earn high yield`,
+    title: `Muragi - Dashboard of earn high yield`,
     description: `Create and manage your locked tokens for longer to earn higher rewards with Muragi.`,
   };
-
   return (
     <>
       <NextSeo
@@ -25,8 +14,8 @@ const Page = () => {
         openGraph={{
           title,
           description,
-          siteName: 'Muragi Finance | Assets',
-          url: 'https://auragi.finance/assets',
+          siteName: 'Muragi Finance | Dashboard',
+          url: 'https://auragi.finance/dashboard',
           images: [{ url: '/Muragi.svg' }],
           type: 'website',
         }}
@@ -34,7 +23,7 @@ const Page = () => {
           cardType: 'summary_large_image',
         }}
       />
-      <AssetsView />
+      <Dashboard />
     </>
   );
 };

@@ -3,13 +3,13 @@ import { CssBaseline, LinearProgress, PaletteMode, ThemeProvider } from '@mui/ma
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 import type { } from '@mui/x-data-grid/themeAugmentation';
 import { GridEmpty } from 'components/common';
-import { Inter } from 'next/font/google';
+import { Roboto_Flex } from 'next/font/google';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { themeSelector } from 'reducers/themeSlice';
 
-const appFont = Inter({
-  weight: ['400', '600', '700', '900'],
+const appFont = Roboto_Flex({
+  weight: ['400', '500', '700', '900'],
   subsets: ['latin'],
   display: 'swap',
   fallback: ['Roboto', 'Arial', 'sans-serif'],
@@ -25,15 +25,15 @@ const createAppTheme = (mode?: PaletteMode) =>
       },
       MuiButton: {
         defaultProps: {
-          size: 'large',
+          size: 'medium',
           variant: 'contained',
           color: 'primary',
           disableElevation: true,
         },
         styleOverrides: {
-          sizeLarge: { minHeight: 48, minWidth: 48 },
-          sizeMedium: { minHeight: 40, minWidth: 40 },
-          sizeSmall: { minHeight: 32, minWidth: 32 },
+          sizeLarge: { minHeight: 48, minWidth: 48, fontSize: 18 },
+          sizeMedium: { minHeight: 40, minWidth: 40, fontSize: 16 },
+          sizeSmall: { minHeight: 32, minWidth: 32, fontSize: 14 },
         },
       },
       MuiTooltip: {
@@ -88,7 +88,7 @@ const createAppTheme = (mode?: PaletteMode) =>
         main: '#725dff',
       },
       secondary: {
-        main: '#3cecd1',
+        main: '#009688',
       },
       mode,
     },
@@ -101,7 +101,7 @@ const createAppTheme = (mode?: PaletteMode) =>
         sm: 600,
         md: 900,
         lg: 1200,
-        xl: 1600,
+        xl: 1400,
       },
     },
   });
