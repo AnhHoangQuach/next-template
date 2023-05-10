@@ -1,7 +1,7 @@
 import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
 import { CssBaseline, LinearProgress, PaletteMode, ThemeProvider } from '@mui/material';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
-import type { } from '@mui/x-data-grid/themeAugmentation';
+import type {} from '@mui/x-data-grid/themeAugmentation';
 import { GridEmpty } from 'components/common';
 import { Roboto_Flex } from 'next/font/google';
 import { useEffect } from 'react';
