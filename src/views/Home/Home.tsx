@@ -1,40 +1,76 @@
-import { KeyboardArrowRight } from '@mui/icons-material';
-import { AppBar, Button, Container, Toolbar } from '@mui/material';
-import { AuragiIcon } from 'assets/icons';
-import { HomeBackground } from 'assets/images';
-import { NextImage, NextLink } from 'components/next';
-import { AppFooter } from 'containers';
-import { publicRoute } from 'routes';
+import { LoadingButton } from '@mui/lab';
+import { Button, Container } from '@mui/material';
 
 const Home = () => {
   return (
-    <main style={{ background: `url(${HomeBackground.src}) no-repeat top left / cover` }}>
-      <AppBar position='sticky' color='transparent' elevation={0}>
-        <Toolbar component={Container} maxWidth='xl' className='flex items-center py-6'>
-          <NextLink href={publicRoute.home.path}>
-            <NextImage src={AuragiIcon} alt='Logo' height={40} />
-          </NextLink>
-        </Toolbar>
-      </AppBar>
-      <div className='fixed bottom-0 left-0 right-0'>
-        <Container maxWidth='xl' className='px-0'>
-          <Container maxWidth='md' className='ml-0 flex flex-col items-start gap-8'>
-            <h1 className='text-3xl font-bold text-primary-main'>
-              Swap, earn, and govern the real yield decentralized crypto trading protocol.
-            </h1>
-            <NextLink href={publicRoute.swap.path}>
-              <Button
-                endIcon={<KeyboardArrowRight className='text-3xl' />}
-                className='px-[40px] py-[16px] text-xl tracking-wider'
-              >
-                LAUNCH APP
-              </Button>
-            </NextLink>
-          </Container>
-          <AppFooter />
-        </Container>
+    <Container className='space-y-10 py-10'>
+      <div className='text-[black] dark:text-[white]'>Toggle dark mode by Tailwindcss</div>
+      <div className='flex gap-3'>
+        <LoadingButton variant='contained' color='primary' loading>
+          Spinning
+        </LoadingButton>
+        <LoadingButton variant='contained' color='primary'>
+          Idle
+        </LoadingButton>
+        <Button variant='contained' color='primary' disabled>
+          Disabled
+        </Button>
+
+        <LoadingButton variant='contained' color='secondary' loading>
+          Spinning
+        </LoadingButton>
+        <LoadingButton variant='contained' color='secondary'>
+          Idle
+        </LoadingButton>
+        <Button variant='contained' color='secondary' disabled>
+          Disabled
+        </Button>
       </div>
-    </main>
+
+      <div className='flex gap-3'>
+        <LoadingButton variant='outlined' color='primary' loading>
+          Spinning
+        </LoadingButton>
+        <LoadingButton variant='outlined' color='primary'>
+          Idle
+        </LoadingButton>
+        <Button variant='outlined' color='primary' disabled>
+          Disabled
+        </Button>
+
+        <LoadingButton variant='outlined' color='secondary' loading>
+          Spinning
+        </LoadingButton>
+        <LoadingButton variant='outlined' color='secondary'>
+          Idle{' '}
+        </LoadingButton>
+        <Button variant='outlined' color='secondary' disabled>
+          Disabled
+        </Button>
+      </div>
+
+      <div className='flex gap-3'>
+        <LoadingButton variant='contained' color='inherit' loading>
+          Spinning
+        </LoadingButton>
+        <LoadingButton variant='contained' color='inherit'>
+          Idle
+        </LoadingButton>
+        <Button variant='contained' color='inherit' disabled>
+          Disabled
+        </Button>
+
+        <LoadingButton variant='outlined' color='inherit' loading>
+          Spinning
+        </LoadingButton>
+        <LoadingButton variant='outlined' color='inherit'>
+          Idle
+        </LoadingButton>
+        <Button variant='outlined' color='inherit' disabled>
+          Disabled
+        </Button>
+      </div>
+    </Container>
   );
 };
 

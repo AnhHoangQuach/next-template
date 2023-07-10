@@ -34,11 +34,7 @@ const MenuItem = ({ path, name }: { path: string; name?: string }) => {
 const AppMenu = () => {
   return (
     <>
-      <MenuItem {...publicRoute.market} />
-      <MenuItem {...publicRoute.dashboard} />
-      <MenuItem {...publicRoute.deposit} />
-      <MenuItem {...publicRoute.borrow} />
-      <MenuItem {...publicRoute.swap} />
+      <MenuItem {...publicRoute.home} />
     </>
   );
 };

@@ -1,8 +1,6 @@
 import { Menu as MenuIcon } from '@mui/icons-material';
 import { AppBar, Divider, Drawer, IconButton, List, Toolbar } from '@mui/material';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { AuragiIcon } from 'assets/icons';
-import { Mapple, SwitchTheme } from 'components';
+import { SwitchTheme } from 'components';
 import { NextImage, NextLink } from 'components/next';
 import { AppMenu } from 'containers';
 import { useRouter } from 'next/router';
@@ -28,8 +26,8 @@ const AppHeader = () => {
         PaperProps={{ sx: { width: 280, padding: '8px 16px' } }}
       >
         <div className='relative flex h-12 items-center justify-center lg:h-16'>
-          <NextLink href={publicRoute.swap.path}>
-            <NextImage src={AuragiIcon} alt='Logo' height={40} />
+          <NextLink href={publicRoute.home.path}>
+            <NextImage src={require('assets/icons/Muragi.Icon.svg').default} alt='Logo' height={40} />
           </NextLink>
         </div>
         <Divider className='my-2' />
@@ -37,10 +35,6 @@ const AppHeader = () => {
           <AppMenu />
         </List>
       </Drawer>
-
-      <div className='bg-primary-main px-20 mobile:px-3'>
-        <Mapple hidden />
-      </div>
 
       <AppBar position='sticky' color='inherit' elevation={1}>
         <Toolbar className='flex h-[64px] items-center'>
@@ -51,8 +45,8 @@ const AppHeader = () => {
           </div>
 
           <div className='relative hidden lg:block'>
-            <NextLink href={publicRoute.swap.path}>
-              <NextImage src={AuragiIcon} alt='Logo' height={40} />
+            <NextLink href={publicRoute.home.path}>
+              <NextImage src={require('assets/icons/Muragi.Icon.svg').default} alt='Logo' height={40} />
             </NextLink>
           </div>
 
@@ -61,7 +55,6 @@ const AppHeader = () => {
           </List>
           <div className='flex-1'></div>
 
-          <ConnectButton />
           <div className='w-2'></div>
           <SwitchTheme />
         </Toolbar>
